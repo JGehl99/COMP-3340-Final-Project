@@ -12,7 +12,7 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<h1><?php echo 'Hello, World!'?></h1>
+<h1><?php echo 'Hi World!'?></h1>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
