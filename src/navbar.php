@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light border" style="margin-bottom: 10px">
+<nav class="navbar nav navbar-expand-md navbar-light bg-light border" style="margin-bottom: 10px">
     <a href="https://github.com/jgehl99">
         <img src="../public_html/static/icon.svg" alt="Image of Author"
              width="40px" height="40px" style="margin-right: 5px">
@@ -35,32 +35,50 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
+    <div class="navbar-collapse collapse w-100" id="navbarNav">
+
+        <div class="navbar-nav w-100 justify-content-left col-md-7">
+            <div class="nav-item">
                 <a class="nav-link" href="https://gehlj.myweb.cs.uwindsor.ca/">Home</a>
-            </li>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-2707-W22">Products</a>
-            </li>
+            <div class="nav-item">
+                <a class="nav-link text-nowrap" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-2707-W22">Products</a>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">About Us</a>
-            </li>
+            <div class="nav-item">
+                <a class="nav-link text-nowrap" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">About Us</a>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">Contact Us</a>
-            </li>
+            <div class="nav-item">
+                <a class="nav-link text-nowrap" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">Contact Us</a>
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">Gallery</a>
-            </li>
+            <div class="nav-item">
+                <a class="nav-link text-nowrap" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">Gallery</a>
+            </div>
 
-            <li class="nav-item" style="float:left">
-                <a class="nav-link" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">Log in</a>
-            </li>
-        </ul>
+        </div>
+
+        <div class="nav-item w-100 justify-content-center col-md-4 d-none d-md-block">
+            <form class="d-flex">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary text-nowrap" type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="navbar-nav w-100 justify-content-end col-md-1">
+            <div class="nav-item">
+                <a class="nav-link text-nowrap" href="https://gehlj.myweb.cs.uwindsor.ca/COMP-3340-W22/">Log in</a>
+            </div>
+        </div>
+
+        <div class="nav-item w-100 justify-content-center col-md-4 d-sm-block d-md-none">
+            <form class="d-flex">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary text-nowrap" type="submit">Search</button>
+            </form>
+        </div>
     </div>
 </nav>
 </body>
