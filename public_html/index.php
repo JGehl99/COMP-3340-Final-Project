@@ -1,11 +1,2 @@
-<!doctype html>
-<html lang="en">
-<body>
-
-<?php
-$title = 'Index';
-include('../src/navbar.php');
-?>
-
-</body>
-</html>
+<?php header("Location: https://oldchicken.myweb.cs.uwindsor.ca/content/index.php");
+exit();

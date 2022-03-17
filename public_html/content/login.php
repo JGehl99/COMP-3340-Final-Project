@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <?php
-$title = 'Sign Up';
-include('../src/navbar.php');
+    $title = 'Login';
+include('../content/navbar.php');
 ?>
 
 <body class="vh-100">
@@ -13,10 +13,10 @@ include('../src/navbar.php');
                 <div class="card bg-dark text-white" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
-                        <div class="mb-md-5 mt-md-4">
+                        <div class="mb-md-5 mt-md-4 pb-5">
 
-                            <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
-                            <p class="text-white-50 mb-5">Please enter a valid email and password!</p>
+                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
                             <div class="form-outline form-white mb-4">
                                 <input type="email" id="typeEmailX" class="form-control form-control-lg" />
@@ -28,17 +28,14 @@ include('../src/navbar.php');
                                 <label class="form-label" for="typePasswordX">Password</label>
                             </div>
 
-                            <div class="form-outline form-white mb-5">
-                                <input type="password" id="confirmPasswordX" class="form-control form-control-lg" />
-                                <label class="form-label" for="confirmPasswordX">Confirm Password</label>
-                            </div>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#">Forgot password?</a></p>
 
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
                         </div>
 
                         <div>
-                            <p class="mb-0">Already have an account? <a href="login.php" class="text-white-50 fw-bold">Login</a></p>
+                            <p class="mb-0">Don't have an account? <a href="sign_up.php" class="text-white-50 fw-bold">Sign Up</a></p>
                         </div>
 
                     </div>

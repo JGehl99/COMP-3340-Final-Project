@@ -2,8 +2,8 @@
 <html lang="en">
 
 <?php
-$title = 'Shipping and Returns';
-include('navbar.php');
+$title = '';
+include('../content/navbar.php');
 ?>
 
 <body></body>

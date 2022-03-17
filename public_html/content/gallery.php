@@ -2,8 +2,8 @@
 <html lang="en">
 
 <?php
-$title = 'Products';
-include('navbar.php');
+$title = '';
+include('../content/navbar.php');
 ?>
 
 <body></body>
