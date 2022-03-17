@@ -15,7 +15,7 @@
 
     <?php
     $title = 'Index';
-    include('../src/navbar.php');
+    include('navbar.php');
     ?>
 
 

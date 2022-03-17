@@ -13,7 +13,7 @@
 
 <?php
     $title = 'Index';
-    include('../src/navbar.php');
+    include('navbar.php');
 ?>
 
 <body class="vh-100 gradient-custom">

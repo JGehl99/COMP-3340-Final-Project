@@ -13,7 +13,7 @@
 
 <?php
     $title = 'Index';
-    include('../src/navbar.php');
+    include('navbar.php');
 ?>
 
 <body class="vh-100 gradient-custom">
@@ -39,7 +39,7 @@
                                 <label class="form-label" for="typePasswordX">Password</label>
                             </div>
 
-                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#">Forgot password?</a></p>
 
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
