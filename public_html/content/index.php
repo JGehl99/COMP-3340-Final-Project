@@ -4,7 +4,7 @@
 
 <?php
 $title = 'Index';
-include('./content/navbar.php');
+include('../content/navbar.php');
 ?>
 
 </body>
