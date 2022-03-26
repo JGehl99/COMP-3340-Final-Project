@@ -44,18 +44,36 @@
             </div>
         </div>
 
-        <div class="nav-item w-100 justify-content-center col-md-4 d-none d-md-block">
+        <div class="nav-item w-100 justify-content-center col d-none d-md-block">
             <form class="d-flex">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-2 col-10" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-primary text-nowrap" type="submit">Search</button>
             </form>
         </div>
 
-        <div class="navbar-nav w-100 justify-content-end col-md-1">
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/login.php">Log in</a>
-            </div>
-        </div>
+        <?php
+            if (isLoggedIn()) {
+                echo '<div class="navbar-nav w-100 justify-content-end col">
+                        <div class="nav-item">
+                            <a class="nav-link text-nowrap" href="../content/cart.php">Cart</a>
+                        </div>
+                      </div>
+                      <div class="navbar-nav w-100 justify-content-end col">
+                        <div class="nav-item">
+                            <a class="nav-link text-nowrap" href="../content/cart.php">My Account</a>
+                        </div>
+                      </div>';
+            } else {
+                echo '<div class="navbar-nav w-100 justify-content-end col">
+                        <div class="nav-item">
+                            <a class="nav-link text-nowrap" href="../content/login.php">Log in</a>
+                        </div>
+                      </div>';
+            }
+
+        ?>
+
+
 
         <div class="nav-item w-100 justify-content-center col-md-4 d-sm-block d-md-none">
             <form class="d-flex">

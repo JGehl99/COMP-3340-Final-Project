@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
-<body>
 
 <?php
-$title = 'Index';
+$title = 'Cart';
 include('../content/navbar.php');
-
 ?>
 
-</body>
+<body>cart</body>
+
 </html>

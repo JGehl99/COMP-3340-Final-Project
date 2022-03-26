@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    function isLoggedIn() {
+        if (!empty($_SESSION['logged_in'])) {
+            return $_SESSION['logged_in'];
+        } else {
+            return false;
+        }
+    }
+?>
+
 <head>
     <!-- Ensure $title isn't undefined, if undefined: initialize to empty string-->
     <title> <?php if (empty($title)) $title = ""; echo $title; ?> </title>

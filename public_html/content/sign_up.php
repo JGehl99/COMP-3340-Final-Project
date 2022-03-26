@@ -3,6 +3,7 @@
 <?php
 $title = 'Sign Up';
 include('../content/navbar.php');
+include('../static/config.php');
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -10,20 +11,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['cpassword'])) {
 
         // If passwords match
-        if($_POST['password'] == $_POST['cpassword']){
+        if($_POST['password'] !== $_POST['cpassword']){
+            $msg = "<p class=\"text-danger mb-5\">Passwords do not match!</p>";
+        } else{
 
             // Get username and create password hash
             $username = trim($_POST['username']);
             $password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
 
-            $dbServerName = "localhost";
-            $dbUsername = "gehlj_OldChickenDB";
-            $dbPassword = "Pt9me6124l";
-            $dbName = "gehlj_OldChickenDB";
-            $port = 3306;
-
             // create connection
-            $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName, $port);
+            $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
 
             // check connection
             if ($conn->connect_error) {
@@ -39,10 +36,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $result = $stmt->get_result();
             $stmt->close();
 
+            echo "<p>" . $result->fetch_assoc()['username'] . "</p>";
+
             if(!empty($result->fetch_assoc()['username'])){
-                // TODO: Username exists, tell user to choose new username
+                $msg = "<p class=\"text-danger mb-5\">Username Already Exists!</p>";
             } else{
-                //TODO: Username doesn't exist, add account to db
+                //Username doesn't exist, add account to db
+                $date = date("Y-m-d h:i:s");
+                $type = 0;
+                $sql = "INSERT INTO ACCOUNT VALUES(?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sssi", $username, $password, $date, $type);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $stmt->close();
+                $msg = "<p class=\"text-success mb-5\">Account Created! <a href='login.php'>Log in here!</a></p>";
             }
         }
     }
@@ -56,13 +64,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="card bg-dark text-white" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
-                        <form class="mb-md-5 mt-md-4" method="post" action="">
+                        <form class="mb-md-5 mt-md-4" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
                             <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
                             <p class="text-white-50 mb-5">Please enter a valid username and password!</p>
-
+                            <?php if (!empty($msg)) echo $msg ?>
                             <div class="form-outline form-white mb-4">
-                                <input type="username" id="username_field" name="username" class="form-control form-control-lg" required minlength="8"/>
+                                <input type="text" id="username_field" name="username" class="form-control form-control-lg" required minlength="8"/>
                                 <label class="form-label" for="username_field">Username</label>
                             </div>
 
