@@ -11,19 +11,19 @@
                     <h5 class="text-uppercase">About Us</h5>
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="../content/about_us.php/#joshua_gehl" class="text-black-50">Joshua Gehl</a>
+                            <a href="../content/about_us.php#joshua_gehl" class="text-black-50">Joshua Gehl</a>
                         </li>
                         <li>
-                            <a href="../content/about_us.php/#jarrett_jackson" class="text-black-50">Jarrett Jackson</a>
+                            <a href="../content/about_us.php#jarrett_jackson" class="text-black-50">Jarrett Jackson</a>
                         </li>
                         <li>
-                            <a href="../content/about_us.php/#brady_malott" class="text-black-50">Brady Malott</a>
+                            <a href="../content/about_us.php#brady_malott" class="text-black-50">Brady Malott</a>
                         </li>
                         <li>
-                            <a href="../content/about_us.php/#jonathan_fehr" class="text-black-50">Jonathan Fehr</a>
+                            <a href="../content/about_us.php#jonathan_fehr" class="text-black-50">Jonathan Fehr</a>
                         </li>
                         <li>
-                            <a href="../content/about_us.php/#shady_gerges" class="text-black-50">Shady Gerges</a>
+                            <a href="../content/about_us.php#shady_gerges" class="text-black-50">Shady Gerges</a>
                         </li>
                     </ul>
                 </div>
