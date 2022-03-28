@@ -77,7 +77,15 @@
             </div>
         </section>
     </div>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        2022
+    <div class="text-center p-3 bg-light d-flex justify-content-end">
+        <div class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" id="darkSwitch">
+            <label class="form-check-label" for="darkSwitch">
+                <img src="../static/light_icon.svg" alt="Icon for light mode">
+            </label>
+        </div>
     </div>
 </footer>
+
+<!--For Dark-mode slider-->
+<script src="../js/dark-mode.js"></script>
