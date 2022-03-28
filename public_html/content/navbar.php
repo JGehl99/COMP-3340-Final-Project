@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php include("../content/headers.php") ?>
-
+<link rel="stylesheet" type="text/css" href="../dark-mode/dark-mode.css">
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light border">
     <div class="container-fluid">
@@ -24,6 +24,12 @@
                     <a class="nav-link" href="../content/gallery.php">Gallery</a>
                 </li>
             </ul>
+            <div class="nav-link">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                </div>
+            </div>
             <form class="d-flex">
                 <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-primary text-nowrap" type="submit">Search</button>
@@ -55,7 +61,7 @@
 
 <!--For Dark-mode slider-->
 <script src="../dark-mode/dark-mode.js"></script>
-<link rel="stylesheet" type="text/css" href="../dark-mode/dark-mode.css">
+
 
 </body>
 </html>
