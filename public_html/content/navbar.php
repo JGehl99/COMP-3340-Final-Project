@@ -86,15 +86,24 @@
         <div class="nav-item w-100 justify-content-center col-md-4 d-sm-block d-md-none">
             <form class="d-flex">
                 <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary text-nowrap" type="submit">Search</button>
+                <button class="btn btn-secondary text-nowrap" type="submit">Search</button>
             </form>
         </div>
     </div>
 </nav>
 
+<button type="button" class="btn btn-primary text-nowrap" id="btn-btt">
+<img src="../scrollButton/arrowUP.svg" alt="arrowUP">
+</button>
+
+
 <!--For Dark-mode slider-->
+
 <script src="../dark-mode/dark-mode.js"></script>
 <link rel="stylesheet" type="text/css" href="../dark-mode/dark-mode.css">
+<!--For scroll button-->
+<link rel="stylesheet" href="../scrollButton/bttStyle.css">
+<script src="../scrollButton/scrollButton.js"></script>
 
 </body>
 </html>

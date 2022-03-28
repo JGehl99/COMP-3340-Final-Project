@@ -43,7 +43,7 @@
 }
 
 [data-theme="dark"] #about{
-                       color: #eee;
+    color: #eee;
 }
 
 [data-theme="dark"] #home{
@@ -62,18 +62,71 @@
     color: #eee;
 }
 
+[data-theme="dark"] #logB{
+    color: #eee;
+
+}
+
+[data-theme="dark"] #myAcc{
+    color: #eee;
+
+}
+
+[data-theme="dark"] #jarr{
+    color: #eee;
+}
+
+[data-theme="dark"] #josh{
+    color: #eee;
+}
+
+[data-theme="dark"] #jon{
+    color: #eee;
+}
+
+[data-theme="dark"] #brady{
+    color: #eee;
+}
+[data-theme="dark"] #shady{
+    color: #eee;
+}
+
+[data-theme="dark"] #faq{
+    color: #eee;
+}
+
+[data-theme="dark"] #ship{
+    color: #eee;
+}
+
+[data-theme="dark"] #contact{
+    color: #eee;
+}
+[data-theme="dark"] #phone{
+    color: #eee;
+}
+[data-theme="dark"] #email{
+    color: #eee;
+}
+
+[data-theme="dark"] #foot{
+    background-color: #222 !important;
+}
+
+
 [data-theme="dark"] #mainNav{
-    border: #222 !important;;
+    border: #222 !important;
 }
 
 [data-theme="dark"] .dropdown-item:hover{
     background-color: #222 !important;
 }
 
-[data-theme="dark"] #logB{
-    color: #eee;
-
+a{
+    color: black;
 }
+
+
 
 
 
