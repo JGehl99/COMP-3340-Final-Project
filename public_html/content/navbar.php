@@ -4,7 +4,7 @@
 <?php include("../content/headers.php") ?>
 
 <body>
-<nav class="navbar nav navbar-expand-md navbar-light bg-light border" style="margin-bottom: 10px">
+<nav class="navbar nav navbar-expand-md navbar-light bg-light border" id="mainNav" style="margin-bottom: 10px">
     <a href="../index.php">
         <img src="../static/icon.svg" alt="OldChicken"
              width="40px" height="40px" style="margin-right: 5px">
@@ -16,15 +16,15 @@
 
         <div class="navbar-nav w-100 justify-content-left col-md-7">
             <div class="nav-item">
-                <a class="nav-link" href="../index.php">Home</a>
+                <a class="nav-link" id="home" href="../index.php">Home</a>
             </div>
 
             <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/products.php">Products</a>
+                <a class="nav-link text-nowrap" id="products" href="../content/products.php">Products</a>
             </div>
 
             <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/about_us.php">About Us</a>
+                <a class="nav-link text-nowrap" id="about" href="../content/about_us.php">About Us</a>
             </div>
 
             <div class="nav-item dropdown">
@@ -38,11 +38,19 @@
                     <a class="dropdown-item" href="../content/shipping_returns.php">Shipping & Returns</a>
                 </div>
             </div>
+            <div class="nav-link">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                </div>
+            </div>
 
             <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/gallery.php">Gallery</a>
+                <a class="nav-link text-nowrap" id="gallery" href="../content/gallery.php">Gallery</a>
             </div>
         </div>
+
+
 
         <div class="nav-item w-100 justify-content-center col-md-4 d-none d-md-block">
             <form class="d-flex">
@@ -51,11 +59,14 @@
             </form>
         </div>
 
+
         <div class="navbar-nav w-100 justify-content-end col-md-1">
             <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/login.php">Log in</a>
+                <a class="nav-link text-nowrap" id="login" href="../content/login.php">Log in</a>
             </div>
         </div>
+
+
 
         <div class="nav-item w-100 justify-content-center col-md-4 d-sm-block d-md-none">
             <form class="d-flex">
@@ -65,5 +76,8 @@
         </div>
     </div>
 </nav>
+<script src="../dark-mode/dark-mode.js"></script>
+<link rel="stylesheet" type="text/css" href="../dark-mode/dark-mode.css">
+
 </body>
 </html>
