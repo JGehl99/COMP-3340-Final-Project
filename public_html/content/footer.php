@@ -3,7 +3,7 @@
 
 
 <!-- Footer -->
-<footer class="bg-link text-center ">
+<footer class="bg-link text-center bg-light">
     <div class="container p-4">
         <section class="">
             <div class="row">
