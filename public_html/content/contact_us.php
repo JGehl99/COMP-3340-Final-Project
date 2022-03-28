@@ -31,6 +31,7 @@ include('navbar.php');
     </div>
 
 
+<?php include('../content/footer.php'); ?>
 </body>
 
 </html>
