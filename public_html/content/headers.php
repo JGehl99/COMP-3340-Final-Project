@@ -8,6 +8,10 @@
             return false;
         }
     }
+
+    function logOut() {
+        $_SESSION['logged_in'] = false;
+    }
 ?>
 
 <head>
