@@ -4,82 +4,51 @@
 <?php include("../content/headers.php") ?>
 
 <body>
-<nav class="navbar nav navbar-expand-md navbar-light bg-light border" style="margin-bottom: 10px">
-    <a href="../index.php">
-        <img src="../static/icon.svg" alt="OldChicken"
-             width="40px" height="40px" style="margin-right: 5px">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse w-100" id="navbarNav">
-
-        <div class="navbar-nav w-100 justify-content-left col-md-7">
-            <div class="nav-item">
-                <a class="nav-link" href="../index.php">Home</a>
-            </div>
-
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/products.php">Products</a>
-            </div>
-
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/about_us.php">About Us</a>
-            </div>
-
-            <div class="nav-item dropdown">
-                <a class="nav-link text-nowrap dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Customer Support
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="../content/faq.php">FAQ</a>
-                    <a class="dropdown-item" href="../content/contact_us.php">Contact Us</a>
-                    <a class="dropdown-item" href="../content/shipping_returns.php">Shipping & Returns</a>
-                </div>
-            </div>
-
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" href="../content/gallery.php">Gallery</a>
-            </div>
-        </div>
-
-        <div class="nav-item w-100 justify-content-center col d-none d-md-block">
+    <nav class="navbar navbar-expand-md navbar-light bg-light border">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../content/index.php">
+            <img src="../static/icon.svg" alt="OldChicken Icon" style="height:50px;width:50px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../content/index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../content/products.php">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../content/gallery.php">Gallery</a>
+                </li>
+            </ul>
             <form class="d-flex">
-                <input class="form-control mr-2 col-10" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary text-nowrap" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
-        </div>
-
-        <?php
-            if (isLoggedIn()) {
-                echo '<div class="navbar-nav w-100 justify-content-end col">
-                        <div class="nav-item">
-                            <a class="nav-link text-nowrap" href="../content/cart.php">Cart</a>
-                        </div>
-                      </div>
-                      <div class="navbar-nav w-100 justify-content-end col">
-                        <div class="nav-item">
-                            <a class="nav-link text-nowrap" href="../content/cart.php">My Account</a>
-                        </div>
-                      </div>';
-            } else {
-                echo '<div class="navbar-nav w-100 justify-content-end col">
-                        <div class="nav-item">
-                            <a class="nav-link text-nowrap" href="../content/login.php">Log in</a>
-                        </div>
-                      </div>';
-            }
-
-        ?>
-
-
-
-        <div class="nav-item w-100 justify-content-center col-md-4 d-sm-block d-md-none">
-            <form class="d-flex">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary text-nowrap" type="submit">Search</button>
-            </form>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <?php if(!isLoggedIn()){ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../content/login.php">Log In</a>
+                    </li>
+                <?php }else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../content/cart.php">Cart</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="../content#">Account Homepage</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../content/logout.php">Log Out</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
+            </ul>
         </div>
     </div>
 </nav>
