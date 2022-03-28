@@ -61,6 +61,12 @@
 [data-theme="dark"] #login{
     color: #eee;
 }
+[data-theme="dark"] #myAcc{
+    color: #eee;
+}
+[data-theme="dark"] #cart{
+    color: #eee;
+}
 
 [data-theme="dark"] #mainNav{
     border: #222 !important;;
