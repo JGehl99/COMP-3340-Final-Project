@@ -76,6 +76,8 @@
         </div>
     </div>
 </nav>
+
+<!--For Dark-mode slider-->
 <script src="../dark-mode/dark-mode.js"></script>
 <link rel="stylesheet" type="text/css" href="../dark-mode/dark-mode.css">
 

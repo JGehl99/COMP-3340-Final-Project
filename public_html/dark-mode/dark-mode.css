@@ -66,6 +66,16 @@
     border: #222 !important;;
 }
 
+[data-theme="dark"] .dropdown-item:hover{
+    background-color: #222 !important;
+}
+
+[data-theme="dark"] #logB{
+    color: #eee;
+
+}
+
+
 
 
 

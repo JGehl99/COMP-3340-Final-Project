@@ -1,4 +1,4 @@
-var darkSwitch = document.getElementById("darkSwitch")
+let darkSwitch = document.getElementById("darkSwitch")
 
 window.addEventListener("load", (
     function () {
@@ -15,17 +15,22 @@ window.addEventListener("load", (
 
 function initiate()
 {
-    let select = localStorage.getItem("darkSwitch")!==null && localStorage.getItem("darkSwitch") === "dark";
+    let select = localStorage.getItem("data-theme");
+    if(select){
+        document.body.setAttribute("data-theme", "dark")
+    }
+        // !==null && localStorage.getItem("darkSwitch") === "dark";
     darkSwitch.checked = select;
-    select? document.body.setAttribute("data-theme", "dark") : document.body.removeAttribute("data-theme");
+
 }
 
 function reset() {
     if (darkSwitch.checked) {
         document.body.setAttribute("data-theme", "dark");
-        localStorage.removeItem("data-theme");
+        localStorage.setItem('data-theme', 'dark');
     } else {
         document.body.removeAttribute("data-theme");
-        localStorage.removeItem("darkSwitch")
+        localStorage.removeItem("data-theme")
     }
 }
+
