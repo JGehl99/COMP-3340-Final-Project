@@ -1,3 +1,19 @@
+<?php
+    session_start();
+
+    function isLoggedIn() {
+        if (!empty($_SESSION['logged_in'])) {
+            return $_SESSION['logged_in'];
+        } else {
+            return false;
+        }
+    }
+
+    function logOut() {
+        $_SESSION['logged_in'] = false;
+    }
+?>
+
 <head>
     <!-- Ensure $title isn't undefined, if undefined: initialize to empty string-->
     <title> <?php if (empty($title)) $title = ""; echo $title; ?> </title>
@@ -13,6 +29,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
             crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../css/anims.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"

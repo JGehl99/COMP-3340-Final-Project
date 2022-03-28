@@ -70,7 +70,7 @@ include('../content/navbar.php');
     </div>
 </div>
 
-
+<?php include('../content/footer.php'); ?>
 </body>
 
 </html>
