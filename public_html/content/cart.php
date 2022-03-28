@@ -6,6 +6,10 @@ $title = 'Cart';
 include('../content/navbar.php');
 ?>
 
-<body>cart</body>
+<body>
+cart
+
+<?php include('../content/footer.php'); ?>
+</body>
 
 </html>

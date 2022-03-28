@@ -6,6 +6,9 @@ $title = 'About Us';
 include('../content/navbar.php');
 ?>
 
-<body></body>
+<body>
+
+<?php include('../content/footer.php'); ?>
+</body>
 
 </html>
