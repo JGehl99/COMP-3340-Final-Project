@@ -20,7 +20,7 @@ include('navbar.php');
     </div>
 </div>
 <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class="col-12 col-sm-12 col-md-10 col-lg-6 col-xl-5 col-xxl-4 mt-5">
+    <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
         <div class="card h-100 p-3">
             <div class="card-body"">
             <h5 class="card-title">Contact Customer Service</h5>
