@@ -72,6 +72,11 @@
 
 }
 
+[data-theme="dark"] #cart{
+    color: #eee;
+
+}
+
 [data-theme="dark"] #jarr{
     color: #eee;
 }
