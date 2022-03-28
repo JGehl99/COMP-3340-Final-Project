@@ -61,13 +61,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                <div class="card text-black" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
                         <form class="mb-md-5 mt-md-4" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
                             <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
-                            <p class="text-white-50 mb-5">Please enter a valid username and password!</p>
+                            <p class="text-50 mb-5">Please enter a valid username and password!</p>
                             <?php if (!empty($msg)) echo $msg ?>
                             <div class="form-outline form-white mb-4">
                                 <input type="text" id="username_field" name="username" class="form-control form-control-lg" required minlength="8"/>
@@ -84,12 +84,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <label class="form-label" for="confirm_password_field">Confirm Password</label>
                             </div>
 
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                            <button class="btn btn-dark btn-lg px-5" type="submit">Sign Up</button>
 
                         </div>
 
                         <div class="d-flex justify-content-center pb-4">
-                            <p class="mb-0">Already have an account? <a href="login.php" class="text-white-50 fw-bold">Login</a></p>
+                            <p class="mb-0">Already have an account? <a href="login.php" class="text-50 fw-bold">Login</a></p>
                         </div>
 
                     </div>
