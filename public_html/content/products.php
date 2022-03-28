@@ -4,17 +4,13 @@
 <?php
 $title = 'Products';
 include('../content/navbar.php');
+include('../static/config.php');
 ?>
 
 <?php
-    $dbServerName = "localhost";
-    $dbUsername = "gehlj_OldChickenDB";
-    $dbPassword = "Pt9me6124l";
-    $dbName = "gehlj_OldChickenDB";
-    $port = 3306;
 
     // create connection
-    $conn = new mysqli($dbServerName, $dbUsername, $dbPassword, $dbName, $port);
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
 
     // check connection
     if ($conn->connect_error) {
