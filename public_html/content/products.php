@@ -31,7 +31,7 @@ include('../static/config.php');
 ?>
 
 <body class="bg-white">
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center pb-5">
     <?php
             // Generating the product cards
           if ($result->num_rows > 0) {
@@ -44,7 +44,7 @@ include('../static/config.php');
 
                   // Create the card for the item
                   echo '
-                      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-5">
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 pt-5">
                         <a href="product.php?item-id=' . $row["id"] . '" class="card h-100 hover_expand text-decoration-none bg-light text-dark">
                         <img class="card-img-top p-4" src="' . $row["imageURL"] . '" alt="' . $row["name"] . '" />
                           <div class="card-body">
