@@ -32,7 +32,8 @@ include('../content/navbar.php');
         <div class="card h-100 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Shipping Fees</h5>
-                <h6 class="card-subtitle text-success my-2">How much you got?</h6><br>
+                <h6 class="card-subtitle text-success my-2">How much you got?<br>
+                    <a href="shipping_returns.php">Click here to learn more</a></h6>
             </div>
         </div>
     </div>
@@ -40,7 +41,7 @@ include('../content/navbar.php');
         <div class="card h-100 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Products too Expensive</h5>
-                <h6 class="card-subtitle text-success my-2">Suck it up. Chip shortage.</h6>
+                <h6 class="card-subtitle text-success my-2">Suck it up. Chip shortage.</h6><br>
             </div>
         </div>
     </div>
@@ -48,7 +49,8 @@ include('../content/navbar.php');
         <div class="card h-100 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Return Policy</h5>
-                <h6 class="card-subtitle text-success my-2">Not happening.</h6>
+                <h6 class="card-subtitle text-success my-2">Not happening.<br>
+                    <a href="shipping_returns.php">Click here to learn more</a></h6>
             </div>
         </div>
     </div>
@@ -56,7 +58,7 @@ include('../content/navbar.php');
         <div class="card h-100 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Order Status</h5>
-                <h6 class="card-subtitle text-success my-2">Whats the rush? It will get there when it does.</h6>
+                <h6 class="card-subtitle text-success my-2">Whats the rush? It will get there when it does.</h6><br>
             </div>
         </div>
     </div>
@@ -64,11 +66,12 @@ include('../content/navbar.php');
         <div class="card h-100 p-2 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Why is this company so rude?</h5>
-                <h6 class="card-subtitle text-success my-2">¯\_(ツ)_/¯</h6>
+                <h6 class="card-subtitle text-success my-2">¯\_(ツ)_/¯</h6><br>
             </div>
         </div>
     </div>
 </div>
+<br>
 
 <?php include('../content/footer.php'); ?>
 </body>
