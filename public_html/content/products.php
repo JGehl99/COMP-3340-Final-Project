@@ -65,7 +65,7 @@ include('../static/config.php');
 
                   // Add the bullet points for the description
                   foreach($description_items as $item) {
-                      echo '<li>' . $item . '</li>';
+                      echo '<li class="text-dark">' . $item . '</li>';
                   }
 
                   // Close tags
@@ -73,11 +73,11 @@ include('../static/config.php');
                             </ul>
                             <div class="d-flex justify-content-end">
                               <div class="input-group" style="width: 9rem;">
-                                <button type="button" class="btn btn-danger d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
+                                <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
                                   <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
                                 </button>
                                 <input type="text" id="' . $id . '-amt" class="form-control amt" value="0" min="0" max="100" />
-                                <button type="button" class="btn btn-success d-flex align-items-center increase-amt" data-field="' . $id . '-amt">
+                                <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt" data-field="' . $id . '-amt">
                                   <img src="../static/plus-lg.svg" alt="Increase Quantity" />
                                 </button>
                               </div>

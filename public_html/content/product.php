@@ -46,18 +46,18 @@ include('../static/config.php');
       // Create the product cards
       echo '<div class="row">
               <div class="col-12 col-lg-4 mb-4">
-                <div class="card">
+                <div class="card bg-light">
                   <div class="card-body">
                     <img src="' . $imageURL . '" alt="' . $name . '" class="w-100" />
                   </div>
                 </div>
               </div>
               <div class="col mb-4">
-                <div class="card">
+                <div class="card bg-light">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-12 col-sm">
-                        <h4 class="card-title">' . $name . '</h4>
+                        <h4 class="card-title text-dark">' . $name . '</h4>
                         <div>';
 
       // Create the chicken icons to display the star rating
@@ -78,11 +78,11 @@ include('../static/config.php');
                         <h4 class="text-success text-end">$' . $price . '</h4>
                         <div class="d-flex justify-content-end mb-2">
                           <div class="input-group" style="width: 9rem;">
-                            <button type="button" class="btn btn-danger d-flex align-items-center" id="decrease-amt">
+                            <button type="button" class="btn btn-secondary d-flex align-items-center" id="decrease-amt">
                               <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
                             </button>
                             <input type="text" id="item-amt" class="form-control amt" value="0" min="0" max="100" />
-                            <button type="button" class="btn btn-success d-flex align-items-center" id="increase-amt">
+                            <button type="button" class="btn btn-secondary d-flex align-items-center" id="increase-amt">
                               <img src="../static/plus-lg.svg" alt="Increase Quantity" />
                             </button>
                           </div>
@@ -99,7 +99,7 @@ include('../static/config.php');
 
       // Add the bullet points for the description
       foreach($description_items as $description_item) {
-        echo            '<li>' . $description_item . '</li>';
+        echo            '<li class="text-dark">' . $description_item . '</li>';
       }
 
       echo '          </ul>
