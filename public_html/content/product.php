@@ -78,17 +78,17 @@ include('../static/config.php');
                         <h4 class="text-success text-end">$' . $price . '</h4>
                         <div class="d-flex justify-content-end mb-2">
                           <div class="input-group" style="width: 9rem;">
-                            <button type="button" class="btn btn-danger d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
+                            <button type="button" class="btn btn-danger d-flex align-items-center" id="decrease-amt">
                               <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
                             </button>
-                            <input type="text" id="' . $id . '-amt" class="form-control amt" value="0" min="0" max="100" />
-                            <button type="button" class="btn btn-success d-flex align-items-center increase-amt" data-field="' . $id . '-amt">
+                            <input type="text" id="item-amt" class="form-control amt" value="0" min="0" max="100" />
+                            <button type="button" class="btn btn-success d-flex align-items-center" id="increase-amt">
                               <img src="../static/plus-lg.svg" alt="Increase Quantity" />
                             </button>
                           </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                          <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-field="' . $id . '-amt">
+                          <button type="button" class="btn btn-primary d-flex align-items-center" id="add-to-cart" data-field="' . $id . '">
                               <img src="../static/cart.svg" alt="Add To Cart" />
                           </button>
                         </div>
@@ -113,5 +113,6 @@ include('../static/config.php');
   ?>
 </div>
 <?php include('../content/footer.php'); ?>
+<script src="../js/product-cart-quantity.js"></script>
 </body>
 </html>
