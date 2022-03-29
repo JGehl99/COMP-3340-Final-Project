@@ -6,7 +6,7 @@ $title = 'Shipping and Returns';
 include('../content/navbar.php');
 ?>
 
-<body>
+<body class="bg-white">
 
 <?php include('../content/footer.php'); ?>
 </body>

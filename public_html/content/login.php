@@ -50,36 +50,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<body class="vh-100">
+<body class="vh-100 bg-white">
 <section>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-light text-black" style="border-radius: 1rem;">
+                <div class="card bg-light text-black rounded-5">
                     <div class="card-body p-5 text-center">
 
                         <form class="mb-md-5 mt-md-4 pb-5" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
-                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-50 mb-5">Please enter your login and password!</p>
+                            <h2 class="fw-bold mb-2 text-uppercase text-dark">Login</h2>
+                            <p class="text-dark mb-5">Please enter your login and password!</p>
                             <?php if (!empty($msg)) echo $msg ?>
 
                             <div class="form-outline form-white mb-4">
                                 <input type="text" id="username" name="username" class="form-control form-control-lg" />
-                                <label class="form-label" for="username">Username</label>
+                                <label class="form-label text-dark" for="username">Username</label>
                             </div>
 
                             <div class="form-outline form-white mb-4">
                                 <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                                <label class="form-label" for="password">Password</label>
+                                <label class="form-label text-dark" for="password">Password</label>
                             </div>
 
-                            <button class="btn btn-dark btn-lg px-5" type="submit">Login</button>
+                            <button class="btn btn-secondary btn-lg px-5" type="submit">Login</button>
 
                         </form>
 
                         <div>
-                            <p class="mb-0">Don't have an account? <a href="sign_up.php" class="text-50 fw-bold">Sign Up</a></p>
+                            <p class="mb-0 text-dark">Don't have an account? <a href="sign_up.php" class="link-primary fw-bold">Sign Up</a></p>
                         </div>
 
                     </div>

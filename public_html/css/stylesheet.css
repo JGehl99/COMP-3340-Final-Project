@@ -11,3 +11,19 @@
 #darkSwitch {
     transform: rotate(-90deg);
 }
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.dropdown-item:hover {
+    background-color: var(--bs-secondary);
+}
+
+.rounded-5 {
+    border-radius: 1rem;
+}
+
+.bg-vdark {
+    background-color: #181b1e;
+}
