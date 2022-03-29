@@ -16,23 +16,30 @@ include('../static/config.php');
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $id = $_GET["item-id"];
-  if (empty($id)) {
+  $item_id = $_GET["item-id"];
+  if (empty($item_id)) {
     die("Invalid item ID");
   }
 
-  $sql = "SELECT id, name, description, imageURL, price, rating, numRatings FROM PRODUCT WHERE id = " . $id;
-  $result = $conn->query($sql);
+  $sql = "SELECT id, name, description, imageURL, price, rating, numRatings FROM PRODUCT WHERE id =?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("d", $item_id);
+  $stmt->execute();
+  $result = $stmt->get_result()->fetch_all();
+  $stmt->close();
+  $conn->close();
 ?>
 
 <body class="bg-white">
 <div class="container text-wrap py-5">
   <?php
     // Generating the product card
-    if ($result->num_rows == 1) {
-      $item = $result->fetch_assoc();
+    if (count($result) == 1) {
+      // Retrieve attributes from $result[0]
+      [$id, $name, $description, $imageURL, $price, $rating, $numRatings] = $result[0];
+
       // Get an array of description items
-      $description_items = explode(",", $item["description"]);
+      $description_items = explode(",", $description);
       // $row["description"] ends in a comma, so remove the last empty element from the array
       array_pop($description_items);
 
@@ -41,7 +48,7 @@ include('../static/config.php');
               <div class="col-12 col-lg-4 mb-4">
                 <div class="card">
                   <div class="card-body">
-                    <img src="' . $item["imageURL"] . '" alt="' . $item["name"] . '" class="w-100" />
+                    <img src="' . $imageURL . '" alt="' . $name . '" class="w-100" />
                   </div>
                 </div>
               </div>
@@ -50,11 +57,11 @@ include('../static/config.php');
                   <div class="card-body">
                     <div class="row">
                       <div class="col-12 col-sm">
-                        <h4 class="card-title">' . $item["name"] . '</h4>
+                        <h4 class="card-title">' . $name . '</h4>
                         <div>';
 
       // Create the chicken icons to display the star rating
-      $num_stars = get_star_rating($item["rating"]);
+      $num_stars = get_star_rating($rating);
       for ($i = 0; $i < (int) $num_stars; ++$i) {
         echo '            <img src="../static/icon.svg" alt="OldChicken Icon" style="height:16px;width:16px;" />';
       }
@@ -63,25 +70,25 @@ include('../static/config.php');
       }
 
       echo '            
-                          <h6 class="card-subtitle text-muted d-inline-block">' . $item["numRatings"] . '</h6>
+                          <h6 class="card-subtitle text-muted d-inline-block">' . $numRatings . '</h6>
                         </div>
                       </div>
                       <span class="d-none d-sm-block col-1"></span>
                       <div class="col col-sm-4 col-md-3 col-lg-4 col-xl-3">
-                        <h4 class="text-success text-end">$' . $item["price"] . '</h4>
+                        <h4 class="text-success text-end">$' . $price . '</h4>
                         <div class="d-flex justify-content-end mb-2">
                           <div class="input-group" style="width: 9rem;">
-                            <button type="button" class="btn btn-danger d-flex align-items-center decrease-amt" data-field="' . $item["id"] . '-amt">
+                            <button type="button" class="btn btn-danger d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
                               <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
                             </button>
-                            <input type="text" id="' . $item["id"] . '-amt" class="form-control amt" value="0" min="0" max="100" />
-                            <button type="button" class="btn btn-success d-flex align-items-center increase-amt" data-field="' . $item["id"] . '-amt">
+                            <input type="text" id="' . $id . '-amt" class="form-control amt" value="0" min="0" max="100" />
+                            <button type="button" class="btn btn-success d-flex align-items-center increase-amt" data-field="' . $id . '-amt">
                               <img src="../static/plus-lg.svg" alt="Increase Quantity" />
                             </button>
                           </div>
                         </div>
                         <div class="d-flex justify-content-end">
-                          <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-field="' . $item["id"] . '-amt">
+                          <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-field="' . $id . '-amt">
                               <img src="../static/cart.svg" alt="Add To Cart" />
                           </button>
                         </div>
