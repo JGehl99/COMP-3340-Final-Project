@@ -56,3 +56,28 @@ for (let amtInput of amtInputs) {
   // Validate the input when the user de-selects the input element with "onblur" event
   amtInput.onblur = (e) => validateAmt(e, amtInput);
 }
+
+function linkToProduct(e) {
+  e.preventDefault();
+
+  // Starting from the innermost clicked element, check it and each successor element for a data-node-link attribute.
+  // If one is found, then do not redirect.
+  // If the parent <a> is found before finding a data-no-link attribute, then redirect
+
+  let el = e.target;
+  while (el !== null && el.nodeName.toLowerCase() !== "a") {
+    if (el.hasAttribute("data-no-link")) {
+      return;
+    }
+    el = el.parentElement;
+  }
+
+  if (el.nodeName.toLowerCase() !== null && el.hasAttribute("item-id")) {
+    window.location.href = `../content/product.php?item-id=${el.getAttribute("item-id")}`;
+  }
+}
+
+const productLinks = document.querySelectorAll(".product-link");
+for (let productLink of productLinks) {
+  productLink.onclick = linkToProduct;
+}

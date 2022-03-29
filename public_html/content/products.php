@@ -40,7 +40,7 @@ include('../static/config.php');
                   // Create the card for the item
                   echo '
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 pt-5">
-                        <a href="product.php?item-id=' . $id . '" class="card h-100 hover_expand text-decoration-none bg-light text-dark">
+                        <a href="#" class="card h-100 hover_expand text-decoration-none bg-light text-dark product-link" item-id="' . $id . '">
                         <img class="card-img-top p-4" src="' . $imageURL . '" alt="' . $name . '" />
                           <div class="card-body">
                             <h5 class="card-title">' . $name . '</h5>
@@ -72,7 +72,7 @@ include('../static/config.php');
                   echo '    
                             </ul>
                             <div class="d-flex justify-content-end">
-                              <div class="input-group" style="width: 9rem;">
+                              <div class="input-group" data-no-link style="width: 9rem;">
                                 <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
                                   <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
                                 </button>
@@ -82,7 +82,7 @@ include('../static/config.php');
                                 </button>
                               </div>
                               <span class="mx-2"></span>
-                              <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-field="' . $id . '-amt">
+                              <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-no-link data-field="' . $id . '-amt">
                                 <img src="../static/cart.svg" alt="Add To Cart" />
                               </button>
                             </div>
