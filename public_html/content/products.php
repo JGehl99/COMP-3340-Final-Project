@@ -82,7 +82,7 @@ include('../static/config.php');
                                 <button type="button" class="btn btn-danger d-flex align-items-center decrease-amt" data-field="' . $row["id"] . '-amt">
                                   <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
                                 </button>
-                                <input type="text" id="' . $row["id"] . '-amt" class="form-control" value="0" min="0" max="100" />
+                                <input type="text" id="' . $row["id"] . '-amt" class="form-control amt" value="0" min="0" max="100" />
                                 <button type="button" class="btn btn-success d-flex align-items-center increase-amt" data-field="' . $row["id"] . '-amt">
                                   <img src="../static/plus-lg.svg" alt="Increase Quantity" />
                                 </button>
