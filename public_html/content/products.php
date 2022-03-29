@@ -19,15 +19,6 @@ include('../static/config.php');
 
     $sql = "SELECT id, name, description, imageURL, price, rating, numRatings FROM PRODUCT";
     $result = $conn->query($sql);
-
-    function get_star_rating($rating) {
-      $whole_stars = intdiv($rating, 20);
-      $remainder_after_whole_stars = $rating - (20 * $whole_stars);
-      if ($remainder_after_whole_stars >= 10) {
-        return $whole_stars + 0.5;
-      }
-      return $whole_stars;
-    }
 ?>
 
 <body class="bg-white">
