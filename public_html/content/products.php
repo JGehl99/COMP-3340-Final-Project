@@ -45,7 +45,7 @@ include('../static/config.php');
                   // Create the card for the item
                   echo '
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-5">
-                        <div class="card h-100 hover_expand bg-light text-dark">
+                        <a href="product.php?item-id=' . $row["id"] . '" class="card h-100 hover_expand text-decoration-none bg-light text-dark">
                         <img class="card-img-top p-4" src="' . $row["imageURL"] . '" alt="' . $row["name"] . '" />
                           <div class="card-body">
                             <h5 class="card-title">' . $row["name"] . '</h5>
@@ -92,7 +92,7 @@ include('../static/config.php');
                               </button>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                   ';
               }
