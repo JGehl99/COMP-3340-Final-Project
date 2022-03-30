@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
 
+<head>
 <?php
 $title = 'Index';
-include('../content/navbar.php');
-
+include('../content/headers.php');
 ?>
+</head>
 
-<body>
-
+<body class="bg-white">
+<?php include('../content/navbar.php'); ?>
 <div class="bg-white" style="height:100vh">
     <div class="container col-12">
         <div class="row d-flex justify-content-center mt-5">
@@ -30,8 +31,6 @@ include('../content/navbar.php');
         </div>
     </div>
 </div>
-
-
 <?php include('../content/footer.php'); ?>
 </body>
 </html>

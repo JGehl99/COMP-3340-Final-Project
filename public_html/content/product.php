@@ -4,7 +4,6 @@
 <?php
 $title = 'Product';
 include('../content/navbar.php');
-include('../static/config.php');
 ?>
 
 <?php

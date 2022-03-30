@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
 
+<head>
 <?php
 $title = 'Products';
-include('../content/navbar.php');
-include('../static/config.php');
+include('../content/headers.php');
 ?>
+</head>
 
 <?php
 
@@ -23,6 +24,7 @@ include('../static/config.php');
 ?>
 
 <body class="bg-white">
+    <?php include('../content/navbar.php'); ?>
     <div class="container d-flex justify-content-center pb-5">
     <?php
             // Generating the product cards
@@ -96,7 +98,6 @@ include('../static/config.php');
     ?>
     </div>
     <?php include('../content/footer.php'); ?>
-
     <script src="../js/products-cart-quantity.js"></script>
 </body>
 </html>

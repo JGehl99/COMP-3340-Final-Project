@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
 
+<head>
 <?php
 $title = 'Contact Us';
-include('navbar.php');
+include('headers.php');
 ?>
+</head>
 
-<body>
-
+<body class="bg-white">
+<?php include('../content/navbar.php'); ?>
     <div class="container flex py-5 h-100" >
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-8 col-md-6 col-lg-4 col-xl-3">
@@ -26,11 +28,10 @@ include('navbar.php');
                 <h5 class="card-title">Contact Customer Service</h5>
                 <h6 class="card-subtitle text-success my-2">Phone support: <a href="tel:605-475-6968">605-475-6968</a><br>
                     Email: <a href="mailto:<support@oldchicken.myweb.cs.uwindsor.ca? subject=subject text">support@oldchicken.myweb.cs.uwindsor.ca</a> </h6>
+                </div>
             </div>
         </div>
     </div>
-
-
 <?php include('../content/footer.php'); ?>
 </body>
 

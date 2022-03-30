@@ -1,7 +1,3 @@
-<!doctype html>
-<html lang="en">
-
-
 <!-- Footer -->
 <footer class="text-center bg-light">
     <div class="container p-4">

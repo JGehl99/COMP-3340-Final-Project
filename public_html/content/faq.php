@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
 
+<head>
 <?php
 $title = 'FAQ';
-include('../content/navbar.php');
+include('../content/headers.php');
 ?>
+</head>
 
-<body>
+<body class="bg-white">
+<?php include('../content/navbar.php'); ?>
 <div class="container flex py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-6 col-md-4 col-lg-2" style="max-width: 25rem;">
