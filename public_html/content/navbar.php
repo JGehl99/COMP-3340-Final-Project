@@ -2,110 +2,72 @@
 <html lang="en">
 
 <?php include("../content/headers.php") ?>
-
-
-
-<body>
-<nav class="navbar nav navbar-expand-md navbar-light bg-light border" id="mainNav" style="margin-bottom: 10px">
-    <a href="../index.php">
-        <img src="../static/icon.svg" alt="OldChicken"
-             width="40px" height="40px" style="margin-right: 5px">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse w-100" id="navbarNav">
-
-        <div class="navbar-nav w-100 justify-content-left col-md-7">
-            <div class="nav-item">
-                <a class="nav-link" id="home" href="../index.php">Home</a>
-            </div>
-
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" id="products" href="../content/products.php">Products</a>
-            </div>
-
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" id="about" href="../content/about_us.php">About Us</a>
-            </div>
-
-            <div class="nav-item dropdown">
-                <a class="nav-link text-nowrap dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Customer Support
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="../content/faq.php">FAQ</a>
-                    <a class="dropdown-item" href="../content/contact_us.php">Contact Us</a>
-                    <a class="dropdown-item" href="../content/shipping_returns.php">Shipping & Returns</a>
-                </div>
-            </div>
-            <div class="nav-link">
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="darkSwitch">
-                    <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-                </div>
-            </div>
-
-            <div class="nav-item">
-                <a class="nav-link text-nowrap" id="gallery" href="../content/gallery.php">Gallery</a>
-            </div>
-        </div>
-
-        <div class="nav-item w-100 justify-content-center col d-none d-md-block">
+<body class="bg-white">
+    <nav class="sticky-top navbar navbar-expand-md bg-light text-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex" href="../content/index.php">
+            <img src="../static/icon.svg" alt="OldChicken Icon" style="height:30px;width:30px;">
+        </a>
+        <button class="navbar-toggler border border-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img id="navbar_icon" class="navbar-toggler-icon" src="../static/hamburger_black.svg" alt="Hamburger Menu Icon">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link link-dark" aria-current="page" href="../content/index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="../content/products.php">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="../content/gallery.php">Gallery</a>
+                </li>
+            </ul>
             <form class="d-flex">
-                <input class="form-control mr-2 col-10" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-primary text-nowrap" type="submit">Search</button>
             </form>
-        </div>
-
-        <?php
-            if (isLoggedIn()) {
-                echo '<div class="navbar-nav w-100 justify-content-end col">
-                        <div class="nav-item">
-                            <a class="nav-link text-nowrap" id="cart" href="../content/cart.php">Cart</a>
-                        </div>
-                      </div>
-                      <div class="navbar-nav w-100 justify-content-end col">
-                        <div class="nav-item">
-                            <a class="nav-link text-nowrap" id="myAcc" href="../content/cart.php">My Account</a>
-                        </div>
-                      </div>';
-            } else {
-                echo '<div class="navbar-nav w-100 justify-content-end col">
-                        <div class="nav-item">
-                            <a class="nav-link text-nowrap" id="login" href="../content/login.php">Log in</a>
-                        </div>
-                      </div>';
-            }
-
-        ?>
+            <hr class="dropdown-divider mt-sm-3 mt-md-0 d-md-none d-lg-none d-lx-none d-xxl-none">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <?php if(!isLoggedIn()){ ?>
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" aria-current="page" href="../content/login.php">Log In</a>
+                    </li>
+                <?php }else { ?>
 
 
-
-
-
-        <div class="nav-item w-100 justify-content-center col-md-4 d-sm-block d-md-none">
-            <form class="d-flex">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-secondary text-nowrap" type="submit">Search</button>
-            </form>
+                    <!-- This list only shows when > sm breakpoint, shows on navbar -->
+                    <li class="nav-item dropdown d-none d-sm-none d-md-block d-lg-block d-lx-block d-xxl-block bg-light">
+                        <a class="nav-link link-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end bg-light" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item link-dark" href="../content#">Account Homepage</a></li>
+                            <li><a class="dropdown-item link-dark" href="../content/cart.php">Cart</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item link-dark" href="../content/logout.php">Log Out</a></li>
+                        </ul>
+                    </li>
+                    <!-- This list only shows in the collapsed navbar menu when <= sm breakpoint -->
+                    <li class="nav-item dropdown d-block d-sm-block d-md-none bg-light text-dark">
+                        <a class="nav-link dropdown-toggle link-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end bg-light border-0" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item link-dark" href="../content#">Account Homepage</a></li>
+                            <li><a class="dropdown-item link-dark" href="../content/cart.php">Cart</a></li>
+                            <li><a class="dropdown-item link-dark" href="../content/logout.php">Log Out</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
+            </ul>
         </div>
     </div>
 </nav>
 
 <button type="button" class="btn btn-primary rounded-circle btn-dark text-nowrap" id="btn-btt">
-<img src="../scrollButton/arrow_upward_white_24dp.svg" alt="arrowUP">
+    <img src="../scrollButton/arrow_upward_white_24dp.svg" alt="arrowUP">
 </button>
-
-
-<!--For Dark-mode slider-->
-
-<script src="../dark-mode/dark-mode.js"></script>
-<link rel="stylesheet" type="text/css" href="../dark-mode/dark-mode.css">
-<!--For scroll button-->
-<link rel="stylesheet" href="../scrollButton/bttStyle.css">
-<script src="../scrollButton/scrollButton.js"></script>
 
 </body>
 </html>
