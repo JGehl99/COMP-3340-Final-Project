@@ -53,21 +53,21 @@
 
                     <ul class="list-unstyled mb-0">
                         <?php
-                            if (!isLoggedIn()) { ?>
-                                <li>
-                                    <a href="../content/login.php" class="link-dark">Log In</a>
-                                </li>
-                            <?php } else { ?>
-                                <li>
-                                    <a href="../content/#" class="link-dark">My Account</a>
-                                </li>
-                                <li>
-                                    <a href="../content/cart.php" class="link-dark">Cart</a>
-                                </li>
-                                <li>
-                                    <a href="../content/logout.php" class="link-dark">Log Out</a>
-                                </li>
-                        <?php }?>
+                        if (!isLoggedIn()) { ?>
+                            <li>
+                                <a href="../content/login.php" class="link-dark">Log In</a>
+                            </li>
+                        <?php } else { ?>
+                            <li>
+                                <a href="../content/#" class="link-dark">My Account</a>
+                            </li>
+                            <li>
+                                <a href="../content/cart.php" class="link-dark">Cart</a>
+                            </li>
+                            <li>
+                                <a href="../content/logout.php" class="link-dark">Log Out</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>

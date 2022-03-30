@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-<?php
-$title = '';
-include('../content/headers.php');
-?>
+    <?php
+    $title = '';
+    include('../content/headers.php');
+    ?>
 </head>
 
 <body class="bg-white">

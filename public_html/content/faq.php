@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-<?php
-$title = 'FAQ';
-include('../content/headers.php');
-?>
+    <?php
+    $title = 'FAQ';
+    include('../content/headers.php');
+    ?>
 </head>
 
 <body class="bg-white">
 <?php include('../content/navbar.php'); ?>
-<div class="container flex py-5 h-100" >
+<div class="container flex py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-6 col-md-4 col-lg-2" style="max-width: 25rem;">
             <div class="card bg-light text-dark rounded-5" style="border-radius: 1rem;">
@@ -26,8 +26,10 @@ include('../content/headers.php');
         <div class="card h-100 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Contact Customer Service</h5>
-            <h6 class="card-subtitle text-success my-2">Phone support: <a href="tel:605-475-6968">605-475-6968</a><br>
-                Email: <a href="mailto:<support@oldchicken.myweb.cs.uwindsor.ca? subject=subject text">support@oldchicken.myweb.cs.uwindsor.ca</a> </h6>
+                <h6 class="card-subtitle text-success my-2">Phone support: <a
+                            href="tel:605-475-6968">605-475-6968</a><br>
+                    Email: <a href="mailto:<support@oldchicken.myweb.cs.uwindsor.ca? subject=subject text">support@oldchicken.myweb.cs.uwindsor.ca</a>
+                </h6>
             </div>
         </div>
     </div>

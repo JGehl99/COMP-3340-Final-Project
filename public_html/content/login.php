@@ -2,19 +2,19 @@
 <html>
 
 <head>
-<?php
-$title = 'Login';
-include('../content/headers.php');
-?>
+    <?php
+    $title = 'Login';
+    include('../content/headers.php');
+    ?>
 </head>
 
 <?php
 ob_start();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If they aren't empty
-    if(!empty($_POST['username']) && !empty($_POST['password'])) {
+    if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
         // Get username and password
         $username = trim($_POST['username']);
@@ -39,14 +39,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // If username empty or password doesn't match, display error
         // Else set session variable to denote being logged in, redirect to main page
-        if(empty($result['username'])){
+        if (empty($result['username'])) {
             $msg = "<p class=\"text-danger mb-5\">Username or password is incorrect!</p>";
-        } else{
+        } else {
             if (password_verify($password, $result['password'])) {
                 $_SESSION['logged_in'] = true;
                 echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
-        exit();
-            } else{
+                exit();
+            } else {
                 $msg = "<p class=\"text-danger mb-5\">Username or password is incorrect!</p>";
             }
         }
@@ -63,19 +63,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card bg-light text-black rounded-5">
                     <div class="card-body p-5 text-center">
 
-                        <form class="mb-md-5 mt-md-4 pb-5" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                        <form class="mb-md-5 mt-md-4 pb-5" method="post"
+                              action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
                             <h2 class="fw-bold mb-2 text-uppercase text-dark">Login</h2>
                             <p class="text-dark mb-5">Please enter your login and password!</p>
                             <?php if (!empty($msg)) echo $msg ?>
 
                             <div class="form-outline form-white mb-4">
-                                <input type="text" id="username" name="username" class="form-control form-control-lg" />
+                                <input type="text" id="username" name="username" class="form-control form-control-lg"/>
                                 <label class="form-label text-dark" for="username">Username</label>
                             </div>
 
                             <div class="form-outline form-white mb-4">
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                                <input type="password" id="password" name="password"
+                                       class="form-control form-control-lg"/>
                                 <label class="form-label text-dark" for="password">Password</label>
                             </div>
 
@@ -84,7 +86,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         </form>
 
                         <div>
-                            <p class="mb-0 text-dark">Don't have an account? <a href="sign_up.php" class="link-primary fw-bold">Sign Up</a></p>
+                            <p class="mb-0 text-dark">Don't have an account? <a href="sign_up.php"
+                                                                                class="link-primary fw-bold">Sign Up</a>
+                            </p>
                         </div>
 
                     </div>
