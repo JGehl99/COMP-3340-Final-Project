@@ -9,7 +9,7 @@ include('../content/navbar.php');
 <body>
 <div class="container flex py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-6 col-md-4 col-lg-2 col-xl-1" style="max-width: 25rem;">
+        <div class="col-6 col-md-4 col-lg-2" style="max-width: 25rem;">
             <div class="card bg-light text-dark rounded-5" style="border-radius: 1rem;">
                 <div class="card-body p-3 text-center">
                     <h1>FAQ</h1>
