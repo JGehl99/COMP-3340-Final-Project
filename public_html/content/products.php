@@ -4,7 +4,7 @@
 <head>
     <?php
     $title = 'Products';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
@@ -24,7 +24,7 @@ $conn->close();
 ?>
 
 <body class="bg-white">
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <div class="container d-flex justify-content-center pb-5">
     <?php
     // Generating the product cards
@@ -102,7 +102,7 @@ $conn->close();
         } ?>
     </div>
 </div>
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 <script src="../js/products-cart-quantity.js"></script>
 </body>
 </html>

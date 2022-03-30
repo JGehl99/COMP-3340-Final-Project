@@ -4,14 +4,14 @@
 <head>
     <?php
     $title = '';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
 <body class="bg-white">
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <div class="container"></div>
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 
 </html>

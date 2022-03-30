@@ -4,14 +4,14 @@
 <head>
     <?php
     $title = 'Cart';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
 <body>
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <div class="container">Cart</div>
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 
 </html>

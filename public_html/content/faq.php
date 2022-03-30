@@ -4,12 +4,12 @@
 <head>
     <?php
     $title = 'FAQ';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
 <body class="bg-white">
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <div class="container flex py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-6 col-md-4 col-lg-2" style="max-width: 25rem;">
@@ -78,7 +78,7 @@
 </div>
 <br>
 
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 
 </html>

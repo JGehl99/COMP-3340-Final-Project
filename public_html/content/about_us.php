@@ -4,13 +4,13 @@
 <head>
     <?php
     $title = 'About Us';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
 <body>
-<?php include('../content/navbar.php'); ?>
-<?php include('../content/footer.php'); ?>
+<?php include('navbar.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 
 </html>

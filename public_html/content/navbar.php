@@ -1,6 +1,6 @@
 <nav class="sticky-top navbar navbar-expand-md bg-light text-dark">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex" href="../content/index.php">
+        <a class="navbar-brand d-flex" href="index.php">
             <img src="../static/icon.svg" alt="OldChicken Icon" style="height:30px;width:30px;">
         </a>
         <button class="navbar-toggler border border-1" type="button" data-bs-toggle="collapse"
@@ -12,13 +12,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link link-dark" aria-current="page" href="../content/index.php">Home</a>
+                    <a class="nav-link link-dark" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-dark" href="../content/products.php">Products</a>
+                    <a class="nav-link link-dark" href="products.php">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-dark" href="../content/gallery.php">Gallery</a>
+                    <a class="nav-link link-dark" href="gallery.php">Gallery</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -29,7 +29,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <?php if (!isLoggedIn()) { ?>
                     <li class="nav-item">
-                        <a class="nav-link link-dark" aria-current="page" href="../content/login.php">Log In</a>
+                        <a class="nav-link link-dark" aria-current="page" href="login.php">Log In</a>
                     </li>
                 <?php } else { ?>
 
@@ -42,11 +42,11 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-light" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item link-dark" href="../content#">Account Homepage</a></li>
-                            <li><a class="dropdown-item link-dark" href="../content/cart.php">Cart</a></li>
+                            <li><a class="dropdown-item link-dark" href="cart.php">Cart</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item link-dark" href="../content/logout.php">Log Out</a></li>
+                            <li><a class="dropdown-item link-dark" href="logout.php">Log Out</a></li>
                         </ul>
                     </li>
                     <!-- This list only shows in the collapsed navbar menu when <= sm breakpoint -->
@@ -57,8 +57,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-light border-0" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item link-dark" href="../content#">Account Homepage</a></li>
-                            <li><a class="dropdown-item link-dark" href="../content/cart.php">Cart</a></li>
-                            <li><a class="dropdown-item link-dark" href="../content/logout.php">Log Out</a></li>
+                            <li><a class="dropdown-item link-dark" href="cart.php">Cart</a></li>
+                            <li><a class="dropdown-item link-dark" href="logout.php">Log Out</a></li>
                         </ul>
                     </li>
                 <?php } ?>

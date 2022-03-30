@@ -4,7 +4,7 @@
 <head>
     <?php
     $title = 'Product';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
@@ -33,7 +33,7 @@ $conn->close();
 ?>
 
 <body class="bg-white">
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <div class="container text-wrap py-5">
     <?php
     // Generating the product card
@@ -122,7 +122,7 @@ $conn->close();
 
     <?php } ?>
 </div>
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 <script src="../js/product-cart-quantity.js"></script>
 </body>
 </html>

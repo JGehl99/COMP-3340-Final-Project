@@ -4,7 +4,7 @@
 <head>
     <?php
     $title = 'Login';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body class="vh-100 bg-white">
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <section>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -97,6 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </section>
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 </html>

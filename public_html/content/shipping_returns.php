@@ -4,12 +4,12 @@
 <head>
     <?php
     $title = 'Shipping and Returns';
-    include('../content/headers.php');
+    include('headers.php');
     ?>
 </head>
 
 <body class="bg-white">
-<?php include('../content/navbar.php'); ?>
+<?php include('navbar.php'); ?>
 <div class="container flex pt-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-8 col-md-8 col-lg-6 col-xl-4">
@@ -63,6 +63,6 @@
 </div>
 <br>
 
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 </html>
