@@ -3,6 +3,8 @@
 
 <?php include("../content/headers.php") ?>
 
+
+
 <body>
 <nav class="navbar nav navbar-expand-md navbar-light bg-light border" id="mainNav" style="margin-bottom: 10px">
     <a href="../index.php">
@@ -92,8 +94,8 @@
     </div>
 </nav>
 
-<button type="button" class="btn btn-primary text-nowrap" id="btn-btt">
-<img src="../scrollButton/arrowUP.svg" alt="arrowUP">
+<button type="button" class="btn btn-primary rounded-circle btn-dark text-nowrap" id="btn-btt">
+<img src="../scrollButton/arrow_upward_white_24dp.svg" alt="arrowUP">
 </button>
 
 

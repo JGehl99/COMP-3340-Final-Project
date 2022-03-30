@@ -16,6 +16,7 @@ window.addEventListener("load", (
 function initiate()
 {
     let select = localStorage.getItem("data-theme");
+
     if(select){
         document.body.setAttribute("data-theme", "dark")
     }
@@ -27,7 +28,7 @@ function initiate()
 function reset() {
     if (darkSwitch.checked) {
         document.body.setAttribute("data-theme", "dark");
-        localStorage.setItem('data-theme', 'dark');
+        localStorage.setItem("data-theme", 'dark')
     } else {
         document.body.removeAttribute("data-theme");
         localStorage.removeItem("data-theme")
