@@ -77,7 +77,7 @@
             </div>
         </section>
     </div>
-    <div class="text-center p-3 bg-light d-flex justify-content-end">
+    <div class="text-center p-3 bg-light d-flex justify-content-start">
         <div class="form-check form-switch">
             <input type="checkbox" class="form-check-input" id="darkSwitch">
             <label class="form-check-label" for="darkSwitch">

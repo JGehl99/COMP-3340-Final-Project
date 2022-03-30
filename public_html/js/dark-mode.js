@@ -37,8 +37,11 @@ function applyDarkMode(){
         e.className = e.className.replace(/link-dark/g, "link-light");
     });
 
+
     // Set icons to other version
     document.getElementById("dark_mode_icon").src = "../static/dark_icon.svg";
+    document.getElementById("btn-btt-img").src = "../static/arrow_upward_black_24dp.svg";
+    document.getElementById("btn-btt").classList.replace("bg-dark", "bg-light");
     document.getElementById("navbar_icon").src = "../static/hamburger_white.svg";
 }
 
@@ -67,5 +70,7 @@ function applyLightMode(){
 
     // Set icons to other version
     document.getElementById("dark_mode_icon").src = "../static/light_icon.svg";
+    document.getElementById("btn-btt-img").src = "../static/arrow_upward_white_24dp.svg";
+    document.getElementById("btn-btt").classList.replace("bg-light", "bg-dark");
     document.getElementById("navbar_icon").src = "../static/hamburger_black.svg";
 }
