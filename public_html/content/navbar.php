@@ -65,7 +65,7 @@
     </div>
 </nav>
 
-    <button type="button" class="btn bg-dark rounded-circle  text-nowrap" id="btn-btt">
+    <button type="button" class="btn btn-dark rounded-circle  text-nowrap" id="btn-btt">
         <img src="../static/arrow_upward_white_24dp.svg" alt="arrowUP" id="btn-btt-img">
     </button>
 

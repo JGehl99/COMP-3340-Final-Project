@@ -41,7 +41,7 @@ function applyDarkMode(){
     // Set icons to other version
     document.getElementById("dark_mode_icon").src = "../static/dark_icon.svg";
     document.getElementById("btn-btt-img").src = "../static/arrow_upward_black_24dp.svg";
-    document.getElementById("btn-btt").classList.replace("bg-dark", "bg-light");
+    document.getElementById("btn-btt").classList.replace("btn-dark", "btn-light");
     document.getElementById("navbar_icon").src = "../static/hamburger_white.svg";
 }
 
@@ -71,6 +71,6 @@ function applyLightMode(){
     // Set icons to other version
     document.getElementById("dark_mode_icon").src = "../static/light_icon.svg";
     document.getElementById("btn-btt-img").src = "../static/arrow_upward_white_24dp.svg";
-    document.getElementById("btn-btt").classList.replace("bg-light", "bg-dark");
+    document.getElementById("btn-btt").classList.replace("btn-light", "btn-dark");
     document.getElementById("navbar_icon").src = "../static/hamburger_black.svg";
 }
