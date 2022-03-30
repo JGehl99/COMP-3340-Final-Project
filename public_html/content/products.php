@@ -71,21 +71,23 @@ include('../static/config.php');
                   // Close tags
                   echo '    
                             </ul>
-                            <div class="d-flex justify-content-end">
-                              <div class="input-group" data-no-link style="width: 9rem;">
-                                <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
-                                  <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
-                                </button>
-                                <input type="text" id="' . $id . '-amt" class="form-control amt" value="0" min="0" max="100" />
-                                <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt" data-field="' . $id . '-amt">
-                                  <img src="../static/plus-lg.svg" alt="Increase Quantity" />
-                                </button>
+                          </div>
+                          <div class="me-3 mb-3">
+                              <div class="d-flex justify-content-end">
+                                  <div class="input-group" data-no-link style="width: 9rem;">
+                                    <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt" data-field="' . $id . '-amt">
+                                      <img src="../static/dash-lg.svg" alt="Decrease Quantity" />
+                                    </button>
+                                    <input type="text" id="' . $id . '-amt" class="form-control amt" value="0" min="0" max="100" />
+                                    <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt" data-field="' . $id . '-amt">
+                                      <img src="../static/plus-lg.svg" alt="Increase Quantity" />
+                                    </button>
+                                  </div>
+                                  <span class="mx-2"></span>
+                                  <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-no-link data-field="' . $id . '-amt">
+                                    <img src="../static/cart.svg" alt="Add To Cart" />
+                                  </button>
                               </div>
-                              <span class="mx-2"></span>
-                              <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-no-link data-field="' . $id . '-amt">
-                                <img src="../static/cart.svg" alt="Add To Cart" />
-                              </button>
-                            </div>
                           </div>
                         </a>
                       </div>
