@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+<?php
+$title = 'Login';
+include('../content/headers.php');
+?>
+</head>
 
 <?php
-    $title = 'Login';
-include('../content/navbar.php');
-include('../static/config.php');
-
 ob_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -51,6 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <body class="vh-100 bg-white">
+<?php include('../content/navbar.php'); ?>
 <section>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -90,3 +95,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 </section>
 <?php include('../content/footer.php'); ?>
 </body>
+</html>

@@ -1,9 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<?php include("../content/headers.php") ?>
-<body class="bg-white">
-    <nav class="sticky-top navbar navbar-expand-md bg-light text-dark">
+<nav class="sticky-top navbar navbar-expand-md bg-light text-dark">
     <div class="container-fluid">
         <a class="navbar-brand d-flex" href="../content/index.php">
             <img src="../static/icon.svg" alt="OldChicken Icon" style="height:30px;width:30px;">
@@ -64,5 +59,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>

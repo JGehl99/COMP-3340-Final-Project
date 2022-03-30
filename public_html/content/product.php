@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
 
-<?php
-$title = 'Product';
-include('../content/navbar.php');
-include('../static/config.php');
-?>
+<head>
+    <?php
+    $title = 'Product';
+    include('../content/headers.php');
+    ?>
+</head>
+
 
 <?php
   // create connection
@@ -31,6 +33,7 @@ include('../static/config.php');
 ?>
 
 <body class="bg-white">
+<?php include('../content/navbar.php'); ?>
 <div class="container text-wrap py-5">
   <?php
     // Generating the product card

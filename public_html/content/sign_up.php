@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+<html>
 
+<head>
 <?php
 $title = 'Sign Up';
-include('../content/navbar.php');
-include('../static/config.php');
+include('../content/headers.php');
+?>
+</head>
 
+<?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // If they aren't empty
@@ -57,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 } ?>
 
 <body class="vh-100 bg-white">
+<?php include('../content/navbar.php'); ?>
 <section>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -100,3 +105,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </section>
 <?php include('../content/footer.php'); ?>
 </body>
+</html>

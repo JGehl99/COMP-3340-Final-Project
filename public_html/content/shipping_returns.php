@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
 
+<head>
 <?php
 $title = 'Shipping and Returns';
-include('../content/navbar.php');
+include('../content/headers.php');
 ?>
+</head>
 
 <body class="bg-white">
-
+<?php include('../content/navbar.php'); ?>
 <div class="container flex pt-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-8 col-md-8 col-lg-6 col-xl-4">
@@ -57,5 +59,4 @@ include('../content/navbar.php');
 
 <?php include('../content/footer.php'); ?>
 </body>
-
 </html>
