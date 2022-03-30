@@ -27,3 +27,13 @@
 .bg-vdark {
     background-color: #181b1e;
 }
+
+.gallery-card {
+    transition: all 500ms;
+}
+
+.gallery-card:hover {
+    z-index: 1;
+    box-shadow: var(--bs-secondary) 0px 0.35em 1.175em, rgba(0, 0, 0, 0.05) 0px 0.175em 0.5em;
+    transform: translateY(-3px) scale(1.1);
+}
