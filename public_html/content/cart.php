@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
 
-<?php
-$title = 'Cart';
-include('../content/navbar.php');
-?>
+<head>
+    <?php
+    $title = 'Cart';
+    include('headers.php');
+    ?>
+</head>
 
 <body>
-cart
-
-<?php include('../content/footer.php'); ?>
+<?php include('navbar.php'); ?>
+<div class="container">Cart</div>
+<?php include('footer.php'); ?>
 </body>
 
 </html>

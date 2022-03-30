@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
 
-<?php
-$title = 'FAQ';
-include('../content/navbar.php');
-?>
+<head>
+    <?php
+    $title = 'FAQ';
+    include('headers.php');
+    ?>
+</head>
 
-
-
-<body>
-<div class="container flex py-5 h-100" >
+<body class="bg-white">
+<?php include('navbar.php'); ?>
+<div class="container flex py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-6 col-md-4 col-lg-2" style="max-width: 25rem;">
             <div class="card bg-light text-dark rounded-5" style="border-radius: 1rem;">
@@ -25,8 +26,10 @@ include('../content/navbar.php');
         <div class="card h-100 p-3 bg-light text-dark rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Contact Customer Service</h5>
-            <h6 class="card-subtitle text-success my-2">Phone support: <a href="tel:605-475-6968" id="phone">605-475-6968</a><br>
-                Email: <a href="mailto:<support@oldchicken.myweb.cs.uwindsor.ca? subject=subject text" id="email">support@oldchicken.myweb.cs.uwindsor.ca</a> </h6>
+                <h6 class="card-subtitle text-success my-2">Phone support: <a
+                            href="tel:605-475-6968">605-475-6968</a><br>
+                    Email: <a href="mailto:<support@oldchicken.myweb.cs.uwindsor.ca? subject=subject text">support@oldchicken.myweb.cs.uwindsor.ca</a>
+                </h6>
             </div>
         </div>
     </div>
@@ -75,8 +78,7 @@ include('../content/navbar.php');
 </div>
 <br>
 
-<?php include('../content/footer.php'); ?>
+<?php include('footer.php'); ?>
 </body>
-
 
 </html>

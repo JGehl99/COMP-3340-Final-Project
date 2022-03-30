@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en">
 
-<?php
-$title = 'About Us';
-include('../content/navbar.php');
-?>
+<head>
+    <?php
+    $title = 'About Us';
+    include('headers.php');
+    ?>
+</head>
 
 <body>
-
-<?php include('../content/footer.php'); ?>
+<?php include('navbar.php'); ?>
+<?php include('footer.php'); ?>
 </body>
 
 </html>
