@@ -38,3 +38,27 @@
     border-color: #1a1e21;
     box-shadow: 0 0 0 0.25rem rgba(66, 70, 73, 0.5);
 }
+
+.add_icon {
+    content: url("../static/add_black.svg");
+}
+
+.sub_icon {
+    content: url("../static/sub_black.svg");
+}
+
+.cart_icon {
+    content: url("../static/add_cart_black.svg");
+}
+
+#dark_mode_icon {
+    content: url("../static/light_icon.svg");
+}
+
+#btn-btt-img {
+    content: url("../static/arrow_upward_white.svg");
+}
+
+#navbar_icon {
+    content: url("../static/hamburger_black.svg");
+}
