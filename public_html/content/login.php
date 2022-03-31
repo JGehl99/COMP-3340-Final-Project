@@ -9,7 +9,6 @@
 </head>
 
 <?php
-ob_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -44,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             if (password_verify($password, $result['password'])) {
                 $_SESSION['logged_in'] = true;
+                $_SESSION['account_type'] = $result['type'];
                 echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
                 exit();
             } else {
