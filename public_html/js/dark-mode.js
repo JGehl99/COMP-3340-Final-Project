@@ -1,40 +1,66 @@
-function refreshCSS() {
-    let stylesheet = document.getElementById('theme-stylesheet');
-    let theme = 'light';
-    if (stylesheet != null) {
-        if (/\b(dark)\b/.test(stylesheet.getAttribute('href'))) {
-            stylesheet.setAttribute("href", "../css/light.css");
-            document.getElementById("dark_mode_icon").src = "../static/light_icon.svg";
-            document.getElementById("btn-btt-img").src = "../static/arrow_upward_white_24dp.svg";
-            document.getElementById("navbar_icon").src = "../static/hamburger_black.svg";
-            theme = 'light';
-        } else if (/\b(light)\b/.test(stylesheet.getAttribute('href'))) {
-            stylesheet.setAttribute("href", "../css/dark.css");
-            document.getElementById("dark_mode_icon").src = "../static/dark_icon.svg";
-            document.getElementById("btn-btt-img").src = "../static/arrow_upward_black_24dp.svg";
-            document.getElementById("navbar_icon").src = "../static/hamburger_white.svg";
-            theme = 'dark';
-        }
-        // Create an XMLHttpRequest object
-        const xhttp = new XMLHttpRequest();
+window.onload = getTheme;
 
-        // Define a callback function
-        xhttp.onload = () => {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status === 200) {
-                    if (xhttp.responseText === 'dark') {
-                        document.getElementById("darkSwitch").clicked = true;
-                    } else {
-                        document.getElementById("darkSwitch").clicked = true;
-                    }
+function getTheme() {
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    // Define a callback function
+    xhttp.onload = () => {
+        if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+                console.log("getTheme() Response: " + xhttp.responseText);
+                document.getElementById("darkSwitch").checked = xhttp.responseText === 'dark';
+            }
+        }
+    }
+
+    // Send a request
+    xhttp.open("GET", "../static/process_theme.php?get=true");
+    xhttp.setRequestHeader("Content-type", "text/plain");
+    xhttp.setRequestHeader('Accept', 'text/plain');
+    xhttp.send();
+}
+
+function setTheme() {
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    let newTheme = '';
+    if (document.getElementById("darkSwitch").checked) {
+        console.log("Switch is checked");
+        newTheme = 'dark';
+    } else {
+        console.log("Switch is not checked");
+        newTheme = 'light';
+    }
+
+    // Define a callback function
+    xhttp.onload = () => {
+        if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+                console.log("setTheme() Response: " + xhttp.responseText);
+                if (xhttp.responseText === 'dark') {
+                    document.getElementById("dark_mode_icon").src = "../static/dark_icon.svg";
+                    document.getElementById("btn-btt-img").src = "../static/arrow_upward_black.svg";
+                    document.getElementById("navbar_icon").src = "../static/hamburger_white.svg";
+
+                    let stylesheet = document.getElementById('theme-stylesheet');
+                    stylesheet.setAttribute("href", "../css/dark.css");
+                } else {
+                    document.getElementById("dark_mode_icon").src = "../static/light_icon.svg";
+                    document.getElementById("btn-btt-img").src = "../static/arrow_upward_white.svg";
+                    document.getElementById("navbar_icon").src = "../static/hamburger_black.svg";
+
+                    let stylesheet = document.getElementById('theme-stylesheet');
+                    stylesheet.setAttribute("href", "../css/light.css");
                 }
             }
         }
-
-        // Send a request
-        xhttp.open("GET", "../static/process_theme.php?theme=" + theme);
-        xhttp.setRequestHeader("Content-type", "text/plain");
-        xhttp.setRequestHeader('Accept', 'text/plain');
-        xhttp.send();
     }
+
+    // Send a request
+    xhttp.open("GET", "../static/process_theme.php?theme=" + newTheme);
+    xhttp.setRequestHeader("Content-type", "text/plain");
+    xhttp.setRequestHeader('Accept', 'text/plain');
+    xhttp.send();
 }

@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-$theme = $_GET["theme"] ?? 'light';
-$data = 'light';
+if (isset($_GET['theme'])) {
+    $theme = $_GET["theme"];
+    if ($theme == 'dark') {
+        $_SESSION['theme-var'] = 'dark';
+    } else if ($theme == 'light') {
+        $_SESSION['theme-var'] = 'light';
+    }
 
-if ($theme == 'dark') {
-    $_SESSION['theme-var'] = 'dark';
-} else if ($theme == 'light') {
-    $_SESSION['theme-var'] = 'light';
 }
-
 header('Content-type: text/plain');
-echo $theme;
+echo $_SESSION['theme-var'];
