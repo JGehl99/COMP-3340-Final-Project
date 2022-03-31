@@ -85,7 +85,7 @@ include('../static/config.php');
                                   </div>
                                   <span class="mx-2"></span>
                                   <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart" data-no-link data-field="' . $id . '-amt">
-                                    <img src="../static/cart.svg" alt="Add To Cart" />
+                                    <img src="../static/add_shopping_cart_black_24dp.svg" alt="Add To Cart" />
                                   </button>
                               </div>
                           </div>
