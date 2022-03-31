@@ -6,9 +6,9 @@
     $title = 'Admin Homepage';
     include('headers.php');
 
-    if (!isLoggedIn() || !isAdminUser()) {
-        header("Location: /content/index.php");
-    }
+    //    if (!isLoggedIn() || !isAdminUser()) {
+    //        header("Location: /content/index.php");
+    //    }
     ?>
 </head>
 
