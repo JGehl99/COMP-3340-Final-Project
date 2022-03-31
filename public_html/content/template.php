@@ -8,7 +8,7 @@
     ?>
 </head>
 
-<body class="bg-white">
+<body class="page-background">
 <?php include('navbar.php'); ?>
 <div class="container"></div>
 <?php include('footer.php'); ?>

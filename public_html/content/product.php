@@ -32,7 +32,7 @@ $stmt->close();
 $conn->close();
 ?>
 
-<body class="bg-white">
+<body class="page-background">
 <?php include('navbar.php'); ?>
 <div class="container text-wrap py-5">
     <?php
@@ -49,18 +49,18 @@ $conn->close();
         // Create the product cards ?>
         <div class="row">
             <div class="col-12 col-lg-4 mb-4">
-                <div class="card bg-light">
+                <div class="card background">
                     <div class="card-body">
                         <img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-100"/>
                     </div>
                 </div>
             </div>
             <div class="col mb-4">
-                <div class="card bg-light">
+                <div class="card background">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm">
-                                <h4 class="card-title text-dark"><?php echo $name ?></h4>
+                                <h4 class="card-title text-color"><?php echo $name ?></h4>
                                 <div>
                                     <?php
                                     // Create the chicken icons to display the star rating
@@ -110,7 +110,7 @@ $conn->close();
                                 <?php
                                 // Add the bullet points for the description
                                 foreach ($description_items as $description_item) { ?>
-                                    <li class="text-dark"><?php echo $description_item ?></li>
+                                    <li class="text-color"><?php echo $description_item ?></li>
                                 <?php } ?>
 
                             </ul>

@@ -8,12 +8,12 @@
     ?>
 </head>
 
-<body class="bg-white">
+<body class="page-background">
 <?php include('navbar.php'); ?>
 <div class="container flex pt-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-8 col-md-6 col-lg-4 col-xl-3">
-            <div class="card bg-light text-dark rounded-5">
+            <div class="card background text-color rounded-5">
                 <div class="card-body p-3 text-center">
                     <h1>Gallery</h1>
                 </div>
@@ -23,7 +23,7 @@
 </div>
 <div class="row d-flex justify-content-center align-items-center h-100 m-3">
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5 gallery-card">
+        <div class="card h-100 p-3 background text-color rounded-5 gallery-card">
             <div class="card-body">
                 <h5 class="card-title">Custom PC Build #1</h5>
                 <img class="rounded img-fluid" src="../media/custom_build_1.jpeg" alt="Custom PC #1">
@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5 gallery-card">
+        <div class="card h-100 p-3 background text-color rounded-5 gallery-card">
             <div class="card-body">
                 <h5 class="card-title">Custom PC Build #2</h5>
                 <img class="rounded img-fluid" src="../media/custom_build_2.jpg" alt="Custom PC #2">
@@ -47,7 +47,7 @@
         </div>
     </div>
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5 gallery-card">
+        <div class="card h-100 p-3 background text-color rounded-5 gallery-card">
             <div class="card-body">
                 <h5 class="card-title">Custom PC Build #3</h5>
                 <img class="rounded img-fluid" src="../media/custom_build_3.jpeg" alt="Custom PC #3">
@@ -59,7 +59,7 @@
         </div>
     </div>
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5 gallery-card">
+        <div class="card h-100 p-3 background text-color rounded-5 gallery-card">
             <div class="card-body">
                 <h5 class="card-title">Custom PC Build #4</h5>
                 <img class="rounded img-fluid" src="../media/custom_build_4.jpeg" alt="Custom PC #4">
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5 gallery-card">
+        <div class="card h-100 p-3 background text-color rounded-5 gallery-card">
             <div class="card-body">
                 <h5 class="card-title">Custom PC Build #5</h5>
                 <img class="rounded img-fluid" src="../media/custom_build_5.png" alt="Custom PC #5">
@@ -83,7 +83,7 @@
         </div>
     </div>
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5 gallery-card">
+        <div class="card h-100 p-3 background text-color rounded-5 gallery-card">
             <div class="card-body">
                 <h5 class="card-title">Custom PC Build #6</h5>
                 <img class="rounded img-fluid" src="../media/custom_build_6.jpg" alt="Custom PC #6">

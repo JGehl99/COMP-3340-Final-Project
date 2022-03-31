@@ -23,7 +23,7 @@ $products = $conn->query($sql)->fetch_all();
 $conn->close();
 ?>
 
-<body class="bg-white">
+<body class="page-background">
 <?php include('navbar.php'); ?>
 <div class="container d-flex justify-content-center pb-5">
     <?php
@@ -42,7 +42,7 @@ $conn->close();
 
             // Create the card for the item ?>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 pt-5">
-                <a href="#" class="card h-100 hover_expand text-decoration-none bg-light text-dark product-link"
+                <a href="#" class="card h-100 hover_expand text-decoration-none background text-color product-link"
                    item-id="<?php echo $id; ?>">
                     <img class="card-img-top p-4" src="<?php echo $imageURL; ?>" alt="<?php echo $name; ?>"/>
                     <div class="card-body">
@@ -71,7 +71,7 @@ $conn->close();
                             <?php
                             // Add the bullet points for the description
                             foreach ($description_items as $item) { ?>
-                                <li class="text-dark"><?php echo $item; ?></li>
+                                <li class="text-color"><?php echo $item; ?></li>
                             <?php } ?>
 
                         </ul>
