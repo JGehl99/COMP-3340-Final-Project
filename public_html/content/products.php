@@ -74,8 +74,9 @@ $conn->close();
                                 <li class="text-dark"><?php echo $item; ?></li>
                             <?php } ?>
 
-
                         </ul>
+                    </div>
+                    <div class="me-3 mb-3">
                         <div class="d-flex justify-content-end">
                             <div class="input-group" data-no-link style="width: 9rem;">
                                 <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt"
