@@ -6,9 +6,9 @@
     $title = 'Admin Homepage';
     include('headers.php');
 
-    if (!isLoggedIn() || !isAdminUser()) {
-        header("Location: /content/index.php");
-    }
+    //    if (!isLoggedIn() || !isAdminUser()) {
+    //        header("Location: /content/index.php");
+    //    }
     ?>
 </head>
 
@@ -65,26 +65,32 @@ $conn->close();
                                     [$username, $password, $created_on, $type] = $account;
                                     ?>
                                     <tr>
-                                        <td><input type="text" id="<?php echo $username; ?>"
-                                                   class="form-control username" value="<?php echo $username; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $password; ?>"
-                                                   class="form-control password" value="<?php echo $password; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $created_on; ?>"
-                                                   class="form-control created-on" value="<?php echo $created_on; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $type; ?>"
-                                                   class="form-control account-type" value="<?php echo $type; ?>"
-                                                   readonly/></td>
-                                        <td>
-                                            <button class="btn-empty"><img src="../static/close_black_24dp.svg"
-                                                                           alt="Delete Account"/></button>
-                                            <button class="btn-empty"><img src="../static/mode_edit_black_24dp.svg"
-                                                                           alt="Edit Account"/></button>
-                                            <button class="btn-empty"><img src="../static/check_black_24dp.svg"
-                                                                           alt="Confirm Edit"/></button>
-                                        </td>
+                                        <form action="admin_homepage.php?username=<?php echo $username ?>">
+                                            <td><input type="text" id="<?php echo $username; ?>"
+                                                       class="form-control username" value="<?php echo $username; ?>"
+                                                       readonly/></td>
+                                            <td><input type="text" id="<?php echo $password; ?>"
+                                                       class="form-control password" value="<?php echo $password; ?>"
+                                                       readonly/></td>
+                                            <td><input type="text" id="<?php echo $created_on; ?>"
+                                                       class="form-control created-on"
+                                                       value="<?php echo $created_on; ?>"
+                                                       readonly/></td>
+                                            <td><input type="text" id="<?php echo $type; ?>"
+                                                       class="form-control account-type" value="<?php echo $type; ?>"
+                                                       readonly/></td>
+                                            <td>
+                                                <button type="button" class="btn-empty"><img
+                                                            src="../static/close_black_24dp.svg"
+                                                            alt="Delete Account"/></button>
+                                                <button type="button" class="btn-empty"><img
+                                                            src="../static/mode_edit_black_24dp.svg"
+                                                            alt="Edit Account"/></button>
+                                                <button type="submit" class="btn-empty"><img
+                                                            src="../static/check_black_24dp.svg"
+                                                            alt="Confirm Edit"/></button>
+                                            </td>
+                                        </form>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
