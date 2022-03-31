@@ -75,15 +75,7 @@
     </div>
     <div class="text-center p-3 background d-flex justify-content-start">
         <form class="form-check form-switch" id="theme-form">
-            <input type="checkbox" class="form-check-input" id="darkSwitch" onchange="refreshCSS()"
-                <?php
-                if (isset($_SESSION['theme-var'])) { ?>
-                    <?php
-                    if ($_SESSION['theme-var'] == 'dark') {
-                        echo ' checked';
-                    }
-                }
-                ?>>
+            <input type="checkbox" class="form-check-input" id="darkSwitch" onclick="setTheme()">
             <label class="form-check-label" for="darkSwitch">
                 <img id="dark_mode_icon" src="../static/light_icon.svg" alt="Icon for light mode">
             </label>

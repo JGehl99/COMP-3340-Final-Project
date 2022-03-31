@@ -81,19 +81,19 @@ $conn->close();
                             <div class="input-group" data-no-link style="width: 9rem;">
                                 <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt"
                                         data-field="<?php echo $id; ?>-amt">
-                                    <img src="../static/dash-lg.svg" alt="Decrease Quantity"/>
+                                    <img class="add_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
                                 </button>
                                 <input type="text" id="<?php echo $id; ?>-amt" class="form-control amt" value="0"
                                        min="0" max="100"/>
                                 <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt"
                                         data-field="<?php echo $id; ?>-amt">
-                                    <img src="../static/plus-lg.svg" alt="Increase Quantity"/>
+                                    <img class="sub_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
                                 </button>
                             </div>
                             <span class="mx-2"></span>
                             <button type="button" class="btn btn-primary d-flex align-items-center add-to-cart"
                                     data-no-link data-field="<?php echo $id; ?>-amt">
-                                <img src="../static/add_shopping_cart_black_24dp.svg" alt="Add To Cart"/>
+                                <img class="cart_icon" src="../static/add_cart_black.svg" alt="Add To Cart"/>
                             </button>
                         </div>
                     </div>

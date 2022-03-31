@@ -67,9 +67,8 @@
         </div>
     </div>
 </nav>
-<button type="button" class="btn btn-dark rounded-circle  text-nowrap" id="btn-btt" style="z-index: 2;">
-    <img src="../static/arrow_upward_white_24dp.svg" alt="arrowUP" id="btn-btt-img">
+<button type="button" class="btn btn-color rounded-circle  text-nowrap" id="btn-btt" style="z-index: 2;">
+    <img src="../static/arrow_upward_white.svg" alt="arrowUP" id="btn-btt-img">
 </button>
 
 <script src="../js/scrollButton.js"></script>
-<link rel="stylesheet" href="../css/bttStyle.css">
