@@ -13,6 +13,16 @@ function isLoggedIn()
 function logOut()
 {
     $_SESSION['logged_in'] = false;
+    unset($_SESSION['account_type']);
+}
+
+function isAdminUser()
+{
+    if (!empty($_SESSION['account_type'])) {
+        return $_SESSION['account_type'] === 1;
+    } else {
+        return false;
+    }
 }
 
 function get_star_rating($rating)

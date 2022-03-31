@@ -41,7 +41,7 @@
                             My Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-light" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item link-dark" href="../content#">Account Homepage</a></li>
+                            <li><a class="dropdown-item link-dark" href="account_homepage.php">Account Homepage</a></li>
                             <li><a class="dropdown-item link-dark" href="cart.php">Cart</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -56,7 +56,7 @@
                             My Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end bg-light border-0" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item link-dark" href="../content#">Account Homepage</a></li>
+                            <li><a class="dropdown-item link-dark" href="account_homepage.php">Account Homepage</a></li>
                             <li><a class="dropdown-item link-dark" href="cart.php">Cart</a></li>
                             <li><a class="dropdown-item link-dark" href="logout.php">Log Out</a></li>
                         </ul>
