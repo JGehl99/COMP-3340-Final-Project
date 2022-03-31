@@ -51,6 +51,18 @@
     content: url("../static/add_cart_white.svg");
 }
 
+.delete_icon {
+    content: url("../static/close_white.svg");
+}
+
+.edit_icon {
+    content: url("../static/edit_white.svg");
+}
+
+.confirm_icon {
+    content: url("../static/check_white.svg");
+}
+
 #dark_mode_icon {
     content: url("../static/dark_icon.svg");
 }

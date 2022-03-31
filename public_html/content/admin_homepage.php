@@ -1,3 +1,9 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -6,9 +12,9 @@
     $title = 'Admin Homepage';
     include('headers.php');
 
-    //    if (!isLoggedIn() || !isAdminUser()) {
-    //        header("Location: /content/index.php");
-    //    }
+    if (!isLoggedIn() || !isAdminUser()) {
+        header("Location: /content/index.php");
+    }
     ?>
 </head>
 
@@ -80,15 +86,21 @@ $conn->close();
                                                        class="form-control account-type" value="<?php echo $type; ?>"
                                                        readonly/></td>
                                             <td>
-                                                <button type="button" class="btn-empty"><img
-                                                            src="../static/close_black_24dp.svg"
-                                                            alt="Delete Account"/></button>
-                                                <button type="button" class="btn-empty"><img
-                                                            src="../static/mode_edit_black_24dp.svg"
-                                                            alt="Edit Account"/></button>
-                                                <button type="submit" class="btn-empty"><img
-                                                            src="../static/check_black_24dp.svg"
-                                                            alt="Confirm Edit"/></button>
+                                                <button type="button" class="btn-empty">
+                                                    <img src="../static/close_black.svg"
+                                                         alt="Delete Account"
+                                                         class="delete_icon"/>
+                                                </button>
+                                                <button type="button" class="btn-empty">
+                                                    <img src="../static/edit_black.svg"
+                                                         alt="Edit Account"
+                                                         class="edit_icon"/>
+                                                </button>
+                                                <button type="submit" class="btn-empty">
+                                                    <img src="../static/check_black.svg"
+                                                         alt="Confirm Edit"
+                                                         class="confirm_icon"/>
+                                                </button>
                                             </td>
                                         </form>
                                     </tr>
@@ -142,12 +154,21 @@ $conn->close();
                                                    class="form-control price" value="<?php echo $price; ?>"
                                                    readonly/></td>
                                         <td>
-                                            <button class="btn-empty"><img src="../static/close_black_24dp.svg"
-                                                                           alt="Delete Product"/></button>
-                                            <button class="btn-empty"><img src="../static/mode_edit_black_24dp.svg"
-                                                                           alt="Edit Product"/></button>
-                                            <button class="btn-empty"><img src="../static/check_black_24dp.svg"
-                                                                           alt="Confirm Edit"/></button>
+                                            <button type="button" class="btn-empty">
+                                                <img src="../static/close_black.svg"
+                                                     alt="Delete Product"
+                                                     class="delete_icon"/>
+                                            </button>
+                                            <button type="button" class="btn-empty">
+                                                <img src="../static/edit_black.svg"
+                                                     alt="Edit Product"
+                                                     class="edit_icon"/>
+                                            </button>
+                                            <button type="submit" class="btn-empty">
+                                                <img src="../static/check_black.svg"
+                                                     alt="Confirm Edit"
+                                                     class="confirm_icon"/>
+                                            </button>
                                         </td>
                                     </tr>
                                 <?php } ?>
