@@ -8,9 +8,9 @@
     ?>
 </head>
 
-<body class="bg-white">
+<body class="page-background">
 <?php include('navbar.php'); ?>
-<div class="bg-white" style="height:100vh">
+<div class="page-background" style="height:100vh">
     <div class="container col-12">
         <div class="row d-flex justify-content-center mt-5">
             <div class="rounded rounded-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">

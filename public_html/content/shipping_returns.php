@@ -8,12 +8,12 @@
     ?>
 </head>
 
-<body class="bg-white">
+<body class="page-background">
 <?php include('navbar.php'); ?>
 <div class="container flex pt-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-8 col-md-8 col-lg-6 col-xl-4">
-            <div class="card bg-light text-dark rounded-5">
+            <div class="card background text-color rounded-5">
                 <div class="card-body p-3 text-center">
                     <h1>Shipping & Returns</h1>
                 </div>
@@ -23,7 +23,7 @@
 </div>
 <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5">
+        <div class="card h-100 p-3 background text-color rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Shipping Details</h5>
                 <h6 class="card-subtitle text-success my-2">
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="col-11 col-sm-10 col-md-8 col-lg-6 col-xl-5 mt-5">
-        <div class="card h-100 p-3 bg-light text-dark rounded-5">
+        <div class="card h-100 p-3 background text-color rounded-5">
             <div class="card-body">
                 <h5 class="card-title">Return Policy</h5>
                 <h6 class="card-subtitle text-success my-2">
