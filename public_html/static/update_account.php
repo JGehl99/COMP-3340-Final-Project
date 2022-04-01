@@ -3,7 +3,7 @@ include_once("config.php");
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$old_username = $data['old_username'];
+$old_username = $data['old_pk'];
 $username = $data['username'];
 $password = $data['password'];
 $created_on = $data['created_on'];
