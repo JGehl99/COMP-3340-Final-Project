@@ -21,42 +21,41 @@ if ($conn->connect_error) {
 $first_param_found = false;
 $sql = "UPDATE ACCOUNT SET ";
 $types = "";
-$data = array();
+$params = array();
 
-if (!empty($username)) {
+if (isset($username)) {
     $sql .= "username = ?";
     $types .= "s";
-    $data[] = $username;
+    $params[] = $username;
     $first_param_found = true;
 }
-if (!empty($password)) {
+if (isset($password)) {
     if ($first_param_found) $sql .= ", ";
     $sql .= "password = ?";
     $types .= "s";
-    $data[] = $password;
+    $params[] = $password;
     $first_param_found = true;
 }
-if (!empty($created_on)) {
+if (isset($created_on)) {
     if ($first_param_found) $sql .= ", ";
     $sql .= "created_on = ?";
     $types .= "s";
-    $data[] = $created_on;
+    $params[] = $created_on;
     $first_param_found = true;
 }
-if (!empty($account_type)) {
+if (isset($account_type)) {
     if ($first_param_found) $sql .= ", ";
     $sql .= "type = ?";
     $types .= "i";
-    $data[] = $account_type;
+    $params[] = $account_type;
 }
 
-$types .= "s";
-$data[] = $old_username;
-
 $sql .= " WHERE username = ?;";
+$types .= "s";
+$params[] = $old_username;
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param($types, ...$data);
+$stmt->bind_param($types, ...$params);
 $stmt->execute();
 
 $stmt->close();
