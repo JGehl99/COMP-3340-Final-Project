@@ -97,19 +97,19 @@ $conn->close();
                                                    readonly/>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn-empty"
+                                            <button type="button" class="btn-empty delete-account"
                                                     onclick="deleteAccount('<?php echo $username ?>')">
                                                 <img src="../static/close_black.svg"
                                                      alt="Delete Account"
                                                      class="delete_icon"/>
                                             </button>
-                                            <button type="button" class="btn-empty"
+                                            <button type="button" class="btn-empty toggle-edit-account"
                                                     onclick="toggleAccountEditable('<?php echo $username ?>')">
                                                 <img src="../static/edit_black.svg"
                                                      alt="Edit Account"
                                                      class="edit_icon"/>
                                             </button>
-                                            <button type="button" class="btn-empty"
+                                            <button type="button" class="btn-empty confirm-edit-account"
                                                     onclick="confirmAccountEdit('<?php echo $username ?>')">
                                                 <img src="../static/check_black.svg"
                                                      alt="Confirm Edit"

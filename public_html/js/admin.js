@@ -73,6 +73,9 @@ function updateAccount(username, changedFields)
         if (xhttp.readyState === 4) {
             if (xhttp.status === 200) {
                 console.log('updateAccount response: ' + xhttp.responseText);
+                if ('username' in changedFields) {
+                    updateRowData(username, changedFields['username']);
+                }
             } else if (xhttp.status === 500) {
                 console.log('updateAccount error: ' + xhttp.responseText);
             }
@@ -88,4 +91,15 @@ function updateAccount(username, changedFields)
     xhttp.open('POST', `../static/update_account.php`);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xhttp.send(JSON.stringify(jsonObj));
+}
+
+// If the username of an account is changed, some fields within that row such as onclicks have to be edited
+function updateRowData(username, newUsername)
+{
+    const rowEl = document.getElementById(username);
+    rowEl.id = newUsername;
+    const buttonsTd = rowEl.children[4];
+    buttonsTd.querySelector('.delete-account').onclick = () => deleteAccount(newUsername);
+    buttonsTd.querySelector('.toggle-edit-account').onclick = () => toggleAccountEditable(newUsername);
+    buttonsTd.querySelector('.confirm-edit-account').onclick = () => confirmAccountEdit(newUsername);
 }
