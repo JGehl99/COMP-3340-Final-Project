@@ -1,9 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-}
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -70,39 +64,58 @@ $conn->close();
                                 foreach ($accounts as $account) {
                                     [$username, $password, $created_on, $type] = $account;
                                     ?>
-                                    <tr>
-                                        <form action="admin_homepage.php?username=<?php echo $username ?>">
-                                            <td><input type="text" id="<?php echo $username; ?>"
-                                                       class="form-control username" value="<?php echo $username; ?>"
-                                                       readonly/></td>
-                                            <td><input type="text" id="<?php echo $password; ?>"
-                                                       class="form-control password" value="<?php echo $password; ?>"
-                                                       readonly/></td>
-                                            <td><input type="text" id="<?php echo $created_on; ?>"
-                                                       class="form-control created-on"
-                                                       value="<?php echo $created_on; ?>"
-                                                       readonly/></td>
-                                            <td><input type="text" id="<?php echo $type; ?>"
-                                                       class="form-control account-type" value="<?php echo $type; ?>"
-                                                       readonly/></td>
-                                            <td>
-                                                <button type="button" class="btn-empty">
-                                                    <img src="../static/close_black.svg"
-                                                         alt="Delete Account"
-                                                         class="delete_icon"/>
-                                                </button>
-                                                <button type="button" class="btn-empty">
-                                                    <img src="../static/edit_black.svg"
-                                                         alt="Edit Account"
-                                                         class="edit_icon"/>
-                                                </button>
-                                                <button type="submit" class="btn-empty">
-                                                    <img src="../static/check_black.svg"
-                                                         alt="Confirm Edit"
-                                                         class="confirm_icon"/>
-                                                </button>
-                                            </td>
-                                        </form>
+                                    <tr id="<?php echo $username ?>">
+                                        <td>
+                                            <input type="text"
+                                                   name="username"
+                                                   class="form-control"
+                                                   value="<?php echo $username; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $password; ?>"
+                                                   name="password"
+                                                   class="form-control"
+                                                   value="<?php echo $password; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $created_on; ?>"
+                                                   name="created_on"
+                                                   class="form-control"
+                                                   value="<?php echo $created_on; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $type; ?>"
+                                                   name="account_type"
+                                                   class="form-control"
+                                                   value="<?php echo $type; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn-empty"
+                                                    onclick="deleteAccount('<?php echo $username ?>')">
+                                                <img src="../static/close_black.svg"
+                                                     alt="Delete Account"
+                                                     class="delete_icon"/>
+                                            </button>
+                                            <button type="button" class="btn-empty"
+                                                    onclick="toggleAccountEditable('<?php echo $username ?>')">
+                                                <img src="../static/edit_black.svg"
+                                                     alt="Edit Account"
+                                                     class="edit_icon"/>
+                                            </button>
+                                            <button type="button" class="btn-empty"
+                                                    onclick="confirmAccountEdit('<?php echo $username ?>')">
+                                                <img src="../static/check_black.svg"
+                                                     alt="Confirm Edit"
+                                                     class="confirm_icon"/>
+                                            </button>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
@@ -141,18 +154,38 @@ $conn->close();
                                     [$name, $description, $imageURL, $price] = $product;
                                     ?>
                                     <tr>
-                                        <td><input type="text" id="<?php echo $name; ?>"
-                                                   class="form-control name" value="<?php echo $name; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $description; ?>"
-                                                   class="form-control description" value="<?php echo $description; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $imageURL; ?>"
-                                                   class="form-control imageURL" value="<?php echo $imageURL; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $price; ?>"
-                                                   class="form-control price" value="<?php echo $price; ?>"
-                                                   readonly/></td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $name; ?>"
+                                                   name="product_name"
+                                                   class="form-control name"
+                                                   value="<?php echo $name; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $description; ?>"
+                                                   name="description"
+                                                   class="form-control description"
+                                                   value="<?php echo $description; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $imageURL; ?>"
+                                                   name="image_url"
+                                                   class="form-control imageURL"
+                                                   value="<?php echo $imageURL; ?>"
+                                                   readonly/>
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                   id="<?php echo $price; ?>"
+                                                   name="price"
+                                                   class="form-control price"
+                                                   value="<?php echo $price; ?>"
+                                                   readonly/>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn-empty">
                                                 <img src="../static/close_black.svg"
@@ -204,6 +237,7 @@ $conn->close();
     </div>
 </div>
 <?php include('footer.php'); ?>
+<script src="../js/admin.js"></script>
 </body>
 
 </html>
