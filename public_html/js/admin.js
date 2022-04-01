@@ -10,10 +10,13 @@ function toggleAccountEditable(username)
     const tds = rowEl.children;
     const editable = !tds[0].firstElementChild.hasAttribute('readonly');
     for (let td of tds) {
+        const inputEl = td.firstElementChild;
         if (editable) {
-            td.firstElementChild.setAttribute('readonly', '');
+            inputEl.setAttribute('readonly', '');
+            // Reset input to its old value, since the edit was not confirmed
+            inputEl.value = inputEl.getAttribute('value');
         } else {
-            td.firstElementChild.removeAttribute('readonly');
+            inputEl.removeAttribute('readonly');
         }
     }
 }
@@ -25,12 +28,14 @@ function confirmAccountEdit(username)
     const tds = rowEl.children;
     let changedFields = {};
     for (let i = 0; i < 4; ++i) {
-        const input = tds[i].firstElementChild;
-        input.setAttribute('readonly', '');
+        const inputEl = tds[i].firstElementChild;
+        inputEl.setAttribute('readonly', '');
 
         // Checking if any values have changed
-        if (input.value !== input.getAttribute('value')) {
-            changedFields[input.getAttribute('name')] = input.value;
+        if (inputEl.value !== inputEl.getAttribute('value')) {
+            changedFields[inputEl.getAttribute('name')] = inputEl.value;
+            // Also update the value attribute so this new value is checked for changes on subsequent edits
+            inputEl.setAttribute('value', inputEl.value);
         }
     }
 
