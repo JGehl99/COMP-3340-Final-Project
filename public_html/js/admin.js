@@ -28,7 +28,7 @@ function deleteRecord(rowId, recordType)
     if (url.length > 0) {
         xhttp.open('POST', url);
         xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-        xhttp.send(JSON.stringify({ rowId }));
+        xhttp.send(JSON.stringify({ pk: rowId }));
     } else {
         console.error('Cannot delete record: invalid record type.');
     }
@@ -39,8 +39,8 @@ function toggleRecordEditable(rowId)
     const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     const editable = !tds[0].firstElementChild.hasAttribute('readonly');
-    for (let td of tds) {
-        const inputEl = td.firstElementChild;
+    for (let i = 0; i < 4; ++i) {
+        const inputEl = tds[i].firstElementChild;
         if (editable) {
             inputEl.setAttribute('readonly', '');
             // Reset input to its old value, since the edit was not confirmed
@@ -88,9 +88,10 @@ function updateRecord(rowId, changedFields, recordType)
                 console.log('updateRecord response: ' + xhttp.responseText);
                 if (recordType === 0 && 'username' in changedFields) {
                     updateRowData(rowId, changedFields['username'], 0);
-                } else if (recordType === 1 && 'product_name' in changedFields) {
-                    updateRowData(rowId, changedFields['product_name'], 1);
                 }
+                // NOTE: The primary key of the products cannot be changed since "id" is not a field in the UI table.
+                // Hence, we don't need to call updateRowData to make fixes (which only happens when an admin user
+                // edits a primary key
             } else if (xhttp.status === 500) {
                 console.log('updateRecord error: ' + xhttp.responseText);
             }
@@ -99,7 +100,7 @@ function updateRecord(rowId, changedFields, recordType)
 
     // Send a request
     const jsonObj = {
-        old_pk: rowId,
+        pk: rowId,
         ...changedFields,
     };
 
@@ -125,7 +126,7 @@ function updateRowData(rowId, newRowId)
     const rowEl = document.getElementById(rowId);
     rowEl.id = newRowId;
     const buttonsTd = rowEl.children[4];
-    buttonsTd.querySelector('.delete-record').onclick = () => deleteRecord(newRowId);
+    buttonsTd.querySelector('.delete-record').onclick = () => deleteRecord(newRowId, 0);
     buttonsTd.querySelector('.toggle-edit-record').onclick = () => toggleRecordEditable(newRowId);
-    buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId);
+    buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId, 0);
 }

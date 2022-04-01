@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 $accounts_sql = "SELECT username, password, created_on, type FROM ACCOUNT;";
 $accounts = $conn->query($accounts_sql)->fetch_all();
 
-$products_sql = "SELECT name, description, imageURL, price FROM PRODUCT";
+$products_sql = "SELECT id, name, description, imageURL, price FROM PRODUCT";
 $products = $conn->query($products_sql)->fetch_all();
 
 $conn->close();
@@ -74,7 +74,6 @@ $conn->close();
                                         </td>
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $password; ?>"
                                                    name="password"
                                                    class="form-control"
                                                    value="<?php echo $password; ?>"
@@ -82,7 +81,6 @@ $conn->close();
                                         </td>
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $created_on; ?>"
                                                    name="created_on"
                                                    class="form-control"
                                                    value="<?php echo $created_on; ?>"
@@ -90,7 +88,6 @@ $conn->close();
                                         </td>
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $type; ?>"
                                                    name="account_type"
                                                    class="form-control"
                                                    value="<?php echo $type; ?>"
@@ -151,12 +148,11 @@ $conn->close();
                                 <tbody>
                                 <?php
                                 foreach ($products as $product) {
-                                    [$name, $description, $imageURL, $price] = $product;
+                                    [$id, $name, $description, $imageURL, $price] = $product;
                                     ?>
-                                    <tr id="<?php echo $name ?>">
+                                    <tr id="product-<?php echo $id ?>">
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $name; ?>"
                                                    name="product_name"
                                                    class="form-control name"
                                                    value="<?php echo $name; ?>"
@@ -164,7 +160,6 @@ $conn->close();
                                         </td>
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $description; ?>"
                                                    name="description"
                                                    class="form-control description"
                                                    value="<?php echo $description; ?>"
@@ -172,7 +167,6 @@ $conn->close();
                                         </td>
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $imageURL; ?>"
                                                    name="image_url"
                                                    class="form-control imageURL"
                                                    value="<?php echo $imageURL; ?>"
@@ -180,7 +174,6 @@ $conn->close();
                                         </td>
                                         <td>
                                             <input type="text"
-                                                   id="<?php echo $price; ?>"
                                                    name="price"
                                                    class="form-control price"
                                                    value="<?php echo $price; ?>"
@@ -188,19 +181,19 @@ $conn->close();
                                         </td>
                                         <td>
                                             <button type="button" class="btn-empty delete-record"
-                                                    onclick="deleteRecord('<?php echo $name ?>', 1)">
+                                                    onclick="deleteRecord('product-<?php echo $id ?>', 1)">
                                                 <img src="../static/close_black.svg"
                                                      alt="Delete Product"
                                                      class="delete_icon"/>
                                             </button>
                                             <button type="button" class="btn-empty toggle-edit-record"
-                                                    onclick="toggleRecordEditable('<?php echo $name ?>')">
+                                                    onclick="toggleRecordEditable('product-<?php echo $id ?>')">
                                                 <img src="../static/edit_black.svg"
                                                      alt="Edit Product"
                                                      class="edit_icon"/>
                                             </button>
                                             <button type="submit" class="btn-empty confirm-edit-record"
-                                                    onclick="confirmRecordEdit('<?php echo $name ?>', 1)">
+                                                    onclick="confirmRecordEdit('product-<?php echo $id ?>', 1)">
                                                 <img src="../static/check_black.svg"
                                                      alt="Confirm Edit"
                                                      class="confirm_icon"/>
