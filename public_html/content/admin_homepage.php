@@ -48,78 +48,78 @@ $conn->close();
                      data-bs-parent="#accordion">
                     <div class="accordion-body text-color">
                         <h2>Manage Users</h2>
-                        <?php if (count($accounts) > 0) { ?>
-                            <table class="table text-color">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Password</th>
-                                    <th scope="col">Created On</th>
-                                    <th scope="col">Account Type</th>
-                                    <th scope="col">Actions</th>
+                        <table class="table text-color">
+                            <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Created On</th>
+                                <th scope="col">Account Type</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody id="account-tbody">
+                            <?php
+                            foreach ($accounts as $account) {
+                                [$username, $password, $created_on, $type] = $account;
+                                ?>
+                                <tr id="<?php echo $username ?>">
+                                    <td>
+                                        <input type="text"
+                                               name="username"
+                                               class="form-control"
+                                               value="<?php echo $username; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="password"
+                                               class="form-control"
+                                               value="<?php echo $password; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="created_on"
+                                               class="form-control"
+                                               value="<?php echo $created_on; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="account_type"
+                                               class="form-control"
+                                               value="<?php echo $type; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn-empty delete-record"
+                                                onclick="deleteRecord('<?php echo $username ?>', 0)">
+                                            <img src="../static/close_black.svg"
+                                                 alt="Delete Account"
+                                                 class="delete_icon"/>
+                                        </button>
+                                        <button type="button" class="btn-empty toggle-edit-record"
+                                                onclick="toggleRecordEditable('<?php echo $username ?>')">
+                                            <img src="../static/edit_black.svg"
+                                                 alt="Edit Account"
+                                                 class="edit_icon"/>
+                                        </button>
+                                        <button type="button" class="btn-empty confirm-edit-record"
+                                                onclick="confirmRecordEdit('<?php echo $username ?>', 0)">
+                                            <img src="../static/check_black.svg"
+                                                 alt="Confirm Edit"
+                                                 class="confirm_icon"/>
+                                        </button>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                foreach ($accounts as $account) {
-                                    [$username, $password, $created_on, $type] = $account;
-                                    ?>
-                                    <tr id="<?php echo $username ?>">
-                                        <td>
-                                            <input type="text"
-                                                   name="username"
-                                                   class="form-control"
-                                                   value="<?php echo $username; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <input type="text"
-                                                   name="password"
-                                                   class="form-control"
-                                                   value="<?php echo $password; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <input type="text"
-                                                   name="created_on"
-                                                   class="form-control"
-                                                   value="<?php echo $created_on; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <input type="text"
-                                                   name="account_type"
-                                                   class="form-control"
-                                                   value="<?php echo $type; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn-empty delete-record"
-                                                    onclick="deleteRecord('<?php echo $username ?>', 0)">
-                                                <img src="../static/close_black.svg"
-                                                     alt="Delete Account"
-                                                     class="delete_icon"/>
-                                            </button>
-                                            <button type="button" class="btn-empty toggle-edit-record"
-                                                    onclick="toggleRecordEditable('<?php echo $username ?>')">
-                                                <img src="../static/edit_black.svg"
-                                                     alt="Edit Account"
-                                                     class="edit_icon"/>
-                                            </button>
-                                            <button type="button" class="btn-empty confirm-edit-record"
-                                                    onclick="confirmRecordEdit('<?php echo $username ?>', 0)">
-                                                <img src="../static/check_black.svg"
-                                                     alt="Confirm Edit"
-                                                     class="confirm_icon"/>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
-                        <?php } else { ?>
-                            <p class="text-color">No accounts found.</p>
-                        <?php } ?>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary" id="create-account-btn"
+                                onclick="createNewAccountRow()">
+                            Create Account
+                        </button>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@ $conn->close();
                                     <th scope="col">Actions</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="product-tbody">
                                 <?php
                                 foreach ($products as $product) {
                                     [$id, $name, $description, $imageURL, $price] = $product;

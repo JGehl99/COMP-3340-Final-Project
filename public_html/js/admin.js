@@ -130,3 +130,61 @@ function updateRowData(rowId, newRowId)
     buttonsTd.querySelector('.toggle-edit-record').onclick = () => toggleRecordEditable(newRowId);
     buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId, 0);
 }
+
+function createNewAccountRow()
+{
+    // Don't let the admin click create account before finishing an account they are already creating.
+    // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
+    if (document.getElementById('new-account') !== null) {
+        console.log('Already creating new account.');
+    }
+
+    // Hide the button (show button again with d-inline-block)
+    document.getElementById('create-account-btn').classList.add('d-none');
+
+    const tbody = document.getElementById('account-tbody');
+    const newAccountRow = document.createElement('tr');
+    newAccountRow.setAttribute('id', 'new-account');
+    newAccountRow.className = 'bg-secondary';
+    newAccountRow.innerHTML = `
+        <td>
+            <input type="text"
+                   name="username"
+                   class="form-control"
+                   value=""/>
+        </td>
+        <td>
+            <input type="text"
+                   name="password"
+                   class="form-control"
+                   value=""/>
+        </td>
+        <td>
+            <input type="text"
+                   name="created_on"
+                   class="form-control"
+                   value=""/>
+        </td>
+        <td>
+            <input type="text"
+                   name="account_type"
+                   class="form-control"
+                   value=""/>
+        </td>
+        <td>
+            <button type="button" class="btn-empty cancel-add-record"
+                    onclick="cancelAddNewRecord('new-account', 0)">
+                <img src="../static/close_black.svg"
+                     alt="Delete Account"
+                     class="delete_icon"/>
+            </button>
+            <button type="button" class="btn-empty confirm-add-record"
+                    onclick="confirmAddNewRecord('new-account', 0)">
+                <img src="../static/check_black.svg"
+                     alt="Confirm Edit"
+                     class="confirm_icon"/>
+            </button>
+        </td>
+    `;
+    tbody.appendChild(newAccountRow);
+}
