@@ -97,20 +97,20 @@ $conn->close();
                                                    readonly/>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn-empty delete-account"
-                                                    onclick="deleteAccount('<?php echo $username ?>')">
+                                            <button type="button" class="btn-empty delete-record"
+                                                    onclick="deleteRecord('<?php echo $username ?>', 0)">
                                                 <img src="../static/close_black.svg"
                                                      alt="Delete Account"
                                                      class="delete_icon"/>
                                             </button>
-                                            <button type="button" class="btn-empty toggle-edit-account"
-                                                    onclick="toggleAccountEditable('<?php echo $username ?>')">
+                                            <button type="button" class="btn-empty toggle-edit-record"
+                                                    onclick="toggleRecordEditable('<?php echo $username ?>')">
                                                 <img src="../static/edit_black.svg"
                                                      alt="Edit Account"
                                                      class="edit_icon"/>
                                             </button>
-                                            <button type="button" class="btn-empty confirm-edit-account"
-                                                    onclick="confirmAccountEdit('<?php echo $username ?>')">
+                                            <button type="button" class="btn-empty confirm-edit-record"
+                                                    onclick="confirmRecordEdit('<?php echo $username ?>', 0)">
                                                 <img src="../static/check_black.svg"
                                                      alt="Confirm Edit"
                                                      class="confirm_icon"/>
@@ -153,7 +153,7 @@ $conn->close();
                                 foreach ($products as $product) {
                                     [$name, $description, $imageURL, $price] = $product;
                                     ?>
-                                    <tr>
+                                    <tr id="<?php echo $name ?>">
                                         <td>
                                             <input type="text"
                                                    id="<?php echo $name; ?>"
@@ -187,17 +187,20 @@ $conn->close();
                                                    readonly/>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn-empty">
+                                            <button type="button" class="btn-empty delete-record"
+                                                    onclick="deleteRecord('<?php echo $name ?>', 1)">
                                                 <img src="../static/close_black.svg"
                                                      alt="Delete Product"
                                                      class="delete_icon"/>
                                             </button>
-                                            <button type="button" class="btn-empty">
+                                            <button type="button" class="btn-empty toggle-edit-record"
+                                                    onclick="toggleRecordEditable('<?php echo $name ?>')">
                                                 <img src="../static/edit_black.svg"
                                                      alt="Edit Product"
                                                      class="edit_icon"/>
                                             </button>
-                                            <button type="submit" class="btn-empty">
+                                            <button type="submit" class="btn-empty confirm-edit-record"
+                                                    onclick="confirmRecordEdit('<?php echo $name ?>', 1)">
                                                 <img src="../static/check_black.svg"
                                                      alt="Confirm Edit"
                                                      class="confirm_icon"/>
@@ -208,7 +211,7 @@ $conn->close();
                                 </tbody>
                             </table>
                         <?php } else { ?>
-                            <p>No products found.</p>
+                            <p class="text-color">No products found.</p>
                         <?php } ?>
                     </div>
                 </div>
