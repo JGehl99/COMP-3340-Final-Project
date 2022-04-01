@@ -116,7 +116,7 @@ $conn->close();
                             <?php } ?>
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-primary" id="create-account-btn"
+                        <button type="button" class="btn btn-primary ms-2" id="create-account-btn"
                                 onclick="createNewAccountRow()">
                             Create Account
                         </button>
