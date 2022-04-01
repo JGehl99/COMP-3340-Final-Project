@@ -154,28 +154,28 @@ $conn->close();
                                         <td>
                                             <input type="text"
                                                    name="product_name"
-                                                   class="form-control name"
+                                                   class="form-control"
                                                    value="<?php echo $name; ?>"
                                                    readonly/>
                                         </td>
                                         <td>
                                             <input type="text"
                                                    name="description"
-                                                   class="form-control description"
+                                                   class="form-control"
                                                    value="<?php echo $description; ?>"
                                                    readonly/>
                                         </td>
                                         <td>
                                             <input type="text"
                                                    name="image_url"
-                                                   class="form-control imageURL"
+                                                   class="form-control"
                                                    value="<?php echo $imageURL; ?>"
                                                    readonly/>
                                         </td>
                                         <td>
                                             <input type="text"
                                                    name="price"
-                                                   class="form-control price"
+                                                   class="form-control"
                                                    value="<?php echo $price; ?>"
                                                    readonly/>
                                         </td>
