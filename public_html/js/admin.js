@@ -39,7 +39,7 @@ function toggleRecordEditable(rowId)
     const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     const editable = !tds[0].firstElementChild.hasAttribute('readonly');
-    for (let i = 0; i < 4; ++i) {
+    for (let i = 0; i < 3; ++i) {
         const inputEl = tds[i].firstElementChild;
         if (editable) {
             inputEl.setAttribute('readonly', '');
@@ -57,7 +57,7 @@ function confirmRecordEdit(rowId, recordType)
     const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     let changedFields = {};
-    for (let i = 0; i < 4; ++i) {
+    for (let i = 0; i < 3; ++i) {
         const inputEl = tds[i].firstElementChild;
         inputEl.setAttribute('readonly', '');
 
@@ -125,7 +125,7 @@ function updateRowData(rowId, newRowId)
 {
     const rowEl = document.getElementById(rowId);
     rowEl.id = newRowId;
-    const buttonsTd = rowEl.children[4];
+    const buttonsTd = rowEl.children[3];
     buttonsTd.querySelector('.delete-record').onclick = () => deleteRecord(newRowId, 0);
     buttonsTd.querySelector('.toggle-edit-record').onclick = () => toggleRecordEditable(newRowId);
     buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId, 0);
@@ -151,16 +151,21 @@ function createNewAccountRow()
             <input type="text"
                    name="username"
                    class="form-control"
-                   value=""/>
+                   value=""
+                   minlength="8"
+                   maxlength="255"
+                   required/>
         </td>
         <td>
             <input type="text"
                    name="password"
                    class="form-control"
-                   value=""/>
+                   value=""
+                   minlength="8"
+                   required/>
         </td>
         <td>
-            <input type="text"
+            <input type="datetime-local"
                    name="created_on"
                    class="form-control"
                    value=""/>
@@ -173,13 +178,13 @@ function createNewAccountRow()
         </td>
         <td>
             <button type="button" class="btn-empty cancel-add-record"
-                    onclick="cancelAddNewRecord()">
+                    onclick="cancelAddNewRecord(0)">
                 <img src="../static/close_black.svg"
                      alt="Delete Account"
                      class="delete_icon"/>
             </button>
             <button type="button" class="btn-empty confirm-add-record"
-                    onclick="confirmAddNewRecord('new-account', 0)">
+                    onclick="confirmAddNewRecord(0)">
                 <img src="../static/check_black.svg"
                      alt="Confirm Edit"
                      class="confirm_icon"/>
@@ -189,12 +194,27 @@ function createNewAccountRow()
     tbody.appendChild(newAccountRow);
 }
 
-function cancelAddNewRecord()
+function cancelAddNewRecord(recordType)
 {
-    // Remove the row
-    const newAccountRow = document.getElementById('new-account');
-    newAccountRow.remove();
-    // Show the Create Account button
-    const createAccountBtn = document.getElementById('create-account-btn');
-    createAccountBtn.classList.remove('d-none');
+    let rowEl;
+    let btnEl;
+    if (recordType === 0) {
+        rowEl = document.getElementById('new-account');
+        btnEl = document.getElementById('create-account-btn');
+    } else if (recordType === 1) {
+        rowEl = document.getElementById('new-product');
+        btnEl = document.getElementById('create-product-btn');
+    } else {
+        return;
+    }
+
+    // Remove the row and show the button
+    rowEl.remove();
+    btnEl.classList.remove('d-none');
+}
+
+function confirmAddNewRecord(recordType)
+{
+    // Validate input
+
 }

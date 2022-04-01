@@ -6,7 +6,6 @@ $data = json_decode(file_get_contents('php://input'), true);
 $old_username = $data['pk'];
 $username = $data['username'];
 $password = $data['password'];
-$created_on = $data['created_on'];
 $account_type = $data['account_type'];
 
 // create connection
@@ -34,13 +33,6 @@ if (isset($password)) {
     $sql .= "password = ?";
     $types .= "s";
     $params[] = $password;
-    $first_param_found = true;
-}
-if (isset($created_on)) {
-    if ($first_param_found) $sql .= ", ";
-    $sql .= "created_on = ?";
-    $types .= "s";
-    $params[] = $created_on;
     $first_param_found = true;
 }
 if (isset($account_type)) {
