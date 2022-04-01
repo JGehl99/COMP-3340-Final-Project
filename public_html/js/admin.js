@@ -1,6 +1,6 @@
-function deleteAccount(username)
+function deleteRecord(rowId, recordType)
 {
-    const rowEl = document.getElementById(username);
+    const rowEl = document.getElementById(rowId);
 
     // Create an XMLHttpRequest object
     const xhttp = new XMLHttpRequest();
@@ -10,22 +10,33 @@ function deleteAccount(username)
         if (xhttp.readyState === 4) {
             if (xhttp.status === 200) {
                 rowEl.remove();
-                console.log('deleteAccount response: ' + xhttp.responseText);
+                console.log('deleteRecord response: ' + xhttp.responseText);
             } else if (xhttp.status === 500) {
-                console.log('deleteAccount error: ' + xhttp.responseText);
+                console.log('deleteRecord error: ' + xhttp.responseText);
             }
         }
     };
 
     // Send a request
-    xhttp.open('POST', `../static/delete_account.php`);
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xhttp.send(JSON.stringify({ username }));
+    let url = '';
+    if (recordType === 0) {
+        url = '../static/delete_account.php';
+    } else if (recordType === 1) {
+        url = '../static/delete_product.php';
+    }
+
+    if (url.length > 0) {
+        xhttp.open('POST', url);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+        xhttp.send(JSON.stringify({ rowId }));
+    } else {
+        console.error('Cannot delete record: invalid record type.');
+    }
 }
 
-function toggleAccountEditable(username)
+function toggleRecordEditable(rowId)
 {
-    const rowEl = document.getElementById(username);
+    const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     const editable = !tds[0].firstElementChild.hasAttribute('readonly');
     for (let td of tds) {
@@ -40,10 +51,10 @@ function toggleAccountEditable(username)
     }
 }
 
-function confirmAccountEdit(username)
+function confirmRecordEdit(rowId, recordType)
 {
     // First, make all the fields readonly and check for changes
-    const rowEl = document.getElementById(username);
+    const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     let changedFields = {};
     for (let i = 0; i < 4; ++i) {
@@ -60,10 +71,12 @@ function confirmAccountEdit(username)
 
     // If any fields have been changed, send them to updateAccount()
     const accountChanged = Object.keys(changedFields).length !== 0;
-    if (accountChanged) updateAccount(username, changedFields);
+    if (accountChanged) {
+        updateRecord(rowId, changedFields, recordType);
+    }
 }
 
-function updateAccount(username, changedFields)
+function updateRecord(rowId, changedFields, recordType)
 {
     // Create an XMLHttpRequest object
     const xhttp = new XMLHttpRequest();
@@ -72,34 +85,47 @@ function updateAccount(username, changedFields)
     xhttp.onload = () => {
         if (xhttp.readyState === 4) {
             if (xhttp.status === 200) {
-                console.log('updateAccount response: ' + xhttp.responseText);
-                if ('username' in changedFields) {
-                    updateRowData(username, changedFields['username']);
+                console.log('updateRecord response: ' + xhttp.responseText);
+                if (recordType === 0 && 'username' in changedFields) {
+                    updateRowData(rowId, changedFields['username'], 0);
+                } else if (recordType === 1 && 'product_name' in changedFields) {
+                    updateRowData(rowId, changedFields['product_name'], 1);
                 }
             } else if (xhttp.status === 500) {
-                console.log('updateAccount error: ' + xhttp.responseText);
+                console.log('updateRecord error: ' + xhttp.responseText);
             }
         }
     };
 
     // Send a request
     const jsonObj = {
-        old_username: username,
+        old_pk: rowId,
         ...changedFields,
     };
 
-    xhttp.open('POST', `../static/update_account.php`);
-    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xhttp.send(JSON.stringify(jsonObj));
+    let url = '';
+    if (recordType === 0) {
+        url = '../static/update_account.php';
+    } else if (recordType === 1) {
+        url = '../static/update_product.php';
+    }
+
+    if (url.length > 0) {
+        xhttp.open('POST', url);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+        xhttp.send(JSON.stringify(jsonObj));
+    } else {
+        console.error('Cannot update record: invalid record type.');
+    }
 }
 
 // If the username of an account is changed, some fields within that row such as onclicks have to be edited
-function updateRowData(username, newUsername)
+function updateRowData(rowId, newRowId)
 {
-    const rowEl = document.getElementById(username);
-    rowEl.id = newUsername;
+    const rowEl = document.getElementById(rowId);
+    rowEl.id = newRowId;
     const buttonsTd = rowEl.children[4];
-    buttonsTd.querySelector('.delete-account').onclick = () => deleteAccount(newUsername);
-    buttonsTd.querySelector('.toggle-edit-account').onclick = () => toggleAccountEditable(newUsername);
-    buttonsTd.querySelector('.confirm-edit-account').onclick = () => confirmAccountEdit(newUsername);
+    buttonsTd.querySelector('.delete-record').onclick = () => deleteRecord(newRowId);
+    buttonsTd.querySelector('.toggle-edit-record').onclick = () => toggleRecordEditable(newRowId);
+    buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId);
 }
