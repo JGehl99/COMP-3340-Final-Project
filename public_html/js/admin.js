@@ -1,7 +1,26 @@
 function deleteAccount(username)
 {
     const rowEl = document.getElementById(username);
-    console.log(rowEl);
+
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    // Define a callback function
+    xhttp.onload = () => {
+        if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
+                rowEl.remove();
+                console.log('deleteAccount response: ' + xhttp.responseText);
+            } else if (xhttp.status === 500) {
+                console.log('deleteAccount error: ' + xhttp.responseText);
+            }
+        }
+    };
+
+    // Send a request
+    xhttp.open('POST', `../static/delete_account.php`);
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xhttp.send(JSON.stringify({ username }));
 }
 
 function toggleAccountEditable(username)
