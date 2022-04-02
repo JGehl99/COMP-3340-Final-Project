@@ -39,7 +39,7 @@ function toggleRecordEditable(rowId)
     const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     const editable = !tds[0].firstElementChild.hasAttribute('readonly');
-    for (let i = 0; i < 3; ++i) {
+    for (let i = 0; i < tds.length - 1; ++i) {
         const inputEl = tds[i].firstElementChild;
         if (editable) {
             inputEl.setAttribute('readonly', '');
@@ -57,7 +57,7 @@ function confirmRecordEdit(rowId, recordType)
     const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
     let changedFields = {};
-    for (let i = 0; i < 3; ++i) {
+    for (let i = 0; i < tds.length - 1; ++i) {
         const inputEl = tds[i].firstElementChild;
         inputEl.setAttribute('readonly', '');
 
@@ -165,12 +165,6 @@ function createNewAccountRow()
                    required/>
         </td>
         <td>
-            <input type="datetime-local"
-                   name="created_on"
-                   class="form-control"
-                   value=""/>
-        </td>
-        <td>
             <input type="text"
                    name="account_type"
                    class="form-control"
@@ -215,6 +209,90 @@ function cancelAddNewRecord(recordType)
 
 function confirmAddNewRecord(recordType)
 {
+    let rowEl;
+    let btnEl;
+    let url;
     // Validate input
+    if (recordType === 0) {
+        rowEl = document.getElementById('new-account');
+        btnEl = document.getElementById('create-account-btn');
+        if (validateAccountInput(rowEl)) {
+            url = '../static/add_account.php';
+        } else return;
+    } else if (recordType === 1) {
+        rowEl = document.getElementById('new-product');
+        btnEl = document.getElementById('create-product-btn');
+        if (validateProductInput(rowEl)) {
+            url = '../static/add_product.php';
+        } else return;
+    } else {
+        console.error('Cannot add record: invalid record type.');
+        return;
+    }
+
+    // Get the fields
+    const tds = rowEl.children;
+    let fields = {};
+    for (let i = 0; i < tds.length - 1; ++i) {
+        const inputEl = tds[i].firstElementChild;
+        // Make the input readonly
+        inputEl.setAttribute('readonly', '');
+
+        // Add the field for the JSON request
+        fields[inputEl.getAttribute('name')] = inputEl.value;
+
+        // Also update the value attribute so this new value is checked for changes on subsequent edits
+        inputEl.setAttribute('value', inputEl.value);
+    }
+
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    // Define a callback function
+    xhttp.onload = () => {
+        if (xhttp.readyState === 4) {
+            const jsonResponse = JSON.parse(xhttp.responseText);
+            if (xhttp.status === 200) {
+                // Log the response
+                console.log('addNewRecord response: ' + jsonResponse);
+
+                // Set the element ID based on the primary key of the new record
+                rowEl.setAttribute('id', jsonResponse['id']);
+
+                // Show the create record button again
+                btnEl.classList.remove('d-none');
+            } else if (xhttp.status === 500) {
+                // Log the response
+                console.log('addNewRecord error: ' + jsonResponse);
+            }
+        }
+    };
+
+    // Send a request
+    xhttp.open('POST', url);
+    xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xhttp.send(JSON.stringify(fields));
+}
+
+function validateAccountInput(rowEl)
+{
+    // Username should be between 8 and 255 characters
+    const username = rowEl.querySelector('input[name=\'username\']').value;
+    if (username.length < 8 || username.length > 255) return false;
+
+    // Password should be at least 8 characters
+    const password = rowEl.querySelector('input[name=\'password\']').value;
+    if (password.length < 8) return false;
+
+    // Account type should be a non-negative single digit integer
+    const accountType = parseInt(rowEl.querySelector('input[name=\'account_type\']').value);
+    if (isNaN(accountType) || accountType < 0 || accountType > 9) return false;
+
+    return true;
+}
+
+
+function validateProductInput(rowEl)
+{
 
 }
