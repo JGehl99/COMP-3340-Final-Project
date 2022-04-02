@@ -212,9 +212,84 @@ $conn->close();
                      data-bs-parent="#accordion">
                     <div class="accordion-body text-color">
                         <h2>User Administration</h2>
-                        <p>Expand the first dropdown to manage users.</p>
-                        <h2>Product Administration</h2>
-                        <p>Expand the second dropdown to manage products.</p>
+                        <p>Expand the first dropdown to manage users. You can create, modify, and delete users.</p>
+                        <h4>Creating Users</h4>
+                        <p>To create a new user, click the Create Account button below the table. Enter all the fields
+                            for the new user, then click the check mark button to create the account. See the "Field
+                            Constraints" section below for input validation details.</p>
+                        <h4>Modifying Users</h4>
+                        <p>To modify a user, click the pencil button for the selected user to toggle editing. Enter new
+                            information for the user, then click the checkmark button. Note: not all fields need to be
+                            changed, but at least one must be changed to confirm the edit. See the "Field
+                            Constraints" section below for input validation details.</p>
+                        <h4>Deleting Users</h4>
+                        <p>To delete a user, simply click the X button for the selected user.</p>
+                        <h4>Field Constraints</h4>
+                        <table class="table text-color">
+                            <thead>
+                            <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Username</td>
+                                <td>Between 8 and 255 characters</td>
+                            </tr>
+                            <tr>
+                                <td>Password</td>
+                                <td>At least 8 characters</td>
+                            </tr>
+                            <tr>
+                                <td>Account Type</td>
+                                <td>Non-negative single-digit integer</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h2 class="mt-5">Product Administration</h2>
+                        <p>Expand the second dropdown to manage products. You can create, modify, and delete
+                            products.</p>
+                        <h4>Creating Products</h4>
+                        <p>To create a new product, click the Create Product button below the table. Enter all the
+                            fields for the new product, then click the check mark button to create the product. See the
+                            "Field Constraints" section below for input validation details.</p>
+                        <h4>Modifying Products</h4>
+                        <p>To modify a product, click the pencil button for the selected product to toggle editing.
+                            Enter new information for the product, then click the checkmark button. Note: not all fields
+                            need to be changed, but at least one must be changed to confirm the edit. See the "Field
+                            Constraints" section below for input validation details.</p>
+                        <h4>Deleting Products</h4>
+                        <p>To delete a product, simply click the X button for the selected product.</p>
+                        <h4>Field Constraints</h4>
+                        <table class="table text-color">
+                            <thead>
+                            <tr>
+                                <th scope="col">Field</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Name</td>
+                                <td>Between 8 and 255 characters</td>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td>Comma separated string, less than 1024 characters</td>
+                            </tr>
+                            <tr>
+                                <td>Image URL</td>
+                                <td>Valid URL to an image, between 12 and 100 characters</td>
+                            </tr>
+                            <tr>
+                                <td>Price</td>
+                                <td>Non-negative decimal number with at most 6 digits and 2 decimal places (i.e., 0 -
+                                    9999.99)
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
