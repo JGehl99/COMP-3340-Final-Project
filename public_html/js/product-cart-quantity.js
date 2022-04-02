@@ -1,6 +1,5 @@
 // Events for all the decrease quantity buttons
-function decreaseAmt(e)
-{
+function decreaseAmt(e) {
     e.preventDefault();
     const amtEl = document.getElementById('item-amt');
     const amt = parseInt(amtEl.value);
@@ -13,8 +12,7 @@ const decreaseAmtButton = document.getElementById('decrease-amt');
 decreaseAmtButton.onclick = decreaseAmt;
 
 // Events for all the increase quantity buttons
-function increaseAmt(e)
-{
+function increaseAmt(e) {
     e.preventDefault();
     const amtEl = document.getElementById('item-amt');
     const amt = parseInt(amtEl.value);
@@ -29,8 +27,7 @@ const increaseAmtButton = document.getElementById('increase-amt');
 increaseAmtButton.onclick = increaseAmt;
 
 // Events to validate typed input for the quantities
-function validateAmt(e)
-{
+function validateAmt(e) {
     e.preventDefault();
     const input = e.target;
     const amt = parseInt(input.value, 10);
@@ -51,3 +48,27 @@ function validateAmt(e)
 const amtInput = document.getElementById('item-amt');
 // Validate the input when the user de-selects the input element with "onblur" event
 amtInput.onblur = validateAmt;
+
+function addToCart(e) {
+    const id = e.target.dataset.field;
+    const amt = document.getElementById('item-amt');
+    const xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onload = () => {
+        if (xmlhttp.readyState === 4) {
+            if (xmlhttp.status === 200) {
+                alert('Product ' + id + ' added to cart successfully');
+                console.log('addToCart response: ' + xmlhttp.responseText);
+            } else if (xmlhttp.status === 500) {
+                console.log('addToCart error: ' + xmlhttp.responseText);
+            }
+        }
+    }
+
+    xmlhttp.open("POST", "../static/add_to_cart.php");
+    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+}
+
+const cartButton = document.getElementById('add-to-cart');
+cartButton.onclick = addToCart;

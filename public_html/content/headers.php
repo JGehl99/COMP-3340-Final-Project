@@ -14,6 +14,7 @@ function logOut()
 {
     $_SESSION['logged_in'] = false;
     unset($_SESSION['account_type']);
+    unset($_SESSION['username']);
 }
 
 function isAdminUser()
