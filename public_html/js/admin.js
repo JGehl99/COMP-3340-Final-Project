@@ -54,14 +54,15 @@ function toggleRecordEditable(rowId)
 function confirmRecordEdit(rowId, recordType)
 {
     const rowEl = document.getElementById(rowId);
+    let validInput = true;
 
     // First, validate the input
     if (recordType === 0 && !validateAccountInput(rowEl)) {
         console.log('Invalid account input.');
-        return;
+        toggleRecordEditable(rowId);
     } else if (recordType === 1 && !validateProductInput(rowEl)) {
         console.log('Invalid product input.');
-        return;
+        toggleRecordEditable(rowId);
     }
 
     // Then, make all the fields readonly and check for changes
