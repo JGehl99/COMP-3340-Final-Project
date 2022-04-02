@@ -16,6 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Constructs an empty object to use for the JSON responses
 $response = new stdClass();
 
 // Check that all the fields are not empty
