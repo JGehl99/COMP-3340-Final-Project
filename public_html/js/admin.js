@@ -54,15 +54,16 @@ function toggleRecordEditable(rowId)
 function confirmRecordEdit(rowId, recordType)
 {
     const rowEl = document.getElementById(rowId);
-    let validInput = true;
 
     // First, validate the input
     if (recordType === 0 && !validateAccountInput(rowEl)) {
         console.log('Invalid account input.');
         toggleRecordEditable(rowId);
+        return;
     } else if (recordType === 1 && !validateProductInput(rowEl)) {
         console.log('Invalid product input.');
         toggleRecordEditable(rowId);
+        return;
     }
 
     // Then, make all the fields readonly and check for changes
@@ -148,6 +149,7 @@ function createNewAccountRow()
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
     if (document.getElementById('new-account') !== null) {
         console.log('Already creating new account.');
+        return;
     }
 
     // Hide the button (show again by removing the class)
@@ -162,25 +164,19 @@ function createNewAccountRow()
             <input type="text"
                    name="username"
                    class="form-control"
-                   value=""
-                   minlength="8"
-                   maxlength="255"
-                   required/>
+                   value=""/>
         </td>
         <td>
             <input type="text"
                    name="password"
                    class="form-control"
-                   value=""
-                   minlength="8"
-                   required/>
+                   value=""/>
         </td>
         <td>
             <input type="text"
                    name="account_type"
                    class="form-control"
-                   value=""
-                   required/>
+                   value=""/>
         </td>
         <td>
             <button type="button" class="btn-empty cancel-add-record"
@@ -206,6 +202,7 @@ function createNewProductRow()
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
     if (document.getElementById('new-product') !== null) {
         console.log('Already creating new product.');
+        return;
     }
 
     // Hide the button (show again by removing the class)
@@ -220,33 +217,25 @@ function createNewProductRow()
             <input type="text"
                    name="product_name"
                    class="form-control"
-                   value=""
-                   maxlength="255"
-                   required/>
+                   value=""/>
         </td>
         <td>
             <input type="text"
                    name="description"
                    class="form-control"
-                   value=""
-                   maxlength="1024"
-                   required/>
+                   value=""/>
         </td>
         <td>
             <input type="text"
                    name="image_url"
                    class="form-control"
-                   value=""
-                   maxlength="100"
-                   required/>
+                   value=""/>
         </td>
         <td>
             <input type="text"
                    name="price"
                    class="form-control"
-                   value=""
-                   maxlength="7"
-                   required/>
+                   value=""/>
         </td>
         <td>
             <button type="button" class="btn-empty cancel-add-record"
