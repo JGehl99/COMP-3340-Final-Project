@@ -125,7 +125,7 @@ function updateRowData(rowId, newRowId)
 {
     const rowEl = document.getElementById(rowId);
     rowEl.id = newRowId;
-    const buttonsTd = rowEl.children[3];
+    const buttonsTd = rowEl.lastElementChild;
     buttonsTd.querySelector('.delete-record').onclick = () => deleteRecord(newRowId, 0);
     buttonsTd.querySelector('.toggle-edit-record').onclick = () => toggleRecordEditable(newRowId);
     buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId, 0);
@@ -168,24 +168,91 @@ function createNewAccountRow()
             <input type="text"
                    name="account_type"
                    class="form-control"
-                   value=""/>
+                   value=""
+                   required/>
         </td>
         <td>
             <button type="button" class="btn-empty cancel-add-record"
                     onclick="cancelAddNewRecord(0)">
                 <img src="../static/close_black.svg"
-                     alt="Delete Account"
+                     alt="Cancel"
                      class="delete_icon"/>
             </button>
             <button type="button" class="btn-empty confirm-add-record"
                     onclick="confirmAddNewRecord(0)">
                 <img src="../static/check_black.svg"
-                     alt="Confirm Edit"
+                     alt="Confirm"
                      class="confirm_icon"/>
             </button>
         </td>
     `;
     tbody.appendChild(newAccountRow);
+}
+
+function createNewProductRow()
+{
+    // Don't let the admin click create account before finishing an account they are already creating.
+    // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
+    if (document.getElementById('new-product') !== null) {
+        console.log('Already creating new product.');
+    }
+
+    // Hide the button (show again by removing the class)
+    document.getElementById('create-product-btn').classList.add('d-none');
+
+    const tbody = document.getElementById('product-tbody');
+    const newProductRow = document.createElement('tr');
+    newProductRow.setAttribute('id', 'new-product');
+    newProductRow.className = 'bg-secondary';
+    newProductRow.innerHTML = `
+        <td>
+            <input type="text"
+                   name="product_name"
+                   class="form-control"
+                   value=""
+                   maxlength="255"
+                   required/>
+        </td>
+        <td>
+            <input type="text"
+                   name="description"
+                   class="form-control"
+                   value=""
+                   maxlength="1024"
+                   required/>
+        </td>
+        <td>
+            <input type="text"
+                   name="image_url"
+                   class="form-control"
+                   value=""
+                   maxlength="100"
+                   required/>
+        </td>
+        <td>
+            <input type="text"
+                   name="price"
+                   class="form-control"
+                   value=""
+                   maxlength="7"
+                   required/>
+        </td>
+        <td>
+            <button type="button" class="btn-empty cancel-add-record"
+                    onclick="cancelAddNewRecord(1)">
+                <img src="../static/close_black.svg"
+                     alt="Cancel"
+                     class="delete_icon"/>
+            </button>
+            <button type="button" class="btn-empty confirm-add-record"
+                    onclick="confirmAddNewRecord(1)">
+                <img src="../static/check_black.svg"
+                     alt="Confirm"
+                     class="confirm_icon"/>
+            </button>
+        </td>
+    `;
+    tbody.appendChild(newProductRow);
 }
 
 function cancelAddNewRecord(recordType)
@@ -253,16 +320,9 @@ function confirmAddNewRecord(recordType)
         if (xhttp.readyState === 4) {
             const jsonResponse = JSON.parse(xhttp.responseText);
             if (xhttp.status === 200) {
-                // Log the response
                 console.log('addNewRecord response: ' + jsonResponse);
-
-                // Set the element ID based on the primary key of the new record
-                rowEl.setAttribute('id', jsonResponse['id']);
-
-                // Show the create record button again
-                btnEl.classList.remove('d-none');
+                updateNewRowData(rowEl, btnEl, jsonResponse['id'], recordType);
             } else if (xhttp.status === 500) {
-                // Log the response
                 console.log('addNewRecord error: ' + jsonResponse);
             }
         }
@@ -291,8 +351,62 @@ function validateAccountInput(rowEl)
     return true;
 }
 
-
 function validateProductInput(rowEl)
 {
+    // username should be between 8 and 255 characters
+    const name = rowEl.querySelector('input[name=\'product_name\']').value;
+    if (name.length < 0 || name.length > 255) return false;
 
+    // description should be less than 1024 characters
+    const description = rowEl.querySelector('input[name=\'description\']').value;
+    if (description.length < 0 || description.length > 1024) return false;
+
+    // imageURL should at least contain https://a.ca (12 chars)
+    // I know this check is bad, but it's better than nothing (:
+    // imageURL should also be less than 100 characters
+    const imageURL = rowEl.querySelector('input[name=\'image_url\']').value;
+    if (imageURL < 12 || imageURL > 100) return false;
+
+    // price should be a decimal number with at most 6 digits and 2 decimal places (i.e., in SQL: DECIMAL(6,2))
+    // So: price should be non-negative and < 10000
+    const price = parseFloat(rowEl.querySelector('input[name=\'price\']').value).toFixed(2);
+    if (price < 0 || price > 9999) return false;
+
+    return true;
+}
+
+// After a new record is added, some things need to be updated in the markup
+function updateNewRowData(rowEl, btnEl, responseId, recordType)
+{
+    // Set the element ID based on the primary key of the new record
+    rowEl.setAttribute('id', responseId);
+
+    // Remove the grey background
+    rowEl.classList.remove('bg-secondary');
+
+    // Show the create record button again
+    btnEl.classList.remove('d-none');
+
+    // Replace the buttons with the 3 modify record action buttons
+    const buttonsTd = rowEl.lastElementChild;
+    buttonsTd.innerHTML = `
+        <button type="button" class="btn-empty delete-record"
+                onclick="deleteRecord('${responseId}', ${recordType})">
+            <img src="../static/close_black.svg"
+                 alt="Delete Account"
+                 class="delete_icon"/>
+        </button>
+        <button type="button" class="btn-empty toggle-edit-record"
+                onclick="toggleRecordEditable('${responseId}')">
+            <img src="../static/edit_black.svg"
+                 alt="Edit Account"
+                 class="edit_icon"/>
+        </button>
+        <button type="button" class="btn-empty confirm-edit-record"
+                onclick="confirmRecordEdit('${responseId}', ${recordType})">
+            <img src="../static/check_black.svg"
+                 alt="Confirm Edit"
+                 class="confirm_icon"/>
+        </button>
+    `;
 }

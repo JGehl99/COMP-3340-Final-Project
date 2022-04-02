@@ -126,78 +126,78 @@ $conn->close();
                      data-bs-parent="#accordion">
                     <div class="accordion-body text-color">
                         <h2>Manage Products</h2>
-                        <?php if (count($products) > 0) { ?>
-                            <table class="table text-color">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Image URL</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Actions</th>
+                        <table class="table text-color">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Image URL</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody id="product-tbody">
+                            <?php
+                            foreach ($products as $product) {
+                                [$id, $name, $description, $imageURL, $price] = $product;
+                                ?>
+                                <tr id="product-<?php echo $id ?>">
+                                    <td>
+                                        <input type="text"
+                                               name="product_name"
+                                               class="form-control"
+                                               value="<?php echo $name; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="description"
+                                               class="form-control"
+                                               value="<?php echo $description; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="image_url"
+                                               class="form-control"
+                                               value="<?php echo $imageURL; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <input type="text"
+                                               name="price"
+                                               class="form-control"
+                                               value="<?php echo $price; ?>"
+                                               readonly/>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn-empty delete-record"
+                                                onclick="deleteRecord('product-<?php echo $id ?>', 1)">
+                                            <img src="../static/close_black.svg"
+                                                 alt="Delete Product"
+                                                 class="delete_icon"/>
+                                        </button>
+                                        <button type="button" class="btn-empty toggle-edit-record"
+                                                onclick="toggleRecordEditable('product-<?php echo $id ?>')">
+                                            <img src="../static/edit_black.svg"
+                                                 alt="Edit Product"
+                                                 class="edit_icon"/>
+                                        </button>
+                                        <button type="submit" class="btn-empty confirm-edit-record"
+                                                onclick="confirmRecordEdit('product-<?php echo $id ?>', 1)">
+                                            <img src="../static/check_black.svg"
+                                                 alt="Confirm Edit"
+                                                 class="confirm_icon"/>
+                                        </button>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody id="product-tbody">
-                                <?php
-                                foreach ($products as $product) {
-                                    [$id, $name, $description, $imageURL, $price] = $product;
-                                    ?>
-                                    <tr id="product-<?php echo $id ?>">
-                                        <td>
-                                            <input type="text"
-                                                   name="product_name"
-                                                   class="form-control"
-                                                   value="<?php echo $name; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <input type="text"
-                                                   name="description"
-                                                   class="form-control"
-                                                   value="<?php echo $description; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <input type="text"
-                                                   name="image_url"
-                                                   class="form-control"
-                                                   value="<?php echo $imageURL; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <input type="text"
-                                                   name="price"
-                                                   class="form-control"
-                                                   value="<?php echo $price; ?>"
-                                                   readonly/>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn-empty delete-record"
-                                                    onclick="deleteRecord('product-<?php echo $id ?>', 1)">
-                                                <img src="../static/close_black.svg"
-                                                     alt="Delete Product"
-                                                     class="delete_icon"/>
-                                            </button>
-                                            <button type="button" class="btn-empty toggle-edit-record"
-                                                    onclick="toggleRecordEditable('product-<?php echo $id ?>')">
-                                                <img src="../static/edit_black.svg"
-                                                     alt="Edit Product"
-                                                     class="edit_icon"/>
-                                            </button>
-                                            <button type="submit" class="btn-empty confirm-edit-record"
-                                                    onclick="confirmRecordEdit('product-<?php echo $id ?>', 1)">
-                                                <img src="../static/check_black.svg"
-                                                     alt="Confirm Edit"
-                                                     class="confirm_icon"/>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
-                        <?php } else { ?>
-                            <p class="text-color">No products found.</p>
-                        <?php } ?>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary ms-2" id="create-product-btn"
+                                onclick="createNewProductRow()">
+                            Create Product
+                        </button>
                     </div>
                 </div>
             </div>
