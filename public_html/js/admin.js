@@ -370,11 +370,11 @@ function validateAccountInput(rowEl)
 
 function validateProductInput(rowEl)
 {
-    // username should be between 8 and 255 characters
+    // name should be <= 255 characters
     const name = rowEl.querySelector('input[name=\'product_name\']').value;
     if (name.length < 0 || name.length > 255) return false;
 
-    // description should be less than 1024 characters
+    // description should be <= 1024 characters
     const description = rowEl.querySelector('input[name=\'description\']').value;
     if (description.length < 0 || description.length > 1024) return false;
 
@@ -382,12 +382,12 @@ function validateProductInput(rowEl)
     // I know this check is bad, but it's better than nothing (:
     // imageURL should also be less than 100 characters
     const imageURL = rowEl.querySelector('input[name=\'image_url\']').value;
-    if (imageURL < 12 || imageURL > 100) return false;
+    if (imageURL.length < 12 || imageURL.length > 100) return false;
 
     // price should be a decimal number with at most 6 digits and 2 decimal places (i.e., in SQL: DECIMAL(6,2))
     // So: price should be non-negative and < 10000
-    const price = parseFloat(rowEl.querySelector('input[name=\'price\']').value).toFixed(2);
-    if (price < 0 || price > 9999) return false;
+    const price = parseFloat(rowEl.querySelector('input[name=\'price\']').value);
+    if (isNaN(price) || price < 0 || price > 9999) return false;
 
     return true;
 }
