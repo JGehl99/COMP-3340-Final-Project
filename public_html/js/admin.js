@@ -296,13 +296,19 @@ function confirmAddNewRecord(recordType)
         btnEl = document.getElementById('create-account-btn');
         if (validateAccountInput(rowEl)) {
             url = '../static/add_account.php';
-        } else return;
+        } else {
+            console.log('Invalid account input.');
+            return;
+        }
     } else if (recordType === 1) {
         rowEl = document.getElementById('new-product');
         btnEl = document.getElementById('create-product-btn');
         if (validateProductInput(rowEl)) {
             url = '../static/add_product.php';
-        } else return;
+        } else {
+            console.log('Invalid product input.');
+            return;
+        }
     } else {
         console.error('Cannot add record: invalid record type.');
         return;
