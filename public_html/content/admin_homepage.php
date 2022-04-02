@@ -178,8 +178,10 @@ $conn->close();
             </div>
         </div>
     </div>
+<!--  User Account  -->
     <div class="row">
         <h1 class="text-color">User Account</h1>
+
     </div>
 </div>
 <?php include('footer.php'); ?>
