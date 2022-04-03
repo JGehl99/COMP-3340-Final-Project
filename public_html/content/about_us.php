@@ -87,8 +87,8 @@
                             Jarrett Jackson
                         </h2>
                         <p class="fs-5 d-flex pb-5 pb-sm-5 pb-md-0">
-                            Hi! I am in my 3rd year of Computer Science at the University of Windsor. This course as been my only interaction with web development, it's
-                            quickly becoming my favourite industry. I enjoy playing video games and being outdoors.
+                            Hi! I am in my 3rd year of Computer Science at the University of Windsor. This course as been my only interaction with web development, but it's
+                            quickly becoming my favourite industry! I enjoy playing video games and being outdoors.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="https://github.com/jackson1ne" target="_blank" class="d-block hover_expand">
