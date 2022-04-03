@@ -32,7 +32,8 @@ if (isset($password)) {
     if ($first_param_found) $sql .= ", ";
     $sql .= "password = ?";
     $types .= "s";
-    $params[] = $password;
+    $hashed_password = password_hash(trim($password), PASSWORD_DEFAULT);
+    $params[] = $hashed_password;
     $first_param_found = true;
 }
 if (isset($account_type)) {

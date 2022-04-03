@@ -29,7 +29,8 @@ if (!isset($username) || !isset($password) || !isset($account_type)) {
 $sql = 'INSERT INTO ACCOUNT (username, password, created_on, type) VALUES (?, ?, ?, ?);';
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('sssi', $username, $password, $date, $account_type);
+$hashed_password = password_hash(trim($password), PASSWORD_DEFAULT);
+$stmt->bind_param('sssi', $username, $hashed_password, $date, $account_type);
 $stmt->execute();
 
 $stmt->close();

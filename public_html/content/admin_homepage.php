@@ -21,7 +21,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$accounts_sql = "SELECT username, password, type FROM ACCOUNT;";
+$accounts_sql = "SELECT username, type FROM ACCOUNT;";
 $accounts = $conn->query($accounts_sql)->fetch_all();
 
 $products_sql = "SELECT id, name, description, imageURL, price FROM PRODUCT";
@@ -52,7 +52,7 @@ $conn->close();
                             <thead>
                             <tr>
                                 <th scope="col">Username</th>
-                                <th scope="col">Password</th>
+                                <th scope="col">Change Password</th>
                                 <th scope="col">Account Type</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -60,7 +60,7 @@ $conn->close();
                             <tbody id="account-tbody">
                             <?php
                             foreach ($accounts as $account) {
-                                [$username, $password, $type] = $account;
+                                [$username, $type] = $account;
                                 ?>
                                 <tr id="<?php echo $username ?>">
                                     <td>
@@ -74,7 +74,7 @@ $conn->close();
                                         <input type="text"
                                                name="password"
                                                class="form-control"
-                                               value="<?php echo $password; ?>"
+                                               value=""
                                                readonly/>
                                     </td>
                                     <td>
