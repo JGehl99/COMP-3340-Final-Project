@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
     <?php
@@ -60,55 +60,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } ?>
 
-<body class="vh-100 page-background">
+<body class="page-background">
 <?php include('navbar.php'); ?>
-<section>
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card text-color background rounded-5">
-                    <div class="card-body p-5 text-center">
+<div class="container py-5 min_height">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card text-color background rounded-5 shadow">
+                <div class="card-body p-5 text-center">
+                    <form class="mb-md-5 mt-md-4" method="post">
+                        <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                        <p class="text-color mb-5">Please enter a valid username and password!</p>
+                        <?php if (!empty($msg)) echo $msg ?>
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" id="username_field" name="username"
+                                   class="form-control form-control-lg text-color" required minlength="8"/>
+                            <label class="form-label" for="username_field">Username</label>
+                        </div>
 
-                        <form class="mb-md-5 mt-md-4" method="post"
-                              action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" id="password_field" name="password"
+                                   class="form-control form-control-lg text-color" required minlength="8"/>
+                            <label class="form-label" for="password_field">Password</label>
+                        </div>
 
-                            <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
-                            <p class="text-color mb-5">Please enter a valid username and password!</p>
-                            <?php if (!empty($msg)) echo $msg ?>
-                            <div class="form-outline form-white mb-4">
-                                <input type="text" id="username_field" name="username"
-                                       class="form-control form-control-lg text-color" required minlength="8"/>
-                                <label class="form-label" for="username_field">Username</label>
-                            </div>
+                        <div class="form-outline form-white mb-5">
+                            <input type="password" id="confirm_password_field" name="cpassword"
+                                   class="form-control form-control-lg text-color"/>
+                            <label class="form-label" for="confirm_password_field">Confirm Password</label>
+                        </div>
 
-                            <div class="form-outline form-white mb-4">
-                                <input type="password" id="password_field" name="password"
-                                       class="form-control form-control-lg text-color" required minlength="8"/>
-                                <label class="form-label" for="password_field">Password</label>
-                            </div>
-
-                            <div class="form-outline form-white mb-5">
-                                <input type="password" id="confirm_password_field" name="cpassword"
-                                       class="form-control form-control-lg text-color"/>
-                                <label class="form-label" for="confirm_password_field">Confirm Password</label>
-                            </div>
-
-                            <button class="btn btn-secondary btn-lg px-5" type="submit">Sign Up</button>
-
-                    </div>
-
-                    <div class="d-flex justify-content-center pb-4">
-                        <p class="mb-0 text-color">Already have an account? <a href="login.php"
-                                                                               class="link-primary fw-bold">Login</a>
-                        </p>
-                    </div>
-
+                        <button class="btn btn-secondary btn-lg px-5 shadow" type="submit">Sign Up</button>
+                    </form>
+                </div>
+                <div class="d-flex justify-content-center pb-4">
+                    <p class="mb-0 text-color">
+                        Already have an account?
+                        <a href="login.php" class="link-primary fw-bold">Login</a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-</section>
+</div>
 <?php include('footer.php'); ?>
 </body>
 </html>

@@ -32,11 +32,11 @@ $conn->close();
 
 <body class="page-background">
 <?php include('navbar.php'); ?>
-<div class="container my-5">
+<div class="container my-5 page-background">
     <div class="row mb-5">
         <h1 class="text-color">Administration</h1>
-        <div class="accordion" id="accordion">
-            <div class="accordion-item background border border-secondary border-bottom-0">
+        <div class="accordion rounded-5" id="accordion">
+            <div class="accordion-item background card_border border-bottom-0 shadow">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne"
@@ -44,7 +44,7 @@ $conn->close();
                         User Administration
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                <div id="collapseOne" class="accordion-collapse collapse shadow" aria-labelledby="headingOne"
                      data-bs-parent="#accordion">
                     <div class="accordion-body text-color">
                         <h2>Manage Users</h2>
@@ -101,14 +101,14 @@ $conn->close();
                     </div>
                 </div>
             </div>
-            <div class="accordion-item background border border-secondary border-bottom-0">
+            <div class="accordion-item background card_border border-bottom-0 shadow">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Product Administration
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                <div id="collapseTwo" class="accordion-collapse collapse shadow" aria-labelledby="headingTwo"
                      data-bs-parent="#accordion">
                     <div class="accordion-body text-color">
                         <h2>Manage Products</h2>
@@ -159,14 +159,14 @@ $conn->close();
                     </div>
                 </div>
             </div>
-            <div class="accordion-item background border border-secondary">
+            <div class="accordion-item background card_border shadow">
                 <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Documentation
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                <div id="collapseThree" class="accordion-collapse collapse shadow" aria-labelledby="headingThree"
                      data-bs-parent="#accordion">
                     <div class="accordion-body text-color">
                         <h2>User Administration</h2>

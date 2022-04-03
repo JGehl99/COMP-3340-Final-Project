@@ -10,7 +10,7 @@
 
 <body class="page-background">
 <?php include('navbar.php'); ?>
-<div class="container"></div>
+<div class="container page-background min_height"></div>
 <?php include('footer.php'); ?>
 </body>
 

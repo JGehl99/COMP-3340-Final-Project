@@ -34,7 +34,7 @@ $conn->close();
 
 <body class="page-background">
 <?php include('navbar.php'); ?>
-<div class="container text-wrap py-5">
+<div class="container text-wrap py-5 min_height">
     <?php
     // Generating the product card
     if (count($result) === 1) {
@@ -49,14 +49,14 @@ $conn->close();
         // Create the product cards ?>
         <div class="row">
             <div class="col-12 col-lg-4 mb-4">
-                <div class="card background">
+                <div class="card background shadow">
                     <div class="card-body">
                         <img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-100"/>
                     </div>
                 </div>
             </div>
             <div class="col mb-4">
-                <div class="card background">
+                <div class="card background shadow">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-sm">

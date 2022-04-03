@@ -7,4 +7,3 @@ if (!isLoggedIn() || !isset($_SESSION['account_type'])) {
 } else {
     header("Location: /content/user_homepage.php");
 }
-?>

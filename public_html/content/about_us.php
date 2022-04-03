@@ -14,7 +14,7 @@
     <div class="container col">
         <div class="row d-flex justify-content-center pb-5 align-items-center">
             <div class="col-8 col-md-8 col-lg-6 col-xl-4">
-                <div class="card background text-color rounded-5">
+                <div class="card background text-color rounded-5 shadow">
                     <div class="card-body p-3 text-center">
                         <h1>About Us</h1>
                     </div>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <span id="joshua_gehl" class="anchor"></span>
-        <div class="row card background text-color rounded-5 m-1 mb-5">
+        <div class="row card background text-color rounded-5 m-1 mb-5 shadow">
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
@@ -49,7 +49,7 @@
             </div>
         </div>
         <span id="brady_malott" class="anchor"></span>
-        <div class="row card background text-color rounded-5 m-1 mb-5">
+        <div class="row card background text-color rounded-5 m-1 mb-5 shadow">
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
@@ -74,7 +74,7 @@
             </div>
         </div>
         <span id="jarrett_jackson" class="anchor"></span>
-        <div class="row card background text-color rounded-5 m-1 mb-5">
+        <div class="row card background text-color rounded-5 m-1 mb-5 shadow">
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
@@ -99,7 +99,7 @@
             </div>
         </div>
         <span id="jonathan_fehr" class="anchor"></span>
-        <div class="row card background text-color rounded-5 m-1 mb-5">
+        <div class="row card background text-color rounded-5 m-1 mb-5 shadow">
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
@@ -124,7 +124,7 @@
             </div>
         </div>
         <span id="shady_gerges" class="anchor"></span>
-        <div class="row card background text-color rounded-5 m-1 mb-5">
+        <div class="row card background text-color rounded-5 m-1 mb-5 shadow">
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
