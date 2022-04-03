@@ -26,7 +26,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
-                        <img src="../media/joshua_gehl.jpg"
+                        <img src="../static/joshua_gehl.jpg"
                              class="p-0 rounded-5 w-100"
                              alt="...">
                     </div>
