@@ -179,7 +179,7 @@ $conn->close();
         </div>
     </div>
 <!--  User Account  -->
-    <?php include('user_homepage.php'); ?>
+    <?php include('user_homepage_inner.php'); ?>
 </div>
 <?php include('footer.php'); ?>
 </body>
