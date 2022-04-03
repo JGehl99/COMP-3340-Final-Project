@@ -56,7 +56,7 @@ function confirmRecordEdit(rowId, recordType)
     const rowEl = document.getElementById(rowId);
 
     // First, validate the input
-    if (recordType === 0 && !validateAccountInput(rowEl)) {
+    if (recordType === 0 && !validateAccountInput(rowEl, false)) {
         console.log('Invalid account input.');
         toggleRecordEditable(rowId);
         return;
@@ -283,7 +283,7 @@ function confirmAddNewRecord(recordType)
     if (recordType === 0) {
         rowEl = document.getElementById('new-account');
         btnEl = document.getElementById('create-account-btn');
-        if (validateAccountInput(rowEl)) {
+        if (validateAccountInput(rowEl, true)) {
             url = '../static/add_account.php';
         } else {
             console.log('Invalid account input.');
@@ -340,15 +340,21 @@ function confirmAddNewRecord(recordType)
     xhttp.send(JSON.stringify(fields));
 }
 
-function validateAccountInput(rowEl)
+function validateAccountInput(rowEl, isNewAccount)
 {
     // Username should be between 8 and 255 characters
     const username = rowEl.querySelector('input[name=\'username\']').value;
     if (username.length < 8 || username.length > 255) return false;
 
     // Password should be at least 8 characters
-    const password = rowEl.querySelector('input[name=\'password\']').value;
-    if (password.length < 8) return false;
+    const passwordEl = rowEl.querySelector('input[name=\'password\']');
+    const password = passwordEl.value;
+    if (password.length < 8) {
+        // If the account is an existing account, and the password value has not changed we do not validate it
+        // Otherwise, we need to return false if the length < 8
+        if ((!isNewAccount && password !== passwordEl.getAttribute('value'))
+            || isNewAccount) return false;
+    }
 
     // Account type should be a non-negative single digit integer
     const accountType = parseInt(rowEl.querySelector('input[name=\'account_type\']').value);
