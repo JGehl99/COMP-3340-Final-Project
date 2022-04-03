@@ -78,7 +78,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
-                        <img src="https://picsum.photos/500/500"
+                        <img src="../static/jarrett_jackson.jpg"
                              class="p-0 rounded-5 w-100"
                              alt="...">
                     </div>
@@ -87,7 +87,8 @@
                             Jarrett Jackson
                         </h2>
                         <p class="fs-5 d-flex pb-5 pb-sm-5 pb-md-0">
-                            Insert Bio Here
+                            Hi! I am in my 3rd year of Computer Science at the University of Windsor. This course as been my only interaction with web development, it's
+                            quickly becoming my favourite industry. I enjoy playing video games and being outdoors.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="#" target="_blank" class="d-block hover_expand">
