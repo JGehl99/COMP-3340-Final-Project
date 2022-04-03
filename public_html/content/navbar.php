@@ -1,4 +1,4 @@
-<nav class="sticky-top navbar navbar-expand-md background text-color">
+<nav class="sticky-top navbar navbar-expand-md background text-color shadow">
     <div class="container-fluid">
         <a class="navbar-brand d-flex" href="index.php">
             <img src="../static/icon.svg" alt="OldChicken Icon" style="height:30px;width:30px;">

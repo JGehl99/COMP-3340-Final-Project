@@ -75,6 +75,13 @@
     content: url("../static/hamburger_white.svg");
 }
 
+.github_icon {
+    content: url("../static/github_white.svg");
+    width: 50px;
+    height: 50px;
+}
 
-
+.card_border {
+    border-color: rgba(0, 0, 0, .125);
+}
 
