@@ -36,7 +36,7 @@ $conn->close();
     <div class="row mb-5">
         <h1 class="text-color">Administration</h1>
         <div class="accordion rounded-5" id="accordion">
-            <div class="accordion-item background card_border border-bottom-0 shadow">
+            <div class="accordion-item background card_border shadow">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne"
@@ -115,7 +115,7 @@ $conn->close();
                     </div>
                 </div>
             </div>
-            <div class="accordion-item background card_border border-bottom-0 shadow">
+            <div class="accordion-item background card_border shadow">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
