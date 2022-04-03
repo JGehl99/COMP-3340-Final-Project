@@ -43,3 +43,12 @@
     padding: 0;
     margin: 0;
 }
+
+.min_height {
+    min-height: 100vh;
+}
+
+.anchor {
+    position: absolute;
+    transform: translateY(-100px);
+}
