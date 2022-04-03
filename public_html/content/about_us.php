@@ -91,7 +91,7 @@
                             quickly becoming my favourite industry. I enjoy playing video games and being outdoors.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
-                            <a href="#" target="_blank" class="d-block hover_expand">
+                            <a href="https://github.com/jackson1ne" target="_blank" class="d-block hover_expand">
                                 <img class="github_icon " src="../static/github_black.svg" alt="..."/>
                             </a>
                         </div>
