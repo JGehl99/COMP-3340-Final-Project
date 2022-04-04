@@ -82,13 +82,13 @@ $conn->close();
                             <div class="input-group" data-no-link style="width: 9rem;">
                                 <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt"
                                         data-field="<?php echo $id; ?>-amt">
-                                    <img class="add_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
+                                    <img class="sub_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
                                 </button>
                                 <input type="text" id="<?php echo $id; ?>-amt" class="form-control amt" value="0"
                                        min="0" max="100"/>
                                 <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt"
                                         data-field="<?php echo $id; ?>-amt">
-                                    <img class="sub_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
+                                    <img class="add_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
                                 </button>
                             </div>
                             <span class="mx-2"></span>
