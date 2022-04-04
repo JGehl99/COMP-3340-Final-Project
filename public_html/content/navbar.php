@@ -21,8 +21,8 @@
                     <a class="nav-link link-color" href="gallery.php">Gallery</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" action="products.php" method="get">
+                <input class="form-control mr-3" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-primary text-nowrap" type="submit">Search</button>
             </form>
             <hr class="dropdown-divider mt-sm-3 mt-md-0 d-md-none d-lg-none d-lx-none d-xxl-none">
