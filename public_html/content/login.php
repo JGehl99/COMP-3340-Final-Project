@@ -55,15 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<body class="vh-100 page-background">
+<body class="page-background">
 <?php include('navbar.php'); ?>
 <section>
-    <div class="container py-5 h-100">
+    <div class="container py-5 min_height">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card background text-black rounded-5">
+                <div class="card background text-black rounded-5 shadow">
                     <div class="card-body p-5 text-center">
-
                         <form class="mb-md-5 mt-md-4 pb-5" method="post"
                               action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
@@ -82,14 +81,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label class="form-label text-color" for="password">Password</label>
                             </div>
 
-                            <button class="btn btn-secondary btn-lg px-5" type="submit">Login</button>
-
+                            <button class="btn btn-secondary btn-lg px-5 shadow" type="submit">Login</button>
                         </form>
-
                         <div>
-                            <p class="mb-0 text-color">Don't have an account? <a href="sign_up.php"
-                                                                                 class="link-primary fw-bold">Sign
-                                    Up</a>
+                            <p class="mb-0 text-color">
+                                Don't have an account?
+                                <a href="sign_up.php" class="link-primary fw-bold">Sign Up</a>
                             </p>
                         </div>
 

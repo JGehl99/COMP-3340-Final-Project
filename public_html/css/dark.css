@@ -51,6 +51,18 @@
     content: url("../static/add_cart_white.svg");
 }
 
+.delete_icon {
+    content: url("../static/close_white.svg");
+}
+
+.edit_icon {
+    content: url("../static/edit_white.svg");
+}
+
+.confirm_icon {
+    content: url("../static/check_white.svg");
+}
+
 #dark_mode_icon {
     content: url("../static/dark_icon.svg");
 }
@@ -63,6 +75,13 @@
     content: url("../static/hamburger_white.svg");
 }
 
+.github_icon {
+    content: url("../static/github_white.svg");
+    width: 50px;
+    height: 50px;
+}
 
-
+.card_border {
+    border-color: rgba(0, 0, 0, .125);
+}
 

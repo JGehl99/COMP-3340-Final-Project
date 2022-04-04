@@ -10,10 +10,10 @@
                             <a href="about_us.php#joshua_gehl" class="link-color">Joshua Gehl</a>
                         </li>
                         <li>
-                            <a href="about_us.php#jarrett_jackson" class="link-color">Jarrett Jackson</a>
+                            <a href="about_us.php#brady_malott" class="link-color">Brady Malott</a>
                         </li>
                         <li>
-                            <a href="about_us.php#brady_malott" class="link-color">Brady Malott</a>
+                            <a href="about_us.php#jarrett_jackson" class="link-color">Jarrett Jackson</a>
                         </li>
                         <li>
                             <a href="about_us.php#jonathan_fehr" class="link-color">Jonathan Fehr</a>
