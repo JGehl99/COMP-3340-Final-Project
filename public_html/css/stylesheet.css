@@ -52,6 +52,18 @@
     min-height: 100vh;
 }
 
+.navbar_icon {
+    content: url("../static/icon.svg");
+    height:30px;
+    width:30px;
+}
+
+.status_icon {
+    content: url("../static/icon.svg");
+    height:100px;
+    width:100px;
+}
+
 .anchor {
     position: absolute;
     transform: translateY(-100px);
