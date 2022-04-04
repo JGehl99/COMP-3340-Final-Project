@@ -59,7 +59,7 @@
                             </li>
                         <?php } else { ?>
                             <li>
-                                <a href="#" class="link-color">My Account</a>
+                                <a href="account_homepage.php" class="link-color">My Account</a>
                             </li>
                             <li>
                                 <a href="cart.php" class="link-color">Cart</a>
