@@ -267,7 +267,7 @@ $conn->close();
                         </tr>
                         <tr>
                             <td>Postal Code</td>
-                            <td>6 characters in length in the format: A1A 1A1</td>
+                            <td>6 characters in length in the format: A1A 1A1 or A1A1A1</td>
                         </tr>
                         </tbody>
                     </table>

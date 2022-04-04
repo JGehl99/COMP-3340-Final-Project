@@ -21,10 +21,11 @@ function deleteRecord(rowId, recordType)
     // Send a request
     let url = '';
     if (recordType === 0) {
-        url = '../static/delete_account.php';
+        url = '../static/delete_shipping.php';
     } else if (recordType === 1) {
-        url = '../static/delete_product.php';
+        url = '../static/delete_billing.php';
     }
+
 
     if (url.length > 0) {
         xhttp.open('POST', url);
@@ -153,34 +154,46 @@ function createNewShippingRow()
 {
     // Don't let the admin click create account before finishing an account they are already creating.
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
-    if (document.getElementById('new-account') !== null) {
-        console.log('Already creating new account.');
+    if (document.getElementById('new-shipping') !== null) {
+        console.log('Already creating new shipping record.');
         return;
     }
 
     // Hide the button (show again by removing the class)
-    document.getElementById('create-account-btn').classList.add('d-none');
+    document.getElementById('create-shipping-info-btn').classList.add('d-none');
 
-    const tbody = document.getElementById('account-tbody');
-    const newAccountRow = document.createElement('tr');
-    newAccountRow.setAttribute('id', 'new-account');
-    newAccountRow.className = 'bg-secondary';
-    newAccountRow.innerHTML = `
+    const tbody = document.getElementById('shipping-tbody');
+    const newShippingRow = document.createElement('tr');
+    newShippingRow.setAttribute('id', 'new-shipping');
+    newShippingRow.className = 'bg-secondary';
+    newShippingRow.innerHTML = `
         <td>
             <input type="text"
-                   name="username"
+                   name="street_num"
                    class="form-control"
                    value=""/>
         </td>
         <td>
             <input type="text"
-                   name="password"
+                   name="street_name"
                    class="form-control"
                    value=""/>
         </td>
         <td>
             <input type="text"
-                   name="account_type"
+                   name="city"
+                   class="form-control"
+                   value=""/>
+        </td>
+        <td>
+            <input type="text"
+                   name="province"
+                   class="form-control"
+                   value=""/>
+        </td>
+        <td>
+            <input type="text"
+                   name="postal_code"
                    class="form-control"
                    value=""/>
         </td>
@@ -199,7 +212,7 @@ function createNewShippingRow()
             </button>
         </td>
     `;
-    tbody.appendChild(newAccountRow);
+    tbody.appendChild(newShippingRow);
 }
 
 // TODO
@@ -207,40 +220,40 @@ function createNewBillingRow()
 {
     // Don't let the admin click create account before finishing an account they are already creating.
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
-    if (document.getElementById('new-product') !== null) {
-        console.log('Already creating new product.');
+    if (document.getElementById('new-billing') !== null) {
+        console.log('Already creating new billing record.');
         return;
     }
 
     // Hide the button (show again by removing the class)
-    document.getElementById('create-product-btn').classList.add('d-none');
+    document.getElementById('create-billing-info-btn').classList.add('d-none');
 
-    const tbody = document.getElementById('product-tbody');
-    const newProductRow = document.createElement('tr');
-    newProductRow.setAttribute('id', 'new-product');
-    newProductRow.className = 'bg-secondary';
-    newProductRow.innerHTML = `
+    const tbody = document.getElementById('billing-tbody');
+    const newBillingRow = document.createElement('tr');
+    newBillingRow.setAttribute('id', 'new-billing');
+    newBillingRow.className = 'bg-secondary';
+    newBillingRow.innerHTML = `
         <td>
             <input type="text"
-                   name="product_name"
+                   name="card_num"
                    class="form-control"
                    value=""/>
         </td>
         <td>
             <input type="text"
-                   name="description"
+                   name="card_name"
                    class="form-control"
                    value=""/>
         </td>
         <td>
             <input type="text"
-                   name="image_url"
+                   name="exp_date"
                    class="form-control"
                    value=""/>
         </td>
         <td>
             <input type="text"
-                   name="price"
+                   name="cvv"
                    class="form-control"
                    value=""/>
         </td>
@@ -259,7 +272,7 @@ function createNewBillingRow()
             </button>
         </td>
     `;
-    tbody.appendChild(newProductRow);
+    tbody.appendChild(newBillingRow);
 }
 
 // TODO
@@ -268,11 +281,11 @@ function cancelAddNewRecord(recordType)
     let rowEl;
     let btnEl;
     if (recordType === 0) {
-        rowEl = document.getElementById('new-account');
-        btnEl = document.getElementById('create-account-btn');
+        rowEl = document.getElementById('new-shipping');
+        btnEl = document.getElementById('create-shipping-info-btn');
     } else if (recordType === 1) {
-        rowEl = document.getElementById('new-product');
-        btnEl = document.getElementById('create-product-btn');
+        rowEl = document.getElementById('new-billing');
+        btnEl = document.getElementById('create-billing-info-btn');
     } else {
         return;
     }
@@ -290,21 +303,21 @@ function confirmAddNewRecord(recordType)
     let url;
     // Validate input
     if (recordType === 0) {
-        rowEl = document.getElementById('new-account');
-        btnEl = document.getElementById('create-account-btn');
-        if (validateAccountInput(rowEl, true)) {
-            url = '../static/add_account.php';
+        rowEl = document.getElementById('new-shipping');
+        btnEl = document.getElementById('create-shipping-info-btn');
+        if (validateShippingInput(rowEl, true)) {
+            url = '../static/add_shipping.php';
         } else {
-            console.log('Invalid account input.');
+            console.log('Invalid shipping input.');
             return;
         }
     } else if (recordType === 1) {
-        rowEl = document.getElementById('new-product');
-        btnEl = document.getElementById('create-product-btn');
+        rowEl = document.getElementById('new-billing');
+        btnEl = document.getElementById('create-billing-info-btn');
         if (validateProductInput(rowEl)) {
-            url = '../static/add_product.php';
+            url = '../static/add_billing.php';
         } else {
-            console.log('Invalid product input.');
+            console.log('Invalid billing input.');
             return;
         }
     } else {
@@ -352,23 +365,27 @@ function confirmAddNewRecord(recordType)
 // TODO
 function validateShippingInput(rowEl, isNewAccount)
 {
-    // Username should be between 8 and 255 characters
-    const username = rowEl.querySelector('input[name=\'username\']').value;
-    if (username.length < 8 || username.length > 255) return false;
+    // Street Number should be between 0 and 255 characters
+    const street_num = rowEl.querySelector('input[name=\'street_num\']').value;
+    if (street_num.length < 0 || street_num.length > 255) return false;
 
-    // Password should be at least 8 characters
-    const passwordEl = rowEl.querySelector('input[name=\'password\']');
-    const password = passwordEl.value;
-    if (password.length < 8) {
-        // If the account is an existing account, and the password value has not changed we do not validate it
-        // Otherwise, we need to return false if the length < 8
-        if ((!isNewAccount && password !== passwordEl.getAttribute('value'))
-            || isNewAccount) return false;
-    }
+    // Street Name should be between 5 and 255 characters
+    const street_name = rowEl.querySelector('input[name=\'street_name\']').value;
+    if (street_name.length < 5 || street_num.length > 255) return false;
 
-    // Account type should be a non-negative single digit integer
-    const accountType = parseInt(rowEl.querySelector('input[name=\'account_type\']').value);
-    if (isNaN(accountType) || accountType < 0 || accountType > 9) return false;
+    // City should be between 3 and 255 characters
+    const city = rowEl.querySelector('input[name=\'city\']').value;
+    if (city.length < 3 || city.length > 255) return false;
+
+    // Province should be between 5 and 255 characters
+    const province = rowEl.querySelector('input[name=\'province\']').value;
+    if (province.length < 5 || province.length > 255) return false;
+
+    // Postal Code should be 6 characters and match the format A1A 1A1
+    const postal_code = rowEl.querySelector('input[name=\'postal_code\']').value;
+    const regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d$/
+    if (!postal_code.match(regex)) return false;
+
 
     return true;
 }
@@ -417,13 +434,13 @@ function updateNewRowData(rowEl, btnEl, responseId, recordType)
         <button type="button" class="btn-empty delete-record"
                 onclick="deleteRecord('${responseId}', ${recordType})">
             <img src="../static/close_black.svg"
-                 alt="Delete Account"
+                 alt="Delete Record"
                  class="delete_icon"/>
         </button>
         <button type="button" class="btn-empty toggle-edit-record"
                 onclick="toggleRecordEditable('${responseId}')">
             <img src="../static/edit_black.svg"
-                 alt="Edit Account"
+                 alt="Edit Record"
                  class="edit_icon"/>
         </button>
         <button type="button" class="btn-empty confirm-edit-record"
