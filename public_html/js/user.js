@@ -428,4 +428,6 @@ function updateNewRowData(rowEl, btnEl, responseId, recordType)
                  class="confirm_icon"/>
         </button>
     `;
+
+
 }

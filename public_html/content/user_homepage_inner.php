@@ -225,7 +225,7 @@ $conn->close();
                     <h2>Shipping</h2>
                     <p>Expand the first dropdown to manage saved shipping addresses.</p>
                     <h3>Adding a Shipping Record</h3>
-                    <p>To add a shipping address click the Create Record button. Make sure to enter all fields for the
+                    <p>To add a shipping address click the Add Shipping button. Make sure to enter all fields for the
                         address and then click the check mark
                         button to save the record. See the "Field Constraints" section below for input validation
                         details.
@@ -250,7 +250,7 @@ $conn->close();
                         <tbody>
                         <tr>
                             <td>Street Number</td>
-                            <td>Non-negative integer</td>
+                            <td>Between 1 and 255 characters</td>
                         </tr>
                         <tr>
                             <td>Street Name</td>
@@ -263,7 +263,7 @@ $conn->close();
 
                         <tr>
                             <td>Province</td>
-                            <td>Between 5 and 255 characters.</td>
+                            <td>Between 5 and 255 characters</td>
                         </tr>
                         <tr>
                             <td>Postal Code</td>
@@ -274,7 +274,7 @@ $conn->close();
                     <h2>Billing</h2>
                     <p>Expand the second dropdown to manage saved billing records.</p>
                     <h3>Adding a Billing Record</h3>
-                    <p>To add a billing record click the Create Record button. Make sure to enter all fields and then
+                    <p>To add a billing record click the addShipping Info button. Make sure to enter all fields and then
                         click the check mark
                         button to save the record. See the "Field Constraints" section below for input validation
                         details.
@@ -299,7 +299,7 @@ $conn->close();
                         <tbody>
                         <tr>
                             <td>Card Number</td>
-                            <td>16 digits.</td>
+                            <td>16 digits</td>
                         </tr>
                         <tr>
                             <td>Name on Card</td>
@@ -312,7 +312,7 @@ $conn->close();
 
                         <tr>
                             <td>CVV</td>
-                            <td>3 digits.</td>
+                            <td>3 digits</td>
                         </tr>
                         </tbody>
                     </table>
