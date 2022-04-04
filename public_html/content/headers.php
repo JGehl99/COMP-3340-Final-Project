@@ -49,6 +49,8 @@ include_once("../static/config.php");
 
 <script src="../js/dark-mode.js" rel="script"></script>
 
+<link rel="icon" type="image/x-icon" href="../static/favicon.ico">
+
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
