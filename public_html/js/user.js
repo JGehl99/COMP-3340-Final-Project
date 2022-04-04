@@ -149,7 +149,7 @@ function updateRowData(rowId, newRowId)
 }
 
 // TODO
-function createNewAccountRow()
+function createNewShippingRow()
 {
     // Don't let the admin click create account before finishing an account they are already creating.
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
@@ -203,7 +203,7 @@ function createNewAccountRow()
 }
 
 // TODO
-function createNewProductRow()
+function createNewBillingRow()
 {
     // Don't let the admin click create account before finishing an account they are already creating.
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
@@ -350,7 +350,7 @@ function confirmAddNewRecord(recordType)
 }
 
 // TODO
-function validateAccountInput(rowEl, isNewAccount)
+function validateShippingInput(rowEl, isNewAccount)
 {
     // Username should be between 8 and 255 characters
     const username = rowEl.querySelector('input[name=\'username\']').value;
@@ -374,7 +374,7 @@ function validateAccountInput(rowEl, isNewAccount)
 }
 
 // TODO
-function validateProductInput(rowEl)
+function validateBillingInput(rowEl)
 {
     // name should be <= 255 characters
     const name = rowEl.querySelector('input[name=\'product_name\']').value;

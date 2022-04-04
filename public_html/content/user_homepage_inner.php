@@ -48,60 +48,83 @@ $conn->close();
                  data-bs-parent="#accordion">
                 <div class="accordion-body text-color">
                     <h2>Manage Shipping Infos</h2>
-                    <?php if (count($result_Shipping) > 0) { ?>
-                        <table class="table text-color">
-                            <thead>
-                            <tr>
-                                <th scope="col">Street Number</th>
-                                <th scope="col">Street Name</th>
-                                <th scope="col">City</th>
-                                <th scope="col">Province</th>
-                                <th scope="col">Postal Code</th>
-                                <th scope="col">Actions</th>
+                    <table class="table text-color">
+                        <thead>
+                        <tr>
+                            <th scope="col">Street Number</th>
+                            <th scope="col">Street Name</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Province</th>
+                            <th scope="col">Postal Code</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="shipping-tbody">
+                        <?php
+                        foreach ($result_Shipping as $resultS) {
+                            [$id, $street_num, $street_name, $city, $province, $postal_code] = $resultS;
+                            ?>
+                            <tr id="shipping-info-<?php echo $id ?>">
+                                <td>
+                                    <input type="text"
+                                           name="street_num"
+                                           class="form-control"
+                                           value="<?php echo $street_num; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="street_name"
+                                           class="form-control"
+                                           value="<?php echo $street_name; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="city"
+                                           class="form-control"
+                                           value="<?php echo $city; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="province"
+                                           class="form-control"
+                                           value="<?php echo $province; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="postal_code"
+                                           class="form-control"
+                                           value="<?php echo $postal_code; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-empty delete-record"
+                                            onclick="deleteRecord('shipping-info-<?php echo $id ?>', 0)">
+                                        <img src="../static/close_black.svg"
+                                             alt="Delete Record"/>
+                                    </button>
+                                    <button type="button" class="btn-empty toggle-edit-record"
+                                            onclick="toggleRecordEditable('shipping-info-<?php echo $id ?>')">
+                                        <img src="../static/edit_black.svg"
+                                             alt="Edit Record"/>
+                                    </button>
+                                    <button type="submit" class="btn-empty confirm-edit-record"
+                                            onclick="confirmRecordEdit('shipping-info-<?php echo $id ?>', 0)">
+                                        <img src="../static/check_black.svg"
+                                             alt="Confirm Edit"/>
+                                    </button>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            foreach ($result_Shipping as $resultS) {
-                                [$id, $street_num, $street_name, $city, $province, $postal_code] = $resultS;
-                                ?>
-                                <tr>
-                                    <form action="user_homepage_inner.php?username=<?php echo $username ?>">
-                                        <td><input type="text" id="<?php echo $street_num; ?>"
-                                                   class="form-control street_num" value="<?php echo $street_num; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $street_name; ?>"
-                                                   class="form-control street_name" value="<?php echo $street_name; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $city; ?>"
-                                                   class="form-control city" value="<?php echo $city; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $province; ?>"
-                                                   class="form-control province"
-                                                   value="<?php echo $province; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $postal_code; ?>"
-                                                   class="form-control postal_code" value="<?php echo $postal_code; ?>"
-                                                   readonly/></td>
-                                        <td>
-                                            <button type="button" class="btn-empty"><img
-                                                        src="../static/close_black_24dp.svg"
-                                                        alt="Delete Record"/></button>
-                                            <button type="button" class="btn-empty"><img
-                                                        src="../static/mode_edit_black_24dp.svg"
-                                                        alt="Edit Record"/></button>
-                                            <button type="submit" class="btn-empty"><img
-                                                        src="../static/check_black_24dp.svg"
-                                                        alt="Confirm Edit"/></button>
-                                        </td>
-                                    </form>
-                                </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
-                    <?php } else { ?>
-                        <p class="text-color">No shipping records found. Please create one below.</p>
-                    <?php } ?>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary ms-2" id="create-shipping-info-btn"
+                            onclick="createNewShippingRow()">
+                        Add Shipping Info
+                    </button>
                 </div>
             </div>
         </div>
@@ -116,57 +139,76 @@ $conn->close();
                  data-bs-parent="#accordion">
                 <div class="accordion-body text-color">
                     <h2>Manage Billing Info</h2>
-                    <?php if (count($result_Billing) > 0) { ?>
-                        <table class="table text-color">
-                            <thead>
-                            <tr>
-                                <th scope="col">Card Number</th>
-                                <th scope="col">Name on Card</th>
-                                <th scope="col">Expiry Date</th>
-                                <th scope="col">CVV</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            foreach ($result_Billing as $resultB) {
-                                [$id, $card_num, $card_name, $exp_date, $cvv] = $resultB;
+                    <table class="table text-color">
+                        <thead>
+                        <tr>
+                            <th scope="col">Card Number</th>
+                            <th scope="col">Name on Card</th>
+                            <th scope="col">Expiry Date</th>
+                            <th scope="col">CVV</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody id="billing-tbody">
+                        <?php
+                        foreach ($result_Billing as $resultB) {
+                            [$id, $card_num, $card_name, $exp_date, $cvv] = $resultB;
 
-                                ?>
-                                <tr>
-                                    <form action="user_homepage_inner.php?username=<?php echo $username ?>">
-                                        <td><input type="text" id="<?php echo $card_num; ?>"
-                                                   class="form-control card_num" value="<?php echo $card_num; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $card_name; ?>"
-                                                   class="form-control card_name" value="<?php echo $card_name; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $exp_date; ?>"
-                                                   class="form-control exp_date"
-                                                   value="<?php echo $exp_date; ?>"
-                                                   readonly/></td>
-                                        <td><input type="text" id="<?php echo $cvv; ?>"
-                                                   class="form-control cvv" value="<?php echo $cvv; ?>"
-                                                   readonly/></td>
-                                        <td>
-                                            <button type="button" class="btn-empty"><img
-                                                        src="../static/close_black_24dp.svg"
-                                                        alt="Delete Record"/></button>
-                                            <button type="button" class="btn-empty"><img
-                                                        src="../static/mode_edit_black_24dp.svg"
-                                                        alt="Edit Record"/></button>
-                                            <button type="submit" class="btn-empty"><img
-                                                        src="../static/check_black_24dp.svg"
-                                                        alt="Confirm Edit"/></button>
-                                        </td>
-                                    </form>
-                                </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
-                    <?php } else { ?>
-                        <p class="text-color">No billing records found. Please create one below.</p>
-                    <?php } ?>
+                            ?>
+                            <tr id="billing-info-<?php echo $id ?>">
+                                <td>
+                                    <input type="text"
+                                           name="card_num"
+                                           class="form-control"
+                                           value="<?php echo $card_num; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="card_name"
+                                           class="form-control"
+                                           value="<?php echo $card_name; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="exp_date"
+                                           class="form-control"
+                                           value="<?php echo $exp_date; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="cvv"
+                                           class="form-control"
+                                           value="<?php echo $cvv; ?>"
+                                           readonly/>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn-empty delete-record"
+                                            onclick="deleteRecord('billing-info-<?php echo $id ?>', 1)">
+                                        <img src="../static/close_black.svg"
+                                             alt="Delete Record"/>
+                                    </button>
+                                    <button type="button" class="btn-empty toggle-edit-record"
+                                            onclick="toggleRecordEditable('billing-info-<?php echo $id ?>')">
+                                        <img src="../static/edit_black.svg"
+                                             alt="Edit Record"/>
+                                    </button>
+                                    <button type="submit" class="btn-empty confirm-edit-record"
+                                            onclick="confirmRecordEdit('billing-info-<?php echo $id ?>', 1)">
+                                        <img src="../static/check_black.svg"
+                                             alt="Confirm Edit"/>
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary ms-2" id="create-billing-info-btn"
+                            onclick="createNewBillingRow()">
+                        Add Billing Info
+                    </button>
                 </div>
             </div>
         </div>
