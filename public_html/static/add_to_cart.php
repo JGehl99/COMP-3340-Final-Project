@@ -3,6 +3,7 @@ include_once("config.php");
 
 $data = json_decode(file_get_contents('php://input'), true);
 
+session_start();
 $username = $_SESSION['username'];
 $product_id = $data['pk'];
 $quantity = $data['quantity'];
@@ -15,6 +16,11 @@ if ($conn->connect_error) {
     die("Connection failed: " + $conn->connect_error);
 }
 
+// Check that all the fields are not empty
+if (!isset($username) || !isset($product_id) || !isset($quantity)) {
+    exit();
+}
+
 // Check to see if product already exists in cart
 $sql = "SELECT quantity FROM CART_ITEM WHERE username=? AND productID=?;";
 $stmt = $conn->prepare($sql);
@@ -24,12 +30,12 @@ $result = $stmt->get_result();
 $stmt->close();
 
 if (!empty($result->fetch_assoc()['quantity'])) {
-    //if product is already in cart
+//if product is already in cart
     $sql = "UPDATE CART_ITEM SET quantity=? WHERE username=? AND productID=?;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("isi", $quantity, $username, $product_id);
 } else {
-    //if product is not already in cart
+//if product is not already in cart
     $sql = "INSERT INTO CART_ITEM (username, productID, quantity) VALUES (?, ?, ?);";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sii", $username, $product_id, $quantity);

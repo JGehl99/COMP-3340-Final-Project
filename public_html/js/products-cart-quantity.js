@@ -84,7 +84,7 @@ for (let productLink of productLinks) {
 function addToCart(e) {
     let id = e.target.dataset.field;
     if (!id) id = e.target.parentElement.dataset.field;
-    const amt = document.getElementById(id + '-amt');
+    const amt = document.getElementById(id + '-amt').value;
     const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onload = () => {
