@@ -345,9 +345,9 @@ function confirmAddNewRecord(recordType, username)
 
 function validateShippingInput(rowEl)
 {
-    // Street Number should be between 0 and 255 characters
+    // Street Number should be between 1 and 255 characters
     const street_num = rowEl.querySelector('input[name=\'street_num\']').value;
-    if (street_num.length < 0 || street_num.length > 255) return false;
+    if (street_num.length < 1 || street_num.length > 255) return false;
 
     // Street Name should be between 5 and 255 characters
     const street_name = rowEl.querySelector('input[name=\'street_name\']').value;
@@ -361,7 +361,7 @@ function validateShippingInput(rowEl)
     const province = rowEl.querySelector('input[name=\'province\']').value;
     if (province.length < 5 || province.length > 255) return false;
 
-    // Postal Code should be 6 characters and match the format A1A 1A1
+    // Postal Code should be 6 characters and match the format A1A 1A1 (optional space in the middle)
     const postal_code = rowEl.querySelector('input[name=\'postal_code\']').value;
     const regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d$/;
     if (!postal_code.match(regex)) return false;
