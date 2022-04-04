@@ -64,7 +64,7 @@ $conn->close();
                         foreach ($result_Shipping as $resultS) {
                             [$id, $street_num, $street_name, $city, $province, $postal_code] = $resultS;
                             ?>
-                            <tr id="shipping-info-<?php echo $id ?>">
+                            <tr id="shipping-<?php echo $id ?>">
                                 <td>
                                     <input type="text"
                                            name="street_num"
@@ -102,17 +102,17 @@ $conn->close();
                                 </td>
                                 <td>
                                     <button type="button" class="btn-empty delete-record"
-                                            onclick="deleteRecord('shipping-info-<?php echo $id ?>', 0)">
+                                            onclick="deleteRecord('shipping-<?php echo $id ?>', 0)">
                                         <img src="../static/close_black.svg"
                                              alt="Delete Record"/>
                                     </button>
                                     <button type="button" class="btn-empty toggle-edit-record"
-                                            onclick="toggleRecordEditable('shipping-info-<?php echo $id ?>')">
+                                            onclick="toggleRecordEditable('shipping-<?php echo $id ?>')">
                                         <img src="../static/edit_black.svg"
                                              alt="Edit Record"/>
                                     </button>
                                     <button type="submit" class="btn-empty confirm-edit-record"
-                                            onclick="confirmRecordEdit('shipping-info-<?php echo $id ?>', 0)">
+                                            onclick="confirmRecordEdit('shipping-<?php echo $id ?>', 0)">
                                         <img src="../static/check_black.svg"
                                              alt="Confirm Edit"/>
                                     </button>
@@ -121,8 +121,8 @@ $conn->close();
                         <?php } ?>
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary ms-2" id="create-shipping-info-btn"
-                            onclick="createNewShippingRow()">
+                    <button type="button" class="btn btn-primary ms-2" id="create-shipping-btn"
+                            onclick="createNewShippingRow('<?php echo $username ?>')">
                         Add Shipping Info
                     </button>
                 </div>
@@ -155,7 +155,7 @@ $conn->close();
                             [$id, $card_num, $card_name, $exp_date, $cvv] = $resultB;
 
                             ?>
-                            <tr id="billing-info-<?php echo $id ?>">
+                            <tr id="billing-<?php echo $id ?>">
                                 <td>
                                     <input type="text"
                                            name="card_num"
@@ -186,17 +186,17 @@ $conn->close();
                                 </td>
                                 <td>
                                     <button type="button" class="btn-empty delete-record"
-                                            onclick="deleteRecord('billing-info-<?php echo $id ?>', 1)">
+                                            onclick="deleteRecord('billing-<?php echo $id ?>', 1)">
                                         <img src="../static/close_black.svg"
                                              alt="Delete Record"/>
                                     </button>
                                     <button type="button" class="btn-empty toggle-edit-record"
-                                            onclick="toggleRecordEditable('billing-info-<?php echo $id ?>')">
+                                            onclick="toggleRecordEditable('billing-<?php echo $id ?>')">
                                         <img src="../static/edit_black.svg"
                                              alt="Edit Record"/>
                                     </button>
                                     <button type="submit" class="btn-empty confirm-edit-record"
-                                            onclick="confirmRecordEdit('billing-info-<?php echo $id ?>', 1)">
+                                            onclick="confirmRecordEdit('billing-<?php echo $id ?>', 1)">
                                         <img src="../static/check_black.svg"
                                              alt="Confirm Edit"/>
                                     </button>
@@ -205,8 +205,8 @@ $conn->close();
                         <?php } ?>
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary ms-2" id="create-billing-info-btn"
-                            onclick="createNewBillingRow()">
+                    <button type="button" class="btn btn-primary ms-2" id="create-billing-btn"
+                            onclick="createNewBillingRow('<?php echo $username ?>')">
                         Add Billing Info
                     </button>
                 </div>
@@ -299,7 +299,7 @@ $conn->close();
                         <tbody>
                         <tr>
                             <td>Card Number</td>
-                            <td>Length of 16 digits.</td>
+                            <td>16 digits.</td>
                         </tr>
                         <tr>
                             <td>Name on Card</td>
@@ -312,7 +312,7 @@ $conn->close();
 
                         <tr>
                             <td>CVV</td>
-                            <td>3 characters in length, found on back of card.</td>
+                            <td>3 digits.</td>
                         </tr>
                         </tbody>
                     </table>

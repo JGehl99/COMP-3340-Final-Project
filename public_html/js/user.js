@@ -36,7 +36,6 @@ function deleteRecord(rowId, recordType)
     }
 }
 
-// TODO
 function toggleRecordEditable(rowId)
 {
     const rowEl = document.getElementById(rowId);
@@ -60,12 +59,12 @@ function confirmRecordEdit(rowId, recordType)
     const rowEl = document.getElementById(rowId);
 
     // First, validate the input
-    if (recordType === 0 && !validateAccountInput(rowEl, false)) {
-        console.log('Invalid account input.');
+    if (recordType === 0 && !validateShippingInput(rowEl)) {
+        console.log('Invalid shipping info.');
         toggleRecordEditable(rowId);
         return;
-    } else if (recordType === 1 && !validateProductInput(rowEl)) {
-        console.log('Invalid product input.');
+    } else if (recordType === 1 && !validateBillingInput(rowEl)) {
+        console.log('Invalid billing info.');
         toggleRecordEditable(rowId);
         return;
     }
@@ -103,12 +102,6 @@ function updateRecord(rowId, changedFields, recordType)
         if (xhttp.readyState === 4) {
             if (xhttp.status === 200) {
                 console.log('updateRecord response: ' + xhttp.responseText);
-                if (recordType === 0 && 'username' in changedFields) {
-                    updateRowData(rowId, changedFields['username'], 0);
-                }
-                // NOTE: The primary key of the products cannot be changed since "id" is not a field in the UI table.
-                // Hence, we don't need to call updateRowData to make fixes (which only happens when an admin user
-                // edits a primary key
             } else if (xhttp.status === 500) {
                 console.log('updateRecord error: ' + xhttp.responseText);
             }
@@ -123,9 +116,9 @@ function updateRecord(rowId, changedFields, recordType)
 
     let url = '';
     if (recordType === 0) {
-        url = '../static/update_account.php';
+        url = '../static/update_shipping.php';
     } else if (recordType === 1) {
-        url = '../static/update_product.php';
+        url = '../static/update_billing.php';
     }
 
     if (url.length > 0) {
@@ -138,21 +131,9 @@ function updateRecord(rowId, changedFields, recordType)
 }
 
 // TODO
-// If the primary key of a record is changed, some fields within that row on the UI need to be edited
-function updateRowData(rowId, newRowId)
+function createNewShippingRow(username)
 {
-    const rowEl = document.getElementById(rowId);
-    rowEl.id = newRowId;
-    const buttonsTd = rowEl.lastElementChild;
-    buttonsTd.querySelector('.delete-record').onclick = () => deleteRecord(newRowId, 0);
-    buttonsTd.querySelector('.toggle-edit-record').onclick = () => toggleRecordEditable(newRowId);
-    buttonsTd.querySelector('.confirm-edit-record').onclick = () => confirmRecordEdit(newRowId, 0);
-}
-
-// TODO
-function createNewShippingRow()
-{
-    // Don't let the admin click create account before finishing an account they are already creating.
+    // Don't let the admin click add shipping info before finishing a record they are already creating.
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
     if (document.getElementById('new-shipping') !== null) {
         console.log('Already creating new shipping record.');
@@ -160,7 +141,7 @@ function createNewShippingRow()
     }
 
     // Hide the button (show again by removing the class)
-    document.getElementById('create-shipping-info-btn').classList.add('d-none');
+    document.getElementById('create-shipping-btn').classList.add('d-none');
 
     const tbody = document.getElementById('shipping-tbody');
     const newShippingRow = document.createElement('tr');
@@ -205,7 +186,7 @@ function createNewShippingRow()
                      class="delete_icon"/>
             </button>
             <button type="button" class="btn-empty confirm-add-record"
-                    onclick="confirmAddNewRecord(0)">
+                    onclick="confirmAddNewRecord(0, '${username}')">
                 <img src="../static/check_black.svg"
                      alt="Confirm"
                      class="confirm_icon"/>
@@ -216,9 +197,9 @@ function createNewShippingRow()
 }
 
 // TODO
-function createNewBillingRow()
+function createNewBillingRow(username)
 {
-    // Don't let the admin click create account before finishing an account they are already creating.
+    // Don't let the admin click add billing info before finishing a record they are already creating.
     // NOTE: this should never happen since the button should be hidden once clicked. This check is made just in case.
     if (document.getElementById('new-billing') !== null) {
         console.log('Already creating new billing record.');
@@ -226,7 +207,7 @@ function createNewBillingRow()
     }
 
     // Hide the button (show again by removing the class)
-    document.getElementById('create-billing-info-btn').classList.add('d-none');
+    document.getElementById('create-billing-btn').classList.add('d-none');
 
     const tbody = document.getElementById('billing-tbody');
     const newBillingRow = document.createElement('tr');
@@ -265,7 +246,7 @@ function createNewBillingRow()
                      class="delete_icon"/>
             </button>
             <button type="button" class="btn-empty confirm-add-record"
-                    onclick="confirmAddNewRecord(1)">
+                    onclick="confirmAddNewRecord(1, '${username}')">
                 <img src="../static/check_black.svg"
                      alt="Confirm"
                      class="confirm_icon"/>
@@ -282,10 +263,10 @@ function cancelAddNewRecord(recordType)
     let btnEl;
     if (recordType === 0) {
         rowEl = document.getElementById('new-shipping');
-        btnEl = document.getElementById('create-shipping-info-btn');
+        btnEl = document.getElementById('create-shipping-btn');
     } else if (recordType === 1) {
         rowEl = document.getElementById('new-billing');
-        btnEl = document.getElementById('create-billing-info-btn');
+        btnEl = document.getElementById('create-billing-btn');
     } else {
         return;
     }
@@ -296,7 +277,7 @@ function cancelAddNewRecord(recordType)
 }
 
 // TODO
-function confirmAddNewRecord(recordType)
+function confirmAddNewRecord(recordType, username)
 {
     let rowEl;
     let btnEl;
@@ -304,8 +285,8 @@ function confirmAddNewRecord(recordType)
     // Validate input
     if (recordType === 0) {
         rowEl = document.getElementById('new-shipping');
-        btnEl = document.getElementById('create-shipping-info-btn');
-        if (validateShippingInput(rowEl, true)) {
+        btnEl = document.getElementById('create-shipping-btn');
+        if (validateShippingInput(rowEl)) {
             url = '../static/add_shipping.php';
         } else {
             console.log('Invalid shipping input.');
@@ -313,8 +294,8 @@ function confirmAddNewRecord(recordType)
         }
     } else if (recordType === 1) {
         rowEl = document.getElementById('new-billing');
-        btnEl = document.getElementById('create-billing-info-btn');
-        if (validateProductInput(rowEl)) {
+        btnEl = document.getElementById('create-billing-btn');
+        if (validateBillingInput(rowEl)) {
             url = '../static/add_billing.php';
         } else {
             console.log('Invalid billing input.');
@@ -327,7 +308,7 @@ function confirmAddNewRecord(recordType)
 
     // Get the fields
     const tds = rowEl.children;
-    let fields = {};
+    let fields = { username: username };
     for (let i = 0; i < tds.length - 1; ++i) {
         const inputEl = tds[i].firstElementChild;
         // Make the input readonly
@@ -362,8 +343,7 @@ function confirmAddNewRecord(recordType)
     xhttp.send(JSON.stringify(fields));
 }
 
-// TODO
-function validateShippingInput(rowEl, isNewAccount)
+function validateShippingInput(rowEl)
 {
     // Street Number should be between 0 and 255 characters
     const street_num = rowEl.querySelector('input[name=\'street_num\']').value;
@@ -383,39 +363,37 @@ function validateShippingInput(rowEl, isNewAccount)
 
     // Postal Code should be 6 characters and match the format A1A 1A1
     const postal_code = rowEl.querySelector('input[name=\'postal_code\']').value;
-    const regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d$/
+    const regex = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d$/;
     if (!postal_code.match(regex)) return false;
 
 
     return true;
 }
 
-// TODO
 function validateBillingInput(rowEl)
 {
-    // name should be <= 255 characters
-    const name = rowEl.querySelector('input[name=\'product_name\']').value;
-    if (name.length < 0 || name.length > 255) return false;
+    // cardNum should be 16 digits
+    const cardNum = rowEl.querySelector('input[name=\'card_num\']').value;
+    let regex = /^[0-9]{16}$/;
+    if (!cardNum.match(regex)) return false;
 
-    // description should be <= 1024 characters
-    const description = rowEl.querySelector('input[name=\'description\']').value;
-    if (description.length < 0 || description.length > 1024) return false;
+    // cardName should be between 1 and 255 characters
+    const cardName = rowEl.querySelector('input[name=\'card_name\']').value;
+    if (cardName.length < 1 || cardName.length > 255) return false;
 
-    // imageURL should at least contain https://a.ca (12 chars)
-    // I know this check is bad, but it's better than nothing (:
-    // imageURL should also be less than 100 characters
-    const imageURL = rowEl.querySelector('input[name=\'image_url\']').value;
-    if (imageURL.length < 12 || imageURL.length > 100) return false;
+    // Expiry date should be MM/YY, with an optional space on both sides of the /
+    const expDate = rowEl.querySelector('input[name=\'exp_date\']').value;
+    regex = /^((0[1-9])|(1[0-2]))[ ]?\/[ ]?[0-9]{2}$/;
+    if (!expDate.match(regex)) return false;
 
-    // price should be a decimal number with at most 6 digits and 2 decimal places (i.e., in SQL: DECIMAL(6,2))
-    // So: price should be non-negative and < 10000
-    const price = parseFloat(rowEl.querySelector('input[name=\'price\']').value);
-    if (isNaN(price) || price < 0 || price > 9999) return false;
+    // cvv should be 3 digits
+    const cvv = rowEl.querySelector('input[name=\'cvv\']').value;
+    regex = /^[0-9]{3}$/;
+    if (!cvv.match(regex)) return false;
 
     return true;
 }
 
-// TODO
 // After a new record is added, some things need to be updated in the markup
 function updateNewRowData(rowEl, btnEl, responseId, recordType)
 {
