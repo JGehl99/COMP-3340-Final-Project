@@ -50,7 +50,8 @@ const amtInput = document.getElementById('item-amt');
 amtInput.onblur = validateAmt;
 
 function addToCart(e) {
-    const id = e.target.dataset.field;
+    let id = e.target.dataset.field;
+    if (!id) id = e.target.parentElement.dataset.field;
     const amt = document.getElementById('item-amt');
     const xmlhttp = new XMLHttpRequest();
 
