@@ -25,7 +25,7 @@ $conn->close();
 
 <body class="page-background">
 <?php include('navbar.php'); ?>
-<div class="container d-flex justify-content-center pb-5">
+<div class="container d-flex justify-content-center pb-5 min_height">
     <?php
     // Generating the product cards
     if (count($products) > 0) { ?>
@@ -42,8 +42,9 @@ $conn->close();
 
             // Create the card for the item ?>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 pt-5">
-                <a href="#" class="card h-100 hover_expand text-decoration-none background text-color product-link"
-                   item-id="<?php echo $id; ?>">
+                <a href="#"
+                   class="card h-100 hover_expand cursor_pointer text-decoration-none background text-color product-link shadow"
+                   data-item-id="<?php echo $id; ?>">
                     <img class="card-img-top p-4" src="<?php echo $imageURL; ?>" alt="<?php echo $name; ?>"/>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $name; ?></h5>
@@ -81,13 +82,13 @@ $conn->close();
                             <div class="input-group" data-no-link style="width: 9rem;">
                                 <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt"
                                         data-field="<?php echo $id; ?>-amt">
-                                    <img class="add_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
+                                    <img class="sub_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
                                 </button>
                                 <input type="text" id="<?php echo $id; ?>-amt" class="form-control amt" value="0"
                                        min="0" max="100"/>
                                 <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt"
                                         data-field="<?php echo $id; ?>-amt">
-                                    <img class="sub_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
+                                    <img class="add_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
                                 </button>
                             </div>
                             <span class="mx-2"></span>

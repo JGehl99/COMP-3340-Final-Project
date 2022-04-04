@@ -75,8 +75,8 @@ function linkToProduct(e)
         el = el.parentElement;
     }
 
-    if (el.nodeName.toLowerCase() !== null && el.hasAttribute('item-id')) {
-        window.location.href = `product.php?item-id=${el.getAttribute('item-id')}`;
+    if (el.nodeName.toLowerCase() !== null && el.hasAttribute('data-item-id')) {
+        window.location.href = `product.php?item-id=${el.getAttribute('data-item-id')}`;
     }
 }
 
