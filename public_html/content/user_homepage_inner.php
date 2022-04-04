@@ -33,8 +33,6 @@ $stmt2->close();
 $conn->close();
 ?>
 
-
-
 <div class="row mb-5">
     <h1 class="text-color">User Account</h1>
     <div class="accordion" id="accordion">
@@ -185,12 +183,16 @@ $conn->close();
                     <h2>Shipping</h2>
                     <p>Expand the first dropdown to manage saved shipping addresses.</p>
                     <h3>Adding a Shipping Record</h3>
-                    <p>To add a shipping address click the Create Record button. Make sure to enter all fields for the address and then click the check mark
-                        button to save the record. See the "Field Constraints" section below for input validation details.
+                    <p>To add a shipping address click the Create Record button. Make sure to enter all fields for the
+                        address and then click the check mark
+                        button to save the record. See the "Field Constraints" section below for input validation
+                        details.
                     </p>
                     <h3>Modifying a Shipping Record</h3>
-                    <p>To modify an existing address, click the pencil button for the desired address to allow editing. Change the fields that need to be changed
-                        and then click the check mark button to accept the changes. Note: Not all fields need to be changed but at least one must be changed in order
+                    <p>To modify an existing address, click the pencil button for the desired address to allow editing.
+                        Change the fields that need to be changed
+                        and then click the check mark button to accept the changes. Note: Not all fields need to be
+                        changed but at least one must be changed in order
                         to confirm the edit. See the "Field Constraints" section below for input validation details.
                     </p>
                     <h3>Deleting a Shipping Record</h3>
@@ -230,12 +232,16 @@ $conn->close();
                     <h2>Billing</h2>
                     <p>Expand the second dropdown to manage saved billing records.</p>
                     <h3>Adding a Billing Record</h3>
-                    <p>To add a billing record click the Create Record button. Make sure to enter all fields and then click the check mark
-                        button to save the record. See the "Field Constraints" section below for input validation details.
+                    <p>To add a billing record click the Create Record button. Make sure to enter all fields and then
+                        click the check mark
+                        button to save the record. See the "Field Constraints" section below for input validation
+                        details.
                     </p>
                     <h3>Modifying a Billing Record</h3>
-                    <p>To modify an existing record, click the pencil button for the desired record to allow editing. Change the fields that need to be changed
-                        and then click the check mark button to accept the changes. Note: Not all fields need to be changed but at least one must be changed in order
+                    <p>To modify an existing record, click the pencil button for the desired record to allow editing.
+                        Change the fields that need to be changed
+                        and then click the check mark button to accept the changes. Note: Not all fields need to be
+                        changed but at least one must be changed in order
                         to confirm the edit. See the "Field Constraints" section below for input validation details.
                     </p>
                     <h3>Deleting a Billing Record</h3>
