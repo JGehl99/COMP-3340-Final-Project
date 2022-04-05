@@ -35,6 +35,9 @@
                         <li>
                             <a href="contact_us.php" class="link-color">Contact Us</a>
                         </li>
+                        <li>
+                            <a href="dataset.php" class="link-color">Climate Action</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
