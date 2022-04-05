@@ -37,14 +37,14 @@ $conn->close();
     <h1 class="text-color">User Account</h1>
     <div class="accordion rounded-5" id="accordion">
         <div class="accordion-item background card_border shadow">
-            <h2 class="accordion-header" id="headingOne">
+            <h2 class="accordion-header" id="userHeadingOne">
                 <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
+                        data-bs-target="#userCollapseOne"
+                        aria-expanded="true" aria-controls="userCollapseOne">
                     Shipping Info
                 </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            <div id="userCollapseOne" class="accordion-collapse collapse" aria-labelledby="userHeadingOne"
                  data-bs-parent="#accordion">
                 <div class="accordion-body text-color">
                     <h2>Manage Shipping Infos</h2>
@@ -132,13 +132,13 @@ $conn->close();
             </div>
         </div>
         <div class="accordion-item background card_border shadow">
-            <h2 class="accordion-header" id="headingTwo">
+            <h2 class="accordion-header" id="userHeadingTwo">
                 <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        data-bs-target="#userCollapseTwo" aria-expanded="false" aria-controls="userCollapseTwo">
                     Billing Info
                 </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            <div id="userCollapseTwo" class="accordion-collapse collapse" aria-labelledby="userHeadingTwo"
                  data-bs-parent="#accordion">
                 <div class="accordion-body text-color">
                     <h2>Manage Billing Info</h2>
@@ -219,13 +219,13 @@ $conn->close();
             </div>
         </div>
         <div class="accordion-item background card_border shadow">
-            <h2 class="accordion-header" id="headingThree">
+            <h2 class="accordion-header" id="userHeadingThree">
                 <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        data-bs-target="#userCollapseThree" aria-expanded="false" aria-controls="userCollapseThree">
                     Documentation
                 </button>
             </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            <div id="userCollapseThree" class="accordion-collapse collapse" aria-labelledby="userHeadingThree"
                  data-bs-parent="#accordion">
                 <div class="accordion-body text-color">
                     <h2>Shipping</h2>
