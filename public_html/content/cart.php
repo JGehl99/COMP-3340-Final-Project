@@ -39,6 +39,7 @@ $stmt->close();
                 <table class="table text-color">
                     <thead>
                     <tr>
+                        <td></td>
                         <td>Product</td>
                         <td></td>
                         <td>Price</td>
@@ -62,6 +63,13 @@ $stmt->close();
                         $price = $result['price'];
                         // Create the row for the item ?>
                         <tr id="row-<?php echo $productID; ?>" class="align-middle px-3">
+                            <td>
+                                <button type="button"
+                                        class="btn btn-secondary d-flex align-items-center remove-item"
+                                        data-field="<?php echo $productID; ?>">
+                                    <img class="delete_icon" src="../static/close_black.svg" alt="Remove Item"/>
+                                </button>
+                            </td>
                             <td><img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-20"/></td>
                             <td><?php echo $name . ' (id: ' . $productID . ')'; ?></td>
                             <td><?php echo $price ?></td>

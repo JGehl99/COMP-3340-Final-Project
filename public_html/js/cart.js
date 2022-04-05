@@ -41,6 +41,16 @@ function deleteCartItem(id) {
     xmlhttp.send(JSON.stringify({pk: id}));
 }
 
+function deleteItemClick(button) {
+    const id = button.getAttribute('data-field');
+    deleteCartItem(id);
+}
+
+const deleteButtons = document.querySelectorAll('.remove-item');
+for (let button of deleteButtons) {
+    button.onclick = () => deleteItemClick(button);
+}
+
 // Events for all the decrease quantity buttons
 function decreaseAmt(e, button) {
     e.preventDefault();
