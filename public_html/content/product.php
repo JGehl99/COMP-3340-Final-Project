@@ -25,7 +25,7 @@ if (empty($item_id)) {
 
 $sql = "SELECT id, name, description, imageURL, price, rating, numRatings FROM PRODUCT WHERE id =?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("d", $item_id);
+$stmt->bind_param("i", $item_id);
 $stmt->execute();
 $result = $stmt->get_result()->fetch_all();
 $stmt->close();
@@ -86,13 +86,15 @@ $conn->close();
                                     <div class="input-group" style="width: 9rem;">
                                         <button type="button" class="btn btn-secondary d-flex align-items-center"
                                                 id="decrease-amt">
-                                            <img class="sub_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
+                                            <img class="sub_icon" src="../static/sub_black.svg"
+                                                 alt="Decrease Quantity"/>
                                         </button>
                                         <input type="text" id="item-amt" class="form-control amt" value="0" min="0"
                                                max="100"/>
                                         <button type="button" class="btn btn-secondary d-flex align-items-center"
                                                 id="increase-amt">
-                                            <img class="add_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
+                                            <img class="add_icon" src="../static/add_black.svg"
+                                                 alt="Increase Quantity"/>
                                         </button>
                                     </div>
                                 </div>
