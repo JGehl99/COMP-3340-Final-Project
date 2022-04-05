@@ -61,8 +61,9 @@ $stmt->close();
                         $name = $result['name'];
                         $imageURL = $result['imageURL'];
                         $price = $result['price'];
+                        $subtotal = number_format($quantity * $price, 2);
                         // Create the row for the item ?>
-                        <tr id="row-<?php echo $productID; ?>" class="align-middle px-3">
+                        <tr id="<?php echo $productID; ?>-row" class="align-middle px-3">
                             <td>
                                 <button type="button"
                                         class="btn btn-secondary d-flex align-items-center remove-item"
@@ -72,7 +73,7 @@ $stmt->close();
                             </td>
                             <td><img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-20"/></td>
                             <td><?php echo $name . ' (id: ' . $productID . ')'; ?></td>
-                            <td><?php echo $price ?></td>
+                            <td>$<?php echo number_format($price, 2); ?></td>
                             <td>
                                 <div class="input-group" data-no-link style="width: 9rem;">
                                     <button type="button"
@@ -90,7 +91,8 @@ $stmt->close();
                                     </button>
                                 </div>
                             </td>
-                            <td>*subtotal here*</td>
+                            <td id="<?php echo $productID; ?>-subtotal" data-field="<?php echo $price; ?>">
+                                $<?php echo $subtotal; ?></td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -120,7 +122,8 @@ $stmt->close();
                 </table>
             </div>
             <div class="col-12 p-2">
-                <button type="button" class="btn btn-primary d-flex align-items-center">Proceed To Checkout
+                <button id="checkout" type="button" class="btn btn-primary d-flex align-items-center">Proceed To
+                    Checkout
                 </button>
             </div>
         </div>

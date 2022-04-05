@@ -1,6 +1,13 @@
-function updateQuantity(id, amt) {
+function updateCart() {
     const xmlhttp = new XMLHttpRequest();
 
+    const amts = document.querySelectorAll('.amt');
+    let ids = [];
+    let quantities = [];
+    for (let amt of amts) {
+        ids.push(amt.getAttribute('data-field'));
+        quantities.push(amt.value);
+    }
     xmlhttp.onload = () => {
         if (xmlhttp.readyState === 4) {
             if (xmlhttp.status === 200) {
@@ -12,12 +19,12 @@ function updateQuantity(id, amt) {
     }
     xmlhttp.open("POST", "../services/update_cart_quantity.php");
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+    xmlhttp.send(JSON.stringify({pks: ids, quantities: quantities}));
 }
 
 function deleteCartItem(id) {
     if (!confirm('Are you sure you want to remove this item from your cart?')) return;
-    const rowEl = document.getElementById('row-' + id);
+    const rowEl = document.getElementById(id + '-row');
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = () => {
         if (xmlhttp.readyState === 4) {
@@ -59,7 +66,11 @@ function decreaseAmt(e, button) {
     const amt = parseInt(amtEl.value);
     if (amt > 1) {
         amtEl.value = amt - 1;
-        updateQuantity(id, amtEl.value);
+        const subEl = document.getElementById(id + '-subtotal');
+        subEl.innerHTML = '$' + (subEl.getAttribute('data-field') * amtEl.value).toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
     } else if (amt === 1) {
         deleteCartItem(id);
     }
@@ -78,7 +89,11 @@ function increaseAmt(e, button) {
     const amt = parseInt(amtEl.value);
     if (amt < 100) {
         amtEl.value = amt + 1;
-        updateQuantity(id, amtEl.value);
+        const subEl = document.getElementById(id + '-subtotal');
+        subEl.innerHTML = '$' + (subEl.getAttribute('data-field') * amtEl.value).toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
     } else {
         alert('Quantity must be less than 100.');
     }
@@ -101,7 +116,11 @@ function validateAmt(e, input) {
         alert('Quantity must be less than 100.');
     } else {
         input.value = amt;
-        updateQuantity(input.getAttribute('data-field'), amt);
+        const subEl = document.getElementById(input.getAttribute('data-field') + '-subtotal');
+        subEl.innerHTML = '$' + (subEl.getAttribute('data-field') * amt).toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
     }
 }
 
@@ -135,3 +154,10 @@ const productLinks = document.querySelectorAll('.product-link');
 for (let productLink of productLinks) {
     productLink.onclick = linkToProduct;
 }
+
+function checkout() {
+    updateCart();
+}
+
+const checkoutButton = document.getElementById('checkout');
+checkoutButton.onclick = () => checkout();
