@@ -16,9 +16,9 @@ if ($conn->connect_error) {
 $response = new stdClass();
 
 $sql = '';
-if($record_type === 0){
+if ($record_type === 2) {
     $sql = 'SELECT COUNT(*) AS count FROM SHIPPING_INFO WHERE username = ?;';
-}else if($record_type === 1){
+} else if ($record_type === 3) {
     $sql = 'SELECT COUNT(*) AS count FROM BILLING_INFO WHERE username = ?;';
 }
 

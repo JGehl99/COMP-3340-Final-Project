@@ -1,5 +1,4 @@
-// TODO
-function deleteRecord(rowId, recordType)
+function userDeleteRecord(rowId, recordType)
 {
     const rowEl = document.getElementById(rowId);
     let btnEl;
@@ -22,10 +21,10 @@ function deleteRecord(rowId, recordType)
 
     // Send a request
     let url = '';
-    if (recordType === 0) {
+    if (recordType === 2) {
         url = '../static/delete_shipping.php';
         btnEl = document.getElementById('create-shipping-btn');
-    } else if (recordType === 1) {
+    } else if (recordType === 3) {
         url = '../static/delete_billing.php';
         btnEl = document.getElementById('create-billing-btn');
     }
@@ -38,12 +37,9 @@ function deleteRecord(rowId, recordType)
     } else {
         console.error('Cannot delete record: invalid record type.');
     }
-
-
-
 }
 
-function toggleRecordEditable(rowId)
+function userToggleRecordEditable(rowId)
 {
     const rowEl = document.getElementById(rowId);
     const tds = rowEl.children;
@@ -60,19 +56,18 @@ function toggleRecordEditable(rowId)
     }
 }
 
-// TODO
-function confirmRecordEdit(rowId, recordType)
+function userConfirmRecordEdit(rowId, recordType)
 {
     const rowEl = document.getElementById(rowId);
 
     // First, validate the input
-    if (recordType === 0 && !validateShippingInput(rowEl)) {
+    if (recordType === 2 && !validateShippingInput(rowEl)) {
         console.log('Invalid shipping info.');
-        toggleRecordEditable(rowId);
+        userToggleRecordEditable(rowId);
         return;
-    } else if (recordType === 1 && !validateBillingInput(rowEl)) {
+    } else if (recordType === 3 && !validateBillingInput(rowEl)) {
         console.log('Invalid billing info.');
-        toggleRecordEditable(rowId);
+        userToggleRecordEditable(rowId);
         return;
     }
 
@@ -94,12 +89,11 @@ function confirmRecordEdit(rowId, recordType)
     // If any fields have been changed, send them to updateRecord()
     const recordChanged = Object.keys(changedFields).length !== 0;
     if (recordChanged) {
-        updateRecord(rowId, changedFields, recordType);
+        userUpdateRecord(rowId, changedFields, recordType);
     }
 }
 
-// TODO
-function updateRecord(rowId, changedFields, recordType)
+function userUpdateRecord(rowId, changedFields, recordType)
 {
     // Create an XMLHttpRequest object
     const xhttp = new XMLHttpRequest();
@@ -122,9 +116,9 @@ function updateRecord(rowId, changedFields, recordType)
     };
 
     let url = '';
-    if (recordType === 0) {
+    if (recordType === 2) {
         url = '../static/update_shipping.php';
-    } else if (recordType === 1) {
+    } else if (recordType === 3) {
         url = '../static/update_billing.php';
     }
 
@@ -137,7 +131,6 @@ function updateRecord(rowId, changedFields, recordType)
     }
 }
 
-// TODO
 function createNewShippingRow(username)
 {
     // Don't let the admin click add shipping info before finishing a record they are already creating.
@@ -187,13 +180,13 @@ function createNewShippingRow(username)
         </td>
         <td>
             <button type="button" class="btn-empty cancel-add-record"
-                    onclick="cancelAddNewRecord(0)">
+                    onclick="userCancelAddNewRecord(2)">
                 <img src="../static/close_black.svg"
                      alt="Cancel"
                      class="delete_icon"/>
             </button>
             <button type="button" class="btn-empty confirm-add-record"
-                    onclick="confirmAddNewRecord(0, '${username}')">
+                    onclick="userConfirmAddNewRecord(2, '${username}')">
                 <img src="../static/check_black.svg"
                      alt="Confirm"
                      class="confirm_icon"/>
@@ -203,7 +196,6 @@ function createNewShippingRow(username)
     tbody.appendChild(newShippingRow);
 }
 
-// TODO
 function createNewBillingRow(username)
 {
     // Don't let the admin click add billing info before finishing a record they are already creating.
@@ -247,13 +239,13 @@ function createNewBillingRow(username)
         </td>
         <td>
             <button type="button" class="btn-empty cancel-add-record"
-                    onclick="cancelAddNewRecord(1)">
+                    onclick="userCancelAddNewRecord(3)">
                 <img src="../static/close_black.svg"
                      alt="Cancel"
                      class="delete_icon"/>
             </button>
             <button type="button" class="btn-empty confirm-add-record"
-                    onclick="confirmAddNewRecord(1, '${username}')">
+                    onclick="userConfirmAddNewRecord(3, '${username}')">
                 <img src="../static/check_black.svg"
                      alt="Confirm"
                      class="confirm_icon"/>
@@ -263,15 +255,14 @@ function createNewBillingRow(username)
     tbody.appendChild(newBillingRow);
 }
 
-// TODO
-function cancelAddNewRecord(recordType)
+function userCancelAddNewRecord(recordType)
 {
     let rowEl;
     let btnEl;
-    if (recordType === 0) {
+    if (recordType === 2) {
         rowEl = document.getElementById('new-shipping');
         btnEl = document.getElementById('create-shipping-btn');
-    } else if (recordType === 1) {
+    } else if (recordType === 3) {
         rowEl = document.getElementById('new-billing');
         btnEl = document.getElementById('create-billing-btn');
     } else {
@@ -283,14 +274,13 @@ function cancelAddNewRecord(recordType)
     btnEl.classList.remove('d-none');
 }
 
-// TODO
-function confirmAddNewRecord(recordType, username)
+function userConfirmAddNewRecord(recordType, username)
 {
     let rowEl;
     let btnEl;
     let url;
     // Validate input
-    if (recordType === 0) {
+    if (recordType === 2) {
         rowEl = document.getElementById('new-shipping');
         btnEl = document.getElementById('create-shipping-btn');
         if (validateShippingInput(rowEl)) {
@@ -299,7 +289,7 @@ function confirmAddNewRecord(recordType, username)
             console.log('Invalid shipping input.');
             return;
         }
-    } else if (recordType === 1) {
+    } else if (recordType === 3) {
         rowEl = document.getElementById('new-billing');
         btnEl = document.getElementById('create-billing-btn');
         if (validateBillingInput(rowEl)) {
@@ -337,7 +327,7 @@ function confirmAddNewRecord(recordType, username)
             const jsonResponse = JSON.parse(xhttp.responseText);
             if (xhttp.status === 200) {
                 console.log('addNewRecord response: ' + jsonResponse);
-                updateNewRowData(rowEl, btnEl, jsonResponse['id'], recordType, username);
+                userUpdateNewRowData(rowEl, btnEl, jsonResponse['id'], recordType, username);
             } else if (xhttp.status === 500) {
                 console.log('addNewRecord error: ' + jsonResponse);
             }
@@ -402,7 +392,7 @@ function validateBillingInput(rowEl)
 }
 
 // After a new record is added, some things need to be updated in the markup
-function updateNewRowData(rowEl, btnEl, responseId, recordType, username)
+function userUpdateNewRowData(rowEl, btnEl, responseId, recordType, username)
 {
     // Set the element ID based on the primary key of the new record
     rowEl.setAttribute('id', responseId);
@@ -417,19 +407,19 @@ function updateNewRowData(rowEl, btnEl, responseId, recordType, username)
     const buttonsTd = rowEl.lastElementChild;
     buttonsTd.innerHTML = `
         <button type="button" class="btn-empty delete-record"
-                onclick="deleteRecord('${responseId}', ${recordType})">
+                onclick="userDeleteRecord('${responseId}', ${recordType})">
             <img src="../static/close_black.svg"
                  alt="Delete Record"
                  class="delete_icon"/>
         </button>
         <button type="button" class="btn-empty toggle-edit-record"
-                onclick="toggleRecordEditable('${responseId}')">
+                onclick="userToggleRecordEditable('${responseId}')">
             <img src="../static/edit_black.svg"
                  alt="Edit Record"
                  class="edit_icon"/>
         </button>
         <button type="button" class="btn-empty confirm-edit-record"
-                onclick="confirmRecordEdit('${responseId}', ${recordType})">
+                onclick="userConfirmRecordEdit('${responseId}', ${recordType})">
             <img src="../static/check_black.svg"
                  alt="Confirm Edit"
                  class="confirm_icon"/>
@@ -440,7 +430,8 @@ function updateNewRowData(rowEl, btnEl, responseId, recordType, username)
 
 }
 
-function checkRecordCount(username, recordType, btnEl){
+function checkRecordCount(username, recordType, btnEl)
+{
     // Create an XMLHttpRequest object
     const xhttp = new XMLHttpRequest();
 
@@ -449,9 +440,9 @@ function checkRecordCount(username, recordType, btnEl){
         if (xhttp.readyState === 4) {
             const jsonResponse = JSON.parse(xhttp.responseText);
             if (xhttp.status === 200) {
-                if(jsonResponse['can_add']) {
+                if (jsonResponse['can_add']) {
                     btnEl.classList.remove('d-none');
-                }else{
+                } else {
                     btnEl.className = 'btn btn-primary ms-2 d-none';
                 }
                 console.log('check_record_count response: ' + jsonResponse);
@@ -463,7 +454,7 @@ function checkRecordCount(username, recordType, btnEl){
 
     // Send a request
     const url = '../static/check_record_count.php';
-    const jsonObj = {username: username, record_type: recordType };
+    const jsonObj = { username: username, record_type: recordType };
 
 
     if (url.length > 0) {

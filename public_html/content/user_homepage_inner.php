@@ -102,19 +102,19 @@ $conn->close();
                                 </td>
                                 <td>
                                     <button type="button" class="btn-empty delete-record"
-                                            onclick="deleteRecord('shipping-<?php echo $id ?>', 0)">
+                                            onclick="userDeleteRecord('shipping-<?php echo $id ?>', 2)">
                                         <img src="../static/close_black.svg"
                                              alt="Delete Record"
                                              class="delete_icon"/>
                                     </button>
                                     <button type="button" class="btn-empty toggle-edit-record"
-                                            onclick="toggleRecordEditable('shipping-<?php echo $id ?>')">
+                                            onclick="userToggleRecordEditable('shipping-<?php echo $id ?>')">
                                         <img src="../static/edit_black.svg"
                                              alt="Edit Record"
                                              class="edit_icon"/>
                                     </button>
                                     <button type="submit" class="btn-empty confirm-edit-record"
-                                            onclick="confirmRecordEdit('shipping-<?php echo $id ?>', 0)">
+                                            onclick="userConfirmRecordEdit('shipping-<?php echo $id ?>', 2)">
                                         <img src="../static/check_black.svg"
                                              alt="Confirm Edit"
                                              class="confirm_icon"/>
@@ -189,19 +189,19 @@ $conn->close();
                                 </td>
                                 <td>
                                     <button type="button" class="btn-empty delete-record"
-                                            onclick="deleteRecord('billing-<?php echo $id ?>', 1)">
+                                            onclick="userDeleteRecord('billing-<?php echo $id ?>', 3)">
                                         <img src="../static/close_black.svg"
                                              alt="Delete Record"
                                              class="delete_icon"/>
                                     </button>
                                     <button type="button" class="btn-empty toggle-edit-record"
-                                            onclick="toggleRecordEditable('billing-<?php echo $id ?>')">
+                                            onclick="userToggleRecordEditable('billing-<?php echo $id ?>')">
                                         <img src="../static/edit_black.svg"
                                              alt="Edit Record"
                                              class="edit_icon"/>
                                     </button>
                                     <button type="submit" class="btn-empty confirm-edit-record"
-                                            onclick="confirmRecordEdit('billing-<?php echo $id ?>', 1)">
+                                            onclick="userConfirmRecordEdit('billing-<?php echo $id ?>', 3)">
                                         <img src="../static/check_black.svg"
                                              alt="Confirm Edit"
                                              class="confirm_icon"/>
@@ -330,6 +330,6 @@ $conn->close();
 </div>
 <script src="../js/user.js"></script>
 <script>
-    checkRecordCount('<?php echo $username?>', 0, document.getElementById('create-shipping-btn'));
-    checkRecordCount('<?php echo $username?>', 1, document.getElementById('create-billing-btn'));
+    checkRecordCount('<?php echo $username?>', 2, document.getElementById('create-shipping-btn'));
+    checkRecordCount('<?php echo $username?>', 3, document.getElementById('create-billing-btn'));
 </script>
