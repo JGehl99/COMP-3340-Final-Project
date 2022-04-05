@@ -38,6 +38,10 @@
                         <li>
                             <a href="dataset.php" class="link-color">Climate Action</a>
                         </li>
+                        <li>
+                            <a href="../static/oldchicken_user_guide.pdf" target="_blank" class="link-color">User
+                                Guide</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
