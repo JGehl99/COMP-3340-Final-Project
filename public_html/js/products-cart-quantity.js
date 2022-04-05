@@ -103,7 +103,7 @@ function addToCart(e, button) {
         }
     }
 
-    xmlhttp.open("POST", "../static/add_to_cart.php");
+    xmlhttp.open("POST", "../services/add_to_cart.php");
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
 }

@@ -10,25 +10,33 @@ function updateQuantity(id, amt) {
             }
         }
     }
-    xmlhttp.open("POST", "../static/update_cart_quantity.php");
+    xmlhttp.open("POST", "../services/update_cart_quantity.php");
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
 }
 
 function deleteCartItem(id) {
     if (!confirm('Are you sure you want to remove this item from your cart?')) return;
+    const rowEl = document.getElementById('row-' + id);
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = () => {
         if (xmlhttp.readyState === 4) {
+            const jsonResponse = JSON.parse(xmlhttp.responseText);
             if (xmlhttp.status === 200) {
-                //remove row
+                if (jsonResponse['empty']) {
+                    const cartEl = document.getElementById('cart');
+                    const emptyEl = document.getElementById('empty-cart');
+                    cartEl.remove();
+                    emptyEl.classList.remove('d-none');
+                }
+                rowEl.remove();
                 console.log('deleteCartItem response: ' + xmlhttp.responseText);
             } else if (xmlhttp.status === 500) {
                 console.log('deleteCartItem error: ' + xmlhttp.responseText);
             }
         }
     }
-    xmlhttp.open("POST", "../static/remove_from_cart.php");
+    xmlhttp.open("POST", "../services/remove_from_cart.php");
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xmlhttp.send(JSON.stringify({pk: id}));
 }
@@ -76,13 +84,10 @@ function validateAmt(e, input) {
     e.preventDefault();
     const amt = parseInt(input.value, 10);
     if (isNaN(amt)) {
-        input.value = 0;
         alert('Numerical input only.');
-    } else if (amt < 0) {
-        input.value = 0;
+    } else if (amt < 1) {
         alert('Quantity must be greater than 0.');
     } else if (amt > 100) {
-        input.value = 0;
         alert('Quantity must be less than 100.');
     } else {
         input.value = amt;

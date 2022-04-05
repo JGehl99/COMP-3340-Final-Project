@@ -21,6 +21,20 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("si", $username, $product_id);
 $stmt->execute();
 $stmt->close();
+
+$response = new stdClass();
+$response->empty = false;
+
+$sql = "SELECT username FROM CART_ITEM WHERE username=?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$items = $stmt->get_result()->fetch_all();
+$stmt->close();
+if (count($items) === 0) {
+    $response->empty = true;
+}
+
 $conn->close();
 
-echo "Removed product $product_id from cart.";
+echo json_encode($response);
