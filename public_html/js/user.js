@@ -2,6 +2,7 @@
 function deleteRecord(rowId, recordType)
 {
     const rowEl = document.getElementById(rowId);
+    let btnEl;
 
     // Create an XMLHttpRequest object
     const xhttp = new XMLHttpRequest();
@@ -11,6 +12,7 @@ function deleteRecord(rowId, recordType)
         if (xhttp.readyState === 4) {
             if (xhttp.status === 200) {
                 rowEl.remove();
+                btnEl.classList.remove('d-none');
                 console.log('deleteRecord response: ' + xhttp.responseText);
             } else if (xhttp.status === 500) {
                 console.log('deleteRecord error: ' + xhttp.responseText);
@@ -22,8 +24,10 @@ function deleteRecord(rowId, recordType)
     let url = '';
     if (recordType === 0) {
         url = '../static/delete_shipping.php';
+        btnEl = document.getElementById('create-shipping-btn');
     } else if (recordType === 1) {
         url = '../static/delete_billing.php';
+        btnEl = document.getElementById('create-billing-btn');
     }
 
 
@@ -34,6 +38,9 @@ function deleteRecord(rowId, recordType)
     } else {
         console.error('Cannot delete record: invalid record type.');
     }
+
+
+
 }
 
 function toggleRecordEditable(rowId)
@@ -330,7 +337,7 @@ function confirmAddNewRecord(recordType, username)
             const jsonResponse = JSON.parse(xhttp.responseText);
             if (xhttp.status === 200) {
                 console.log('addNewRecord response: ' + jsonResponse);
-                updateNewRowData(rowEl, btnEl, jsonResponse['id'], recordType);
+                updateNewRowData(rowEl, btnEl, jsonResponse['id'], recordType, username);
             } else if (xhttp.status === 500) {
                 console.log('addNewRecord error: ' + jsonResponse);
             }
@@ -395,7 +402,7 @@ function validateBillingInput(rowEl)
 }
 
 // After a new record is added, some things need to be updated in the markup
-function updateNewRowData(rowEl, btnEl, responseId, recordType)
+function updateNewRowData(rowEl, btnEl, responseId, recordType, username)
 {
     // Set the element ID based on the primary key of the new record
     rowEl.setAttribute('id', responseId);
@@ -403,8 +410,8 @@ function updateNewRowData(rowEl, btnEl, responseId, recordType)
     // Remove the grey background
     rowEl.classList.remove('bg-secondary');
 
-    // Show the create record button again
-    btnEl.classList.remove('d-none');
+    // // Show the create record button again
+    // btnEl.classList.remove('d-none');
 
     // Replace the buttons with the 3 modify record action buttons
     const buttonsTd = rowEl.lastElementChild;
@@ -429,5 +436,42 @@ function updateNewRowData(rowEl, btnEl, responseId, recordType)
         </button>
     `;
 
+    checkRecordCount(username, recordType, btnEl);
+
+}
+
+function checkRecordCount(username, recordType, btnEl){
+    // Create an XMLHttpRequest object
+    const xhttp = new XMLHttpRequest();
+
+    // Define a callback function
+    xhttp.onload = () => {
+        if (xhttp.readyState === 4) {
+            const jsonResponse = JSON.parse(xhttp.responseText);
+            if (xhttp.status === 200) {
+                if(jsonResponse['can_add']) {
+                    btnEl.classList.remove('d-none');
+                }else{
+                    btnEl.className = 'btn btn-primary ms-2 d-none';
+                }
+                console.log('check_record_count response: ' + jsonResponse);
+            } else if (xhttp.status === 500) {
+                console.log('check_record_count error: ' + jsonResponse);
+            }
+        }
+    };
+
+    // Send a request
+    const url = '../static/check_record_count.php';
+    const jsonObj = {username: username, record_type: recordType };
+
+
+    if (url.length > 0) {
+        xhttp.open('POST', url);
+        xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+        xhttp.send(JSON.stringify(jsonObj));
+    } else {
+        console.error('Cannot delete record: invalid record type.');
+    }
 
 }

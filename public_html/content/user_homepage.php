@@ -23,6 +23,7 @@
 </div>
 
 <?php include('footer.php'); ?>
-<script src="../js/user.js"></script>
+
+
 </body>
 </html>

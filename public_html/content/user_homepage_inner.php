@@ -35,8 +35,8 @@ $conn->close();
 
 <div class="row mb-5">
     <h1 class="text-color">User Account</h1>
-    <div class="accordion" id="accordion">
-        <div class="accordion-item background border border-secondary border-bottom-0">
+    <div class="accordion rounded-5" id="accordion">
+        <div class="accordion-item background card_border shadow">
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne"
@@ -104,17 +104,20 @@ $conn->close();
                                     <button type="button" class="btn-empty delete-record"
                                             onclick="deleteRecord('shipping-<?php echo $id ?>', 0)">
                                         <img src="../static/close_black.svg"
-                                             alt="Delete Record"/>
+                                             alt="Delete Record"
+                                             class="delete_icon"/>
                                     </button>
                                     <button type="button" class="btn-empty toggle-edit-record"
                                             onclick="toggleRecordEditable('shipping-<?php echo $id ?>')">
                                         <img src="../static/edit_black.svg"
-                                             alt="Edit Record"/>
+                                             alt="Edit Record"
+                                             class="edit_icon"/>
                                     </button>
                                     <button type="submit" class="btn-empty confirm-edit-record"
                                             onclick="confirmRecordEdit('shipping-<?php echo $id ?>', 0)">
                                         <img src="../static/check_black.svg"
-                                             alt="Confirm Edit"/>
+                                             alt="Confirm Edit"
+                                             class="confirm_icon"/>
                                     </button>
                                 </td>
                             </tr>
@@ -128,7 +131,7 @@ $conn->close();
                 </div>
             </div>
         </div>
-        <div class="accordion-item background border border-secondary border-bottom-0">
+        <div class="accordion-item background card_border shadow">
             <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -188,17 +191,20 @@ $conn->close();
                                     <button type="button" class="btn-empty delete-record"
                                             onclick="deleteRecord('billing-<?php echo $id ?>', 1)">
                                         <img src="../static/close_black.svg"
-                                             alt="Delete Record"/>
+                                             alt="Delete Record"
+                                             class="delete_icon"/>
                                     </button>
                                     <button type="button" class="btn-empty toggle-edit-record"
                                             onclick="toggleRecordEditable('billing-<?php echo $id ?>')">
                                         <img src="../static/edit_black.svg"
-                                             alt="Edit Record"/>
+                                             alt="Edit Record"
+                                             class="edit_icon"/>
                                     </button>
                                     <button type="submit" class="btn-empty confirm-edit-record"
                                             onclick="confirmRecordEdit('billing-<?php echo $id ?>', 1)">
                                         <img src="../static/check_black.svg"
-                                             alt="Confirm Edit"/>
+                                             alt="Confirm Edit"
+                                             class="confirm_icon"/>
                                     </button>
                                 </td>
                             </tr>
@@ -212,7 +218,7 @@ $conn->close();
                 </div>
             </div>
         </div>
-        <div class="accordion-item background border border-secondary">
+        <div class="accordion-item background card_border shadow">
             <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -321,4 +327,8 @@ $conn->close();
         </div>
     </div>
 </div>
-
+<script src="../js/user.js"></script>
+<script>
+    checkRecordCount('<?php echo $username?>', 0, document.getElementById('create-shipping-btn'));
+    checkRecordCount('<?php echo $username?>', 1, document.getElementById('create-billing-btn'));
+</script>
