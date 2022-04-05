@@ -129,6 +129,17 @@ $stmt->close();
             </div>
         </div>
     <?php } ?>
+    <div id="empty-cart" class="row d-flex justify-content-center align-items-center h-100 d-none">
+        <div class="col-12 mt-5">
+            <div class="card background text-color rounded-5 shadow">
+                <div class="card-body p-3 text-center">
+                    <h1>Your shopping cart is empty :(</h1>
+                    <h6 class="card-subtitle text-success my-2">
+                        Add products to your cart to shop with Old Chicken</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php
 $conn->close();
