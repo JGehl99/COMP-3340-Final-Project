@@ -1,14 +1,12 @@
 <?php
-include_once("config.php");
+include_once("../static/config.php");
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$card_num = $data['card_num'];
-$card_name = $data['card_name'];
-$exp_date = $data['exp_date'];
-$cvv = $data['cvv'];
 $username = $data['username'];
-
+$password = $data['password'];
+$account_type = $data['account_type'];
+$date = date("Y-m-d h:i:s");
 
 // create connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
@@ -22,23 +20,21 @@ if ($conn->connect_error) {
 $response = new stdClass();
 
 // Check that all the fields are not empty
-if (!isset($card_num) || !isset($card_name) || !isset($exp_date) || !isset($cvv) || !isset($username)) {
+if (!isset($username) || !isset($password) || !isset($account_type)) {
     $response->error = 'missing field';
     echo json_encode($response);
     exit();
 }
 
-$sql = 'INSERT INTO BILLING_INFO (card_num, card_name, exp_date, cvv, username) VALUES (?, ?, ?, ?, ?);';
+$sql = 'INSERT INTO ACCOUNT (username, password, created_on, type) VALUES (?, ?, ?, ?);';
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('sssss', $card_num, $card_name, $exp_date, $cvv, $username);
+$hashed_password = password_hash(trim($password), PASSWORD_DEFAULT);
+$stmt->bind_param('sssi', $username, $hashed_password, $date, $account_type);
 $stmt->execute();
-
-$id = $stmt->insert_id;
-$response_id_str = 'billing-' . $id;
 
 $stmt->close();
 $conn->close();
 
-$response->id = $response_id_str;
+$response->id = $username;
 echo json_encode($response);

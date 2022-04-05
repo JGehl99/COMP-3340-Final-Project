@@ -22,10 +22,10 @@ function userDeleteRecord(rowId, recordType)
     // Send a request
     let url = '';
     if (recordType === 2) {
-        url = '../static/delete_shipping.php';
+        url = '../services/delete_shipping.php';
         btnEl = document.getElementById('create-shipping-btn');
     } else if (recordType === 3) {
-        url = '../static/delete_billing.php';
+        url = '../services/delete_billing.php';
         btnEl = document.getElementById('create-billing-btn');
     }
 
@@ -117,9 +117,9 @@ function userUpdateRecord(rowId, changedFields, recordType)
 
     let url = '';
     if (recordType === 2) {
-        url = '../static/update_shipping.php';
+        url = '../services/update_shipping.php';
     } else if (recordType === 3) {
-        url = '../static/update_billing.php';
+        url = '../services/update_billing.php';
     }
 
     if (url.length > 0) {
@@ -284,7 +284,7 @@ function userConfirmAddNewRecord(recordType, username)
         rowEl = document.getElementById('new-shipping');
         btnEl = document.getElementById('create-shipping-btn');
         if (validateShippingInput(rowEl)) {
-            url = '../static/add_shipping.php';
+            url = '../services/add_shipping.php';
         } else {
             console.log('Invalid shipping input.');
             return;
@@ -293,7 +293,7 @@ function userConfirmAddNewRecord(recordType, username)
         rowEl = document.getElementById('new-billing');
         btnEl = document.getElementById('create-billing-btn');
         if (validateBillingInput(rowEl)) {
-            url = '../static/add_billing.php';
+            url = '../services/add_billing.php';
         } else {
             console.log('Invalid billing input.');
             return;
@@ -453,7 +453,7 @@ function checkRecordCount(username, recordType, btnEl)
     };
 
     // Send a request
-    const url = '../static/check_record_count.php';
+    const url = '../services/check_record_count.php';
     const jsonObj = { username: username, record_type: recordType };
 
 
