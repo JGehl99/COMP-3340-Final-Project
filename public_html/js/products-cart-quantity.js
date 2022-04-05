@@ -84,6 +84,7 @@ for (let productLink of productLinks) {
 function addToCart(e, button) {
     let id = button.getAttribute('data-field');
     const amt = document.getElementById(id + '-amt').value;
+    if (amt < 1) return;
     const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onload = () => {

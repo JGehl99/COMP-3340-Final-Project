@@ -15,6 +15,24 @@ function updateQuantity(id, amt) {
     xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
 }
 
+function deleteCartItem(id) {
+    if (!confirm('Are you sure you want to remove this item from your cart?')) return;
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = () => {
+        if (xmlhttp.readyState === 4) {
+            if (xmlhttp.status === 200) {
+                //remove row
+                console.log('deleteCartItem response: ' + xmlhttp.responseText);
+            } else if (xmlhttp.status === 500) {
+                console.log('deleteCartItem error: ' + xmlhttp.responseText);
+            }
+        }
+    }
+    xmlhttp.open("POST", "../static/remove_from_cart.php");
+    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xmlhttp.send(JSON.stringify({pk: id}));
+}
+
 // Events for all the decrease quantity buttons
 function decreaseAmt(e, button) {
     e.preventDefault();
@@ -25,7 +43,7 @@ function decreaseAmt(e, button) {
         amtEl.value = amt - 1;
         updateQuantity(id, amtEl.value);
     } else if (amt === 1) {
-        //delete record
+        deleteCartItem(id);
     }
 }
 

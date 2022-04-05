@@ -52,6 +52,7 @@ amtInput.onblur = validateAmt;
 function addToCart(e, button) {
     let id = button.getAttribute('data-field');
     const amt = document.getElementById('item-amt').value;
+    if (amt < 1) return;
     const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onload = () => {
