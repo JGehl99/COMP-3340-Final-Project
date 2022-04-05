@@ -29,20 +29,20 @@ $items = $stmt->get_result()->fetch_all();
 $stmt->close();
 ?>
 
-<body class="page-background" onunload="updateCart()">
+<body class="page-background" onbeforeunload="updateCart()">
 <?php include('navbar.php'); ?>
 <div class="container d-flex justify-content-center pb-5 min_height">
     <?php
     // Generating the product cards
     if (count($items) > 0) { ?>
         <div id="cart" class="row">
-            <div class="col-12 p-2">
+            <div class="col-12 p-2 table-responsive">
                 <table class="table text-color">
                     <thead>
                     <tr>
                         <td></td>
                         <td>Product</td>
-                        <td></td>
+                        <td class="d-none d-md-block"></td>
                         <td>Price</td>
                         <td>Quantity</td>
                         <td>Subtotal</td>
@@ -73,14 +73,15 @@ $stmt->close();
                                     <img class="delete_icon" src="../static/close_black.svg" alt="Remove Item"/>
                                 </button>
                             </td>
-                            <td><a class="link-color text-decoration-none"
+                            <td class="d-none d-md-block">
+                                <a class="link-color text-decoration-none"
                                    href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>">
-                                    <img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-20"/>
+                                    <img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>"/>
                                 </a>
                             </td>
                             <td>
                                 <a class="link-color text-decoration-none"
-                                   href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>"><?php echo $name . ' (id: ' . $productID . ')'; ?></a>
+                                   href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>"><?php echo $name; ?></a>
                             </td>
                             <td>$<?php echo number_format($price, 2); ?></td>
                             <td>

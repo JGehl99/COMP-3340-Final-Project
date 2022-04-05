@@ -62,7 +62,7 @@ function addToCart(e, button) {
                 if (jsonResponse['quantity_cap']) {
                     alert('Quantity cap of 100 reached - set cart capacity to 100');
                 } else {
-                    alert('Product ' + id + ' added to cart successfully');
+                    alert('Product added to cart successfully');
                 }
                 console.log('addToCart response: ' + xmlhttp.responseText);
             } else if (xmlhttp.status === 500) {
