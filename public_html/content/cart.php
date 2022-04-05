@@ -29,9 +29,9 @@ $items = $stmt->get_result()->fetch_all();
 $stmt->close();
 ?>
 
-<body onunload="updateCart()">
+<body class="page-background" onunload="updateCart()">
 <?php include('navbar.php'); ?>
-<div class="container d-flex justify-content-center pb-5">
+<div class="container d-flex justify-content-center pb-5 min_height">
     <?php
     // Generating the product cards
     if (count($items) > 0) { ?>
@@ -73,8 +73,15 @@ $stmt->close();
                                     <img class="delete_icon" src="../static/close_black.svg" alt="Remove Item"/>
                                 </button>
                             </td>
-                            <td><img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-20"/></td>
-                            <td><?php echo $name . ' (id: ' . $productID . ')'; ?></td>
+                            <td><a class="link-color text-decoration-none"
+                                   href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>">
+                                    <img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-20"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="link-color text-decoration-none"
+                                   href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>"><?php echo $name . ' (id: ' . $productID . ')'; ?></a>
+                            </td>
                             <td>$<?php echo number_format($price, 2); ?></td>
                             <td>
                                 <div class="input-group" data-no-link style="width: 9rem;">
