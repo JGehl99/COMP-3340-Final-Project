@@ -1,11 +1,31 @@
+function updateQuantity(id, amt) {
+    const xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onload = () => {
+        if (xmlhttp.readyState === 4) {
+            if (xmlhttp.status === 200) {
+                console.log('updateQuantity response: ' + xmlhttp.responseText);
+            } else if (xmlhttp.status === 500) {
+                console.log('updateQuantity error: ' + xmlhttp.responseText);
+            }
+        }
+    }
+    xmlhttp.open("POST", "../static/update_cart_quantity.php");
+    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+}
+
 // Events for all the decrease quantity buttons
 function decreaseAmt(e, button) {
     e.preventDefault();
-    const amtElName = button.getAttribute('data-field') + '-amt';
-    const amtEl = document.getElementById(amtElName);
+    const id = button.getAttribute('data-field');
+    const amtEl = document.getElementById(id + '-amt');
     const amt = parseInt(amtEl.value);
-    if (amt > 0) {
+    if (amt > 1) {
         amtEl.value = amt - 1;
+        updateQuantity(id, amtEl.value);
+    } else if (amt === 1) {
+        //delete record
     }
 }
 
@@ -17,11 +37,12 @@ for (let button of decreaseAmtButtons) {
 // Events for all the increase quantity buttons
 function increaseAmt(e, button) {
     e.preventDefault();
-    const amtElName = button.getAttribute('data-field') + '-amt';
-    const amtEl = document.getElementById(amtElName);
+    const id = button.getAttribute('data-field');
+    const amtEl = document.getElementById(id + '-amt');
     const amt = parseInt(amtEl.value);
     if (amt < 100) {
         amtEl.value = amt + 1;
+        updateQuantity(id, amtEl.value);
     } else {
         alert('Quantity must be less than 100.');
     }
@@ -47,6 +68,7 @@ function validateAmt(e, input) {
         alert('Quantity must be less than 100.');
     } else {
         input.value = amt;
+        updateQuantity(input.getAttribute('data-field'), amt);
     }
 }
 
@@ -79,30 +101,4 @@ function linkToProduct(e) {
 const productLinks = document.querySelectorAll('.product-link');
 for (let productLink of productLinks) {
     productLink.onclick = linkToProduct;
-}
-
-function addToCart(e, button) {
-    let id = button.getAttribute('data-field');
-    const amt = document.getElementById(id + '-amt').value;
-    const xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.onload = () => {
-        if (xmlhttp.readyState === 4) {
-            if (xmlhttp.status === 200) {
-                alert('Product ' + id + ' added to cart successfully');
-                console.log('addToCart response: ' + xmlhttp.responseText);
-            } else if (xmlhttp.status === 500) {
-                console.log('addToCart error: ' + xmlhttp.responseText);
-            }
-        }
-    }
-
-    xmlhttp.open("POST", "../static/add_to_cart.php");
-    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
-}
-
-const cartButtons = document.querySelectorAll('.add-to-cart');
-for (let button of cartButtons) {
-    button.onclick = (e) => addToCart(e, button);
 }

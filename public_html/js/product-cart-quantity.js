@@ -49,9 +49,8 @@ const amtInput = document.getElementById('item-amt');
 // Validate the input when the user de-selects the input element with "onblur" event
 amtInput.onblur = validateAmt;
 
-function addToCart(e) {
-    let id = e.target.dataset.field;
-    if (!id) id = e.target.parentElement.dataset.field;
+function addToCart(e, button) {
+    let id = button.getAttribute('data-field');
     const amt = document.getElementById('item-amt').value;
     const xmlhttp = new XMLHttpRequest();
 
@@ -72,4 +71,4 @@ function addToCart(e) {
 }
 
 const cartButton = document.getElementById('add-to-cart');
-cartButton.onclick = addToCart;
+cartButton.onclick = (e) => addToCart(e, cartButton);

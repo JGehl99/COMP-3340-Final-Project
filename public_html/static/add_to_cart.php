@@ -28,12 +28,14 @@ $stmt->bind_param("si", $username, $product_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
+$cur_quantity = $result->fetch_assoc()['quantity'];
 
-if (!empty($result->fetch_assoc()['quantity'])) {
+if (!empty($cur_quantity)) {
 //if product is already in cart
+    $quantity_result = $cur_quantity + $quantity;
     $sql = "UPDATE CART_ITEM SET quantity=? WHERE username=? AND productID=?;";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isi", $quantity, $username, $product_id);
+    $stmt->bind_param("isi", $quantity_result, $username, $product_id);
 } else {
 //if product is not already in cart
     $sql = "INSERT INTO CART_ITEM (username, productID, quantity) VALUES (?, ?, ?);";
