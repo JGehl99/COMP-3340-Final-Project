@@ -1,3 +1,7 @@
+const subEl = document.getElementById('subtotal');
+const taxEl = document.getElementById('taxes');
+const totalEl = document.getElementById('total');
+
 function updateCart() {
     const xmlhttp = new XMLHttpRequest();
 
@@ -48,6 +52,32 @@ function deleteCartItem(id) {
     xmlhttp.send(JSON.stringify({pk: id}));
 }
 
+function updateTotals(id, amt) {
+    const prodSubEl = document.getElementById(id + '-subtotal');
+    prodSubEl.innerHTML = '$' + (prodSubEl.getAttribute('data-field') * amt).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    const subtotals = document.querySelectorAll('.subtotal');
+    let sum = 0;
+    for (let subtotal of subtotals) {
+        let temp = subtotal.innerHTML;
+        sum += Number(temp.replace(/[^0-9.-]+/g, ""));
+    }
+    subEl.innerHTML = '$' + sum.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    taxEl.innerHTML = '$' + (sum * 0.13).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    totalEl.innerHTML = '$' + (sum * 1.13).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
 function deleteItemClick(button) {
     const id = button.getAttribute('data-field');
     deleteCartItem(id);
@@ -66,11 +96,7 @@ function decreaseAmt(e, button) {
     const amt = parseInt(amtEl.value);
     if (amt > 1) {
         amtEl.value = amt - 1;
-        const subEl = document.getElementById(id + '-subtotal');
-        subEl.innerHTML = '$' + (subEl.getAttribute('data-field') * amtEl.value).toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
+        updateTotals(id, amtEl.value);
     } else if (amt === 1) {
         deleteCartItem(id);
     }
@@ -89,11 +115,7 @@ function increaseAmt(e, button) {
     const amt = parseInt(amtEl.value);
     if (amt < 100) {
         amtEl.value = amt + 1;
-        const subEl = document.getElementById(id + '-subtotal');
-        subEl.innerHTML = '$' + (subEl.getAttribute('data-field') * amtEl.value).toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
+        updateTotals(id, amtEl.value);
     } else {
         alert('Quantity must be less than 100.');
     }
@@ -116,11 +138,7 @@ function validateAmt(e, input) {
         alert('Quantity must be less than 100.');
     } else {
         input.value = amt;
-        const subEl = document.getElementById(input.getAttribute('data-field') + '-subtotal');
-        subEl.innerHTML = '$' + (subEl.getAttribute('data-field') * amt).toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
+        updateTotals(input.getAttribute('data-field'), amt);
     }
 }
 

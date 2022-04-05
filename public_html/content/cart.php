@@ -19,6 +19,7 @@ if ($conn->connect_error) {
 
 session_start();
 $username = $_SESSION['username'];
+$sum = 0;
 
 $sql = "SELECT productID, quantity FROM CART_ITEM WHERE username=?;";
 $stmt = $conn->prepare($sql);
@@ -62,6 +63,7 @@ $stmt->close();
                         $imageURL = $result['imageURL'];
                         $price = $result['price'];
                         $subtotal = number_format($quantity * $price, 2);
+                        $sum += $quantity * $price;
                         // Create the row for the item ?>
                         <tr id="<?php echo $productID; ?>-row" class="align-middle px-3">
                             <td>
@@ -91,7 +93,8 @@ $stmt->close();
                                     </button>
                                 </div>
                             </td>
-                            <td id="<?php echo $productID; ?>-subtotal" data-field="<?php echo $price; ?>">
+                            <td id="<?php echo $productID; ?>-subtotal" class="subtotal"
+                                data-field="<?php echo $price; ?>">
                                 $<?php echo $subtotal; ?></td>
                         </tr>
                     <?php } ?>
@@ -108,15 +111,15 @@ $stmt->close();
                     <tbody>
                     <tr>
                         <td>Subtotal</td>
-                        <td>$111.22</td>
+                        <td id="subtotal">$<?php echo number_format($sum, 2); ?></td>
                     </tr>
                     <tr>
                         <td>Taxes</td>
-                        <td>$13.00</td>
+                        <td id="taxes">$<?php echo number_format($sum * 0.13, 2); ?></td>
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>$111.22</td>
+                        <td id="total">$<?php echo number_format($sum * 1.13, 2); ?></td>
                     </tr>
                     </tbody>
                 </table>
