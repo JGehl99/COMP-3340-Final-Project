@@ -30,9 +30,16 @@ $result = $stmt->get_result();
 $stmt->close();
 $cur_quantity = $result->fetch_assoc()['quantity'];
 
+$response = new stdClass();
+$response->quantity_cap = false;
+
 if (!empty($cur_quantity)) {
 //if product is already in cart
     $quantity_result = $cur_quantity + $quantity;
+    if ($quantity_result > 100) {
+        $quantity_result = 100;
+        $response->quantity_cap = true;
+    }
     $sql = "UPDATE CART_ITEM SET quantity=? WHERE username=? AND productID=?;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("isi", $quantity_result, $username, $product_id);
@@ -46,4 +53,4 @@ $stmt->execute();
 $stmt->close();
 $conn->close();
 
-echo "Added $quantity of product $product_id to cart.";
+echo json_encode($response);

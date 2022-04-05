@@ -89,8 +89,13 @@ function addToCart(e, button) {
 
     xmlhttp.onload = () => {
         if (xmlhttp.readyState === 4) {
+            const jsonResponse = JSON.parse(xmlhttp.responseText);
             if (xmlhttp.status === 200) {
-                alert('Product ' + id + ' added to cart successfully');
+                if (jsonResponse['quantity_cap']) {
+                    alert('Quantity cap of 100 reached - set cart capacity to 100');
+                } else {
+                    alert('Product ' + id + ' added to cart successfully');
+                }
                 console.log('addToCart response: ' + xmlhttp.responseText);
             } else if (xmlhttp.status === 500) {
                 console.log('addToCart error: ' + xmlhttp.responseText);
