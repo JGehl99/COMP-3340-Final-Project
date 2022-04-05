@@ -371,7 +371,7 @@ function validateProductInput(rowEl)
 
     // description should be <= 1024 characters
     const description = rowEl.querySelector('input[name=\'description\']').value;
-    if (description.length < 0 || description.length > 1024) return false;
+    if (description.length < 1 || description.length > 1024) return false;
 
     // imageURL should at least contain https://a.ca (12 chars)
     // I know this check is bad, but it's better than nothing (:

@@ -278,7 +278,7 @@ $conn->close();
                             </tr>
                             <tr>
                                 <td>Description</td>
-                                <td>Comma separated string, less than 1024 characters</td>
+                                <td>Comma separated string, between 1 and 1024 characters</td>
                             </tr>
                             <tr>
                                 <td>Image URL</td>
