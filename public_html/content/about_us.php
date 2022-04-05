@@ -53,7 +53,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
-                        <img src="https://picsum.photos/500/500"
+                        <img src="../static/brady_malott.jpg"
                              class="p-0 rounded-5 w-100"
                              alt="...">
                     </div>
@@ -62,7 +62,10 @@
                             Brady Malott
                         </h2>
                         <p class="fs-5 d-flex pb-5 pb-sm-5 pb-md-0">
-                            Insert Bio Here
+                            I'm Brady Malott, a junior computer science undergrad and aspiring full stack web developer.
+                            I have been practicing web development for 2 years and have been programming since my third
+                            year of high school. I enjoy learning new web development technologies, competing on my
+                            school's Rocket League team, and reading.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="#" target="_blank" class="d-block hover_expand">
@@ -87,7 +90,8 @@
                             Jarrett Jackson
                         </h2>
                         <p class="fs-5 d-flex pb-5 pb-sm-5 pb-md-0">
-                            Hi! I am in my 3rd year of Computer Science at the University of Windsor. This course as been my only interaction with web development, but it's
+                            Hi! I am in my 3rd year of Computer Science at the University of Windsor. This course as
+                            been my only interaction with web development, but it's
                             quickly becoming my favourite industry! I enjoy playing video games and being outdoors.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">

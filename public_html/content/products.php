@@ -19,6 +19,9 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT id, name, description, imageURL, price, rating, numRatings FROM PRODUCT";
+
+if ($_GET['search']) $sql .= " WHERE name LIKE '%" . $_GET['search'] . "%'";
+
 $products = $conn->query($sql)->fetch_all();
 $conn->close();
 ?>

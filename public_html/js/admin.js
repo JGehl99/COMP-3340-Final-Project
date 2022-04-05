@@ -20,9 +20,9 @@ function deleteRecord(rowId, recordType)
     // Send a request
     let url = '';
     if (recordType === 0) {
-        url = '../static/delete_account.php';
+        url = '../services/delete_account.php';
     } else if (recordType === 1) {
-        url = '../static/delete_product.php';
+        url = '../services/delete_product.php';
     }
 
     if (url.length > 0) {
@@ -118,9 +118,9 @@ function updateRecord(rowId, changedFields, recordType)
 
     let url = '';
     if (recordType === 0) {
-        url = '../static/update_account.php';
+        url = '../services/update_account.php';
     } else if (recordType === 1) {
-        url = '../static/update_product.php';
+        url = '../services/update_product.php';
     }
 
     if (url.length > 0) {
@@ -284,7 +284,7 @@ function confirmAddNewRecord(recordType)
         rowEl = document.getElementById('new-account');
         btnEl = document.getElementById('create-account-btn');
         if (validateAccountInput(rowEl, true)) {
-            url = '../static/add_account.php';
+            url = '../services/add_account.php';
         } else {
             console.log('Invalid account input.');
             return;
@@ -293,7 +293,7 @@ function confirmAddNewRecord(recordType)
         rowEl = document.getElementById('new-product');
         btnEl = document.getElementById('create-product-btn');
         if (validateProductInput(rowEl)) {
-            url = '../static/add_product.php';
+            url = '../services/add_product.php';
         } else {
             console.log('Invalid product input.');
             return;
@@ -371,7 +371,7 @@ function validateProductInput(rowEl)
 
     // description should be <= 1024 characters
     const description = rowEl.querySelector('input[name=\'description\']').value;
-    if (description.length < 0 || description.length > 1024) return false;
+    if (description.length < 1 || description.length > 1024) return false;
 
     // imageURL should at least contain https://a.ca (12 chars)
     // I know this check is bad, but it's better than nothing (:
