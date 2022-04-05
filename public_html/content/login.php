@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $result['password'])) {
                 $_SESSION['logged_in'] = true;
                 $_SESSION['account_type'] = $result['type'];
+                $_SESSION['username'] = $result['username'];
                 echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
                 exit();
             } else {

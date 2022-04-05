@@ -295,9 +295,8 @@ $conn->close();
             </div>
         </div>
     </div>
-    <div class="row">
-        <h1 class="text-color">User Account</h1>
-    </div>
+<!--  User Account  -->
+    <?php include('user_homepage_inner.php'); ?>
 </div>
 <?php include('footer.php'); ?>
 <script src="../js/admin.js"></script>
