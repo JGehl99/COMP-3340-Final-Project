@@ -9,7 +9,6 @@
 </head>
 
 <?php
-
 // create connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
 
@@ -18,8 +17,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT username, productID, quantity FROM CART_ITEM";
-$items = $conn->query($sql)->fetch_all();
+session_start();
+$username = $_SESSION['username'];
+
+$sql = "SELECT productID, quantity FROM CART_ITEM WHERE username=?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$items = $stmt->get_result()->fetch_all();
+$stmt->close();
 ?>
 
 <body>
@@ -44,7 +50,7 @@ $items = $conn->query($sql)->fetch_all();
                 <?php
                 foreach ($items as $item) {
                     // Retrieve attributes from $product
-                    [$username, $productID, $quantity] = $item;
+                    [$productID, $quantity] = $item;
                     $sql = "SELECT name, imageURL, price FROM PRODUCT WHERE id=?;";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("i", $productID);
