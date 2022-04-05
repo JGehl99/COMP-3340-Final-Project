@@ -35,17 +35,17 @@ $conn->close();
 <div class="container my-5 page-background">
     <div class="row mb-5">
         <h1 class="text-color">Administration</h1>
-        <div class="accordion rounded-5" id="accordion">
+        <div class="accordion rounded-5" id="adminAccordion">
             <div class="accordion-item background card_border shadow">
-                <h2 class="accordion-header" id="headingOne">
+                <h2 class="accordion-header" id="adminHeadingOne">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne"
-                            aria-expanded="true" aria-controls="collapseOne">
+                            data-bs-target="#adminCollapseOne"
+                            aria-expanded="true" aria-controls="adminCollapseOne">
                         User Administration
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse shadow" aria-labelledby="headingOne"
-                     data-bs-parent="#accordion">
+                <div id="adminCollapseOne" class="accordion-collapse collapse shadow" aria-labelledby="adminHeadingOne"
+                     data-bs-parent="#adminAccordion">
                     <div class="accordion-body text-color">
                         <h2>Manage Users</h2>
                         <table class="table text-color">
@@ -116,14 +116,14 @@ $conn->close();
                 </div>
             </div>
             <div class="accordion-item background card_border shadow">
-                <h2 class="accordion-header" id="headingTwo">
+                <h2 class="accordion-header" id="adminHeadingTwo">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            data-bs-target="#adminCollapseTwo" aria-expanded="false" aria-controls="adminCollapseTwo">
                         Product Administration
                     </button>
                 </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse shadow" aria-labelledby="headingTwo"
-                     data-bs-parent="#accordion">
+                <div id="adminCollapseTwo" class="accordion-collapse collapse shadow" aria-labelledby="adminHeadingTwo"
+                     data-bs-parent="#adminAccordion">
                     <div class="accordion-body text-color">
                         <h2>Manage Products</h2>
                         <table class="table text-color">
@@ -202,14 +202,16 @@ $conn->close();
                 </div>
             </div>
             <div class="accordion-item background card_border shadow">
-                <h2 class="accordion-header" id="headingThree">
+                <h2 class="accordion-header" id="adminHeadingThree">
                     <button class="accordion-button collapsed background" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            data-bs-target="#adminCollapseThree" aria-expanded="false"
+                            aria-controls="adminCollapseThree">
                         Documentation
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse shadow" aria-labelledby="headingThree"
-                     data-bs-parent="#accordion">
+                <div id="adminCollapseThree" class="accordion-collapse collapse shadow"
+                     aria-labelledby="adminHeadingThree"
+                     data-bs-parent="#adminAccordion">
                     <div class="accordion-body text-color">
                         <h2>User Administration</h2>
                         <p>Expand the first dropdown to manage users. You can create, modify, and delete users.</p>
@@ -295,7 +297,7 @@ $conn->close();
             </div>
         </div>
     </div>
-<!--  User Account  -->
+    <!--  User Account  -->
     <?php include('user_homepage_inner.php'); ?>
 </div>
 <?php include('footer.php'); ?>
