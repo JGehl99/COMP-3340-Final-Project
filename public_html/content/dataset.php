@@ -16,7 +16,7 @@
 <!--Mean Temperature-->
 <!--https://earthobservatory.nasa.gov/world-of-change/DecadalTemp = 14°-->
 
-<div class="page-background pt-5 min_height">
+<div class="container page-background pt-5 min_height">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-11 col-lg-10 col-xl-8 col-xxl-8">
             <div class="card background text-color rounded-5 shadow">
