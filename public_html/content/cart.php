@@ -20,7 +20,6 @@ if ($conn->connect_error) {
 
 $sql = "SELECT username, productID, quantity FROM CART_ITEM";
 $items = $conn->query($sql)->fetch_all();
-$conn->close();
 ?>
 
 <body>
@@ -35,6 +34,7 @@ $conn->close();
                 <thead>
                 <tr>
                     <td>Product</td>
+                    <td></td>
                     <td>Price</td>
                     <td>Quantity</td>
                     <td>Subtotal</td>
@@ -45,10 +45,20 @@ $conn->close();
                 foreach ($items as $item) {
                     // Retrieve attributes from $product
                     [$username, $productID, $quantity] = $item;
+                    $sql = "SELECT name, imageURL, price FROM PRODUCT WHERE id=?;";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("i", $productID);
+                    $stmt->execute();
+                    $result = $stmt->get_result()->fetch_assoc();
+                    $stmt->close();
+                    $name = $result['name'];
+                    $imageURL = $result['imageURL'];
+                    $price = $result['price'];
                     // Create the row for the item ?>
-                    <tr>
-                        <td>*Image here* *Product Name* <?php echo $productID; ?></td>
-                        <td>*Price here*</td>
+                    <tr id="row-<?php echo $productID; ?>" class="align-middle px-3">
+                        <td><img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>" class="w-20"/></td>
+                        <td><?php echo $name . ' (id: ' . $productID . ')'; ?></td>
+                        <td><?php echo $price ?></td>
                         <td>
                             <div class="input-group" data-no-link style="width: 9rem;">
                                 <button type="button" class="btn btn-secondary d-flex align-items-center decrease-amt"
@@ -100,7 +110,10 @@ $conn->close();
         </div>
     </div>
 </div>
-<?php include('footer.php'); ?>
+<?php
+$conn->close();
+include('footer.php');
+?>
 <script src="../js/cart.js"></script>
 </body>
 </html>
