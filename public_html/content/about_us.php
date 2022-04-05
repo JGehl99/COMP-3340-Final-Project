@@ -41,7 +41,7 @@
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="https://github.com/jgehl99" target="_blank" class="d-block hover_expand">
-                                <img class="github_icon" src="../static/github_black.svg" alt="..."/>
+                                <img class="github_icon" src="../static/github_black.svg" alt="Github Icon"/>
                             </a>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                             school's Rocket League team, and reading.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
-                            <a href="#" target="_blank" class="d-block hover_expand">
-                                <img class="github_icon " src="../static/github_black.svg" alt="..."/>
+                            <a href="https://github.com/Brady-Malott" target="_blank" class="d-block hover_expand">
+                                <img class="github_icon " src="../static/github_black.svg" alt="Github Icon"/>
                             </a>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="https://github.com/jackson1ne" target="_blank" class="d-block hover_expand">
-                                <img class="github_icon " src="../static/github_black.svg" alt="..."/>
+                                <img class="github_icon " src="../static/github_black.svg" alt="Github Icon"/>
                             </a>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="#" target="_blank" class="d-block hover_expand">
-                                <img class="github_icon " src="../static/github_black.svg" alt="..."/>
+                                <img class="github_icon " src="../static/github_black.svg" alt="Github Icon"/>
                             </a>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
                             <a href="#" target="_blank" class="d-block hover_expand">
-                                <img class="github_icon " src="../static/github_black.svg" alt="..."/>
+                                <img class="github_icon " src="../static/github_black.svg" alt="Github Icon"/>
                             </a>
                         </div>
                     </div>
