@@ -1,8 +1,7 @@
 // Events for all the decrease quantity buttons
-function decreaseAmt(e, button)
-{
+function decreaseAmt(e, button) {
     e.preventDefault();
-    const amtElName = button.getAttribute('data-field');
+    const amtElName = button.getAttribute('data-field') + '-amt';
     const amtEl = document.getElementById(amtElName);
     const amt = parseInt(amtEl.value);
     if (amt > 0) {
@@ -16,10 +15,9 @@ for (let button of decreaseAmtButtons) {
 }
 
 // Events for all the increase quantity buttons
-function increaseAmt(e, button)
-{
+function increaseAmt(e, button) {
     e.preventDefault();
-    const amtElName = button.getAttribute('data-field');
+    const amtElName = button.getAttribute('data-field') + '-amt';
     const amtEl = document.getElementById(amtElName);
     const amt = parseInt(amtEl.value);
     if (amt < 100) {
@@ -35,8 +33,7 @@ for (let button of increaseAmtButtons) {
 }
 
 // Events to validate typed input for the quantities
-function validateAmt(e, input)
-{
+function validateAmt(e, input) {
     e.preventDefault();
     const amt = parseInt(input.value, 10);
     if (isNaN(amt)) {
@@ -59,8 +56,7 @@ for (let amtInput of amtInputs) {
     amtInput.onblur = (e) => validateAmt(e, amtInput);
 }
 
-function linkToProduct(e)
-{
+function linkToProduct(e) {
     e.preventDefault();
 
     // Starting from the innermost clicked element, check it and each successor element for a data-node-link attribute.
@@ -83,4 +79,36 @@ function linkToProduct(e)
 const productLinks = document.querySelectorAll('.product-link');
 for (let productLink of productLinks) {
     productLink.onclick = linkToProduct;
+}
+
+function addToCart(e, button) {
+    let id = button.getAttribute('data-field');
+    const amt = document.getElementById(id + '-amt').value;
+    if (amt < 1) return;
+    const xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onload = () => {
+        if (xmlhttp.readyState === 4) {
+            const jsonResponse = JSON.parse(xmlhttp.responseText);
+            if (xmlhttp.status === 200) {
+                if (jsonResponse['quantity_cap']) {
+                    alert('Quantity cap of 100 reached - set cart capacity to 100');
+                } else {
+                    alert('Product added to cart successfully');
+                }
+                console.log('addToCart response: ' + xmlhttp.responseText);
+            } else if (xmlhttp.status === 500) {
+                console.log('addToCart error: ' + xmlhttp.responseText);
+            }
+        }
+    }
+
+    xmlhttp.open("POST", "../services/add_to_cart.php");
+    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+}
+
+const cartButtons = document.querySelectorAll('.add-to-cart');
+for (let button of cartButtons) {
+    button.onclick = (e) => addToCart(e, button);
 }
