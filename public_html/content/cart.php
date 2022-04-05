@@ -28,7 +28,7 @@ $items = $stmt->get_result()->fetch_all();
 $stmt->close();
 ?>
 
-<body>
+<body onunload="updateCart()">
 <?php include('navbar.php'); ?>
 <div class="container d-flex justify-content-center pb-5">
     <?php
