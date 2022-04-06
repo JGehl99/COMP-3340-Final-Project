@@ -1,6 +1,5 @@
 // Events for all the decrease quantity buttons
-function decreaseAmt(e, button)
-{
+function decreaseAmt(e, button) {
     e.preventDefault();
     const amtElName = button.getAttribute('data-field') + '-amt';
     const amtEl = document.getElementById(amtElName);
@@ -16,8 +15,7 @@ for (let button of decreaseAmtButtons) {
 }
 
 // Events for all the increase quantity buttons
-function increaseAmt(e, button)
-{
+function increaseAmt(e, button) {
     e.preventDefault();
     const amtElName = button.getAttribute('data-field') + '-amt';
     const amtEl = document.getElementById(amtElName);
@@ -35,8 +33,7 @@ for (let button of increaseAmtButtons) {
 }
 
 // Events to validate typed input for the quantities
-function validateAmt(e, input)
-{
+function validateAmt(e, input) {
     e.preventDefault();
     const amt = parseInt(input.value, 10);
     if (isNaN(amt)) {
@@ -59,8 +56,7 @@ for (let amtInput of amtInputs) {
     amtInput.onblur = (e) => validateAmt(e, amtInput);
 }
 
-function linkToProduct(e)
-{
+function linkToProduct(e) {
     e.preventDefault();
 
     // Starting from the innermost clicked element, check it and each successor element for a data-node-link attribute.
@@ -85,8 +81,7 @@ for (let productLink of productLinks) {
     productLink.onclick = linkToProduct;
 }
 
-function addToCart(e, button)
-{
+function addToCart(e, button) {
     let id = button.getAttribute('data-field');
     const amt = document.getElementById(id + '-amt').value;
     if (amt < 1) return;
@@ -96,7 +91,9 @@ function addToCart(e, button)
         if (xmlhttp.readyState === 4) {
             const jsonResponse = JSON.parse(xmlhttp.responseText);
             if (xmlhttp.status === 200) {
-                if (jsonResponse['quantity_cap']) {
+                if (!jsonResponse['user']) {
+                    alert('Please log in to add items to cart');
+                } else if (jsonResponse['quantity_cap']) {
                     alert('Quantity cap of 100 reached - set cart capacity to 100');
                 } else {
                     alert('Product added to cart successfully');
@@ -110,7 +107,7 @@ function addToCart(e, button)
 
     xmlhttp.open('POST', '../services/add_to_cart.php');
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xmlhttp.send(JSON.stringify({ pk: id, quantity: amt }));
+    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
 }
 
 const cartButtons = document.querySelectorAll('.add-to-cart');

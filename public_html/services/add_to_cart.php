@@ -15,9 +15,16 @@ $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
 if ($conn->connect_error) {
     die("Connection failed: " + $conn->connect_error);
 }
+$response = new stdClass();
+$response->user = true;
 
-// Check that all the fields are not empty
-if (!isset($username) || !isset($product_id) || !isset($quantity)) {
+if (!isset($username)) {
+    $response->user = false;
+    echo json_encode($response);
+    exit();
+}
+// Check that all other fields are not empty
+if (!isset($product_id) || !isset($quantity)) {
     exit();
 }
 
@@ -30,7 +37,6 @@ $result = $stmt->get_result();
 $stmt->close();
 $cur_quantity = $result->fetch_assoc()['quantity'];
 
-$response = new stdClass();
 $response->quantity_cap = false;
 
 if (!empty($cur_quantity)) {
