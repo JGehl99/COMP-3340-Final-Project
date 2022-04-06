@@ -93,7 +93,7 @@ $stmt->close();
                                     </button>
                                     <input type="text" id="<?php echo $productID; ?>-amt" class="form-control amt"
                                            value="<?php echo $quantity; ?>" data-field="<?php echo $productID; ?>"
-                                           min="0" max="100"/>
+                                           min="0" max="100" aria-label="quantity"/>
                                     <button type="button"
                                             class="btn btn-secondary d-flex align-items-center increase-amt"
                                             data-field="<?php echo $productID; ?>">
@@ -113,7 +113,7 @@ $stmt->close();
                 <table class="table text-color">
                     <thead>
                     <tr>
-                        <td>Cart Totals</td>
+                        <th>Cart Totals</th>
                     </tr>
                     </thead>
                     <tbody>
