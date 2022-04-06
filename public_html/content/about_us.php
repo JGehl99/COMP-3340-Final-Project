@@ -108,7 +108,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-3 d-flex d-sm-flex d-md-block justify-content-center">
-                        <img src="https://picsum.photos/500/500"
+                        <img src="../static/jonathan_fehr.jpeg"
                              class="p-0 rounded-5 w-100"
                              alt="...">
                     </div>
@@ -117,10 +117,13 @@
                             Jonathan Fehr
                         </h2>
                         <p class="fs-5 d-flex pb-5 pb-sm-5 pb-md-0">
-                            Insert Bio Here
+                            I am Jonathan Fehr, a third year computer science student at the University of Windsor and a
+                            part-time junior web developer. I have experience with web development from school, work,
+                            and also personal projects. I enjoy video games and playing/watching baseball, especially
+                            fantasy baseball.
                         </p>
                         <div class="d-flex flex-row-reverse position-absolute bottom-0 end-0 me-2 mb-2 ho">
-                            <a href="#" target="_blank" class="d-block hover_expand">
+                            <a href="https://github.com/Jonathan14Fehr" target="_blank" class="d-block hover_expand">
                                 <img class="github_icon " src="../static/github_black.svg" alt="Github Icon"/>
                             </a>
                         </div>
