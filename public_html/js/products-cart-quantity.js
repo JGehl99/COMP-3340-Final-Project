@@ -1,5 +1,6 @@
 // Events for all the decrease quantity buttons
-function decreaseAmt(e, button) {
+function decreaseAmt(e, button)
+{
     e.preventDefault();
     const amtElName = button.getAttribute('data-field') + '-amt';
     const amtEl = document.getElementById(amtElName);
@@ -15,7 +16,8 @@ for (let button of decreaseAmtButtons) {
 }
 
 // Events for all the increase quantity buttons
-function increaseAmt(e, button) {
+function increaseAmt(e, button)
+{
     e.preventDefault();
     const amtElName = button.getAttribute('data-field') + '-amt';
     const amtEl = document.getElementById(amtElName);
@@ -33,7 +35,8 @@ for (let button of increaseAmtButtons) {
 }
 
 // Events to validate typed input for the quantities
-function validateAmt(e, input) {
+function validateAmt(e, input)
+{
     e.preventDefault();
     const amt = parseInt(input.value, 10);
     if (isNaN(amt)) {
@@ -56,15 +59,16 @@ for (let amtInput of amtInputs) {
     amtInput.onblur = (e) => validateAmt(e, amtInput);
 }
 
-function linkToProduct(e) {
+function linkToProduct(e)
+{
     e.preventDefault();
 
     // Starting from the innermost clicked element, check it and each successor element for a data-node-link attribute.
     // If one is found, then do not redirect.
-    // If the parent <a> is found before finding a data-no-link attribute, then redirect
+    // If the parent <div> with data-item-id attribute is found before finding a data-no-link attribute, then redirect
 
     let el = e.target;
-    while (el !== null && el.nodeName.toLowerCase() !== 'a') {
+    while (el !== null && !el.hasAttribute('data-item-id')) {
         if (el.hasAttribute('data-no-link')) {
             return;
         }
@@ -81,7 +85,8 @@ for (let productLink of productLinks) {
     productLink.onclick = linkToProduct;
 }
 
-function addToCart(e, button) {
+function addToCart(e, button)
+{
     let id = button.getAttribute('data-field');
     const amt = document.getElementById(id + '-amt').value;
     if (amt < 1) return;
@@ -101,11 +106,11 @@ function addToCart(e, button) {
                 console.log('addToCart error: ' + xmlhttp.responseText);
             }
         }
-    }
+    };
 
-    xmlhttp.open("POST", "../services/add_to_cart.php");
+    xmlhttp.open('POST', '../services/add_to_cart.php');
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+    xmlhttp.send(JSON.stringify({ pk: id, quantity: amt }));
 }
 
 const cartButtons = document.querySelectorAll('.add-to-cart');

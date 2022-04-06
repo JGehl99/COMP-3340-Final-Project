@@ -45,9 +45,9 @@ $conn->close();
 
             // Create the card for the item ?>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 pt-5">
-                <a href="#"
-                   class="card h-100 hover_expand cursor_pointer text-decoration-none background text-color product-link shadow"
-                   data-item-id="<?php echo $id; ?>">
+                <div
+                        class="card h-100 hover_expand cursor_pointer text-decoration-none background text-color product-link shadow"
+                        data-item-id="<?php echo $id; ?> ">
                     <img class="card-img-top p-4" src="<?php echo $imageURL; ?>" alt="<?php echo $name; ?>"/>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $name; ?></h5>
@@ -101,7 +101,7 @@ $conn->close();
                             </button>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         <?php }
         } ?>
