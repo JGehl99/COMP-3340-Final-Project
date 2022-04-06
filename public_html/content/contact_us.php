@@ -27,7 +27,7 @@
                     <h5 class="card-title">Contact Customer Service</h5>
                     <h6 class="card-subtitle text-success my-2">Phone support: <a
                                 href="tel:605-475-6968">605-475-6968</a><br>
-                        Email: <a href="mailto:<support@oldchicken.myweb.cs.uwindsor.ca? subject=subject text">support@oldchicken.myweb.cs.uwindsor.ca</a>
+                        Email: <a href="mailto:support@oldchicken.myweb.cs.uwindsor.ca?subject=Customer&nbsp;Inquiry">support@oldchicken.myweb.cs.uwindsor.ca</a>
                     </h6>
                 </div>
             </div>

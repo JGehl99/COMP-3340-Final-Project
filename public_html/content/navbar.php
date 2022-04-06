@@ -22,7 +22,8 @@
                 </li>
             </ul>
             <form class="d-flex" action="products.php" method="get">
-                <input class="form-control mr-3" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-3" id="search" name="search" type="search" placeholder="Search"
+                       aria-label="Search">
                 <button class="btn btn-primary text-nowrap" type="submit">Search</button>
             </form>
             <hr class="dropdown-divider mt-sm-3 mt-md-0 d-md-none d-lg-none d-lx-none d-xxl-none">
@@ -41,7 +42,8 @@
                             My Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end background" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item link-color" href="account_homepage.php">Account Homepage</a></li>
+                            <li><a class="dropdown-item link-color" href="account_homepage.php">Account Homepage</a>
+                            </li>
                             <li><a class="dropdown-item link-color" href="cart.php">Cart</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -51,13 +53,14 @@
                     </li>
                     <!-- This list only shows in the collapsed navbar menu when <= sm breakpoint -->
                     <li class="nav-item dropdown d-block d-sm-block d-md-none background text-color">
-                        <a class="nav-link dropdown-toggle link-color" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle link-color" href="#" id="navbarDropdownSm" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             My Account
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end background border-0"
-                            aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item link-color" href="account_homepage.php">Account Homepage</a></li>
+                            aria-labelledby="navbarDropdownSm">
+                            <li><a class="dropdown-item link-color" href="account_homepage.php">Account Homepage</a>
+                            </li>
                             <li><a class="dropdown-item link-color" href="cart.php">Cart</a></li>
                             <li><a class="dropdown-item link-color" href="logout.php">Log Out</a></li>
                         </ul>

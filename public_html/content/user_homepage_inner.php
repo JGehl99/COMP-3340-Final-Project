@@ -69,35 +69,35 @@ $conn->close();
                                     <input type="text"
                                            name="street_num"
                                            class="form-control"
-                                           value="<?php echo $street_num; ?>"
+                                           value="<?php echo htmlspecialchars($street_num); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="street_name"
                                            class="form-control"
-                                           value="<?php echo $street_name; ?>"
+                                           value="<?php echo htmlspecialchars($street_name); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="city"
                                            class="form-control"
-                                           value="<?php echo $city; ?>"
+                                           value="<?php echo htmlspecialchars($city); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="province"
                                            class="form-control"
-                                           value="<?php echo $province; ?>"
+                                           value="<?php echo htmlspecialchars($province); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="postal_code"
                                            class="form-control"
-                                           value="<?php echo $postal_code; ?>"
+                                           value="<?php echo htmlspecialchars($postal_code); ?>"
                                            readonly/>
                                 </td>
                                 <td>
@@ -163,28 +163,28 @@ $conn->close();
                                     <input type="text"
                                            name="card_num"
                                            class="form-control"
-                                           value="<?php echo $card_num; ?>"
+                                           value="<?php echo htmlspecialchars($card_num); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="card_name"
                                            class="form-control"
-                                           value="<?php echo $card_name; ?>"
+                                           value="<?php echo htmlspecialchars($card_name); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="exp_date"
                                            class="form-control"
-                                           value="<?php echo $exp_date; ?>"
+                                           value="<?php echo htmlspecialchars($exp_date); ?>"
                                            readonly/>
                                 </td>
                                 <td>
                                     <input type="text"
                                            name="cvv"
                                            class="form-control"
-                                           value="<?php echo $cvv; ?>"
+                                           value="<?php echo htmlspecialchars($cvv); ?>"
                                            readonly/>
                                 </td>
                                 <td>

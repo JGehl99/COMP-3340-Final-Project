@@ -67,7 +67,7 @@ $conn->close();
                                         <input type="text"
                                                name="username"
                                                class="form-control"
-                                               value="<?php echo $username; ?>"
+                                               value="<?php echo htmlspecialchars($username); ?>"
                                                readonly/>
                                     </td>
                                     <td>
@@ -146,28 +146,28 @@ $conn->close();
                                         <input type="text"
                                                name="product_name"
                                                class="form-control"
-                                               value="<?php echo $name; ?>"
+                                               value="<?php echo htmlspecialchars($name); ?>"
                                                readonly/>
                                     </td>
                                     <td>
                                         <input type="text"
                                                name="description"
                                                class="form-control"
-                                               value="<?php echo $description; ?>"
+                                               value="<?php echo htmlspecialchars($description); ?>"
                                                readonly/>
                                     </td>
                                     <td>
                                         <input type="text"
                                                name="image_url"
                                                class="form-control"
-                                               value="<?php echo $imageURL; ?>"
+                                               value="<?php echo htmlspecialchars($imageURL); ?>"
                                                readonly/>
                                     </td>
                                     <td>
                                         <input type="text"
                                                name="price"
                                                class="form-control"
-                                               value="<?php echo $price; ?>"
+                                               value="<?php echo htmlspecialchars($price); ?>"
                                                readonly/>
                                     </td>
                                     <td>
