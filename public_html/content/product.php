@@ -90,7 +90,7 @@ $conn->close();
                                                  alt="Decrease Quantity"/>
                                         </button>
                                         <input type="text" id="item-amt" class="form-control amt" value="0" min="0"
-                                               max="100"/>
+                                               max="100" aria-label="quantity"/>
                                         <button type="button" class="btn btn-secondary d-flex align-items-center"
                                                 id="increase-amt">
                                             <img class="add_icon" src="../static/add_black.svg"
