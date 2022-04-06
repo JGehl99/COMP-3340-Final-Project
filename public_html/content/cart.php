@@ -146,6 +146,8 @@ $stmt->close();
                         <h1>Your shopping cart is empty :(</h1>
                         <h6 class="card-subtitle text-success my-2">
                             Add products to your cart to shop with Old Chicken</h6>
+                        <a class="btn btn-primary text-decoration-none"
+                           href="products.php">View Products</a>
                     </div>
                 </div>
             </div>
@@ -158,6 +160,8 @@ $stmt->close();
                     <h1>Your shopping cart is empty :(</h1>
                     <h6 class="card-subtitle text-success my-2">
                         Add products to your cart to shop with Old Chicken</h6>
+                    <a class="btn btn-primary text-decoration-none"
+                       href="products.php">View Products</a>
                 </div>
             </div>
         </div>
