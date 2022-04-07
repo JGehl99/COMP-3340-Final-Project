@@ -6,6 +6,14 @@
     $title = 'Products';
     include('headers.php');
     ?>
+    <meta name="title" content="Products">
+    <meta name="description"
+          content="OldChicken offers low prices on many computer parts and PC components ranging from graphics cards, CPUs, and much more">
+    <meta name="keywords"
+          content="old chicken,e-commerce,computer,graphics card,gpu,pc,desktop,gaming,computer parts,components">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <?php

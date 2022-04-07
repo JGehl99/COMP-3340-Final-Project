@@ -6,6 +6,13 @@
     $title = 'About Us';
     include('headers.php');
     ?>
+    <meta name="title" content="About Us">
+    <meta name="description"
+          content="OldChicken has a team of dedicated members who work hard to give you the best computer component purchasing experience.">
+    <meta name="keywords" content="old chicken,e-commerce,about us,group,developers,team">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <body class=" page-background">
