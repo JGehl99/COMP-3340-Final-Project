@@ -6,6 +6,14 @@
     $title = 'Gallery';
     include('headers.php');
     ?>
+    <meta name="title" content="Gallery">
+    <meta name="description"
+          content="Here is our OldChicken custom PC showcase! OldChicken products have been used in many impressive custom pc builds, here are some examples.">
+    <meta name="keywords"
+          content="old chicken,e-commerce,computer,graphics card,custom,pc,desktop,gaming,computer parts">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <body class="page-background">

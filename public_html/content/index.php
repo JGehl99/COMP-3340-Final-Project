@@ -3,9 +3,17 @@
 
 <head>
     <?php
-    $title = 'Index';
+    $title = 'OldChicken - Computer Parts & PC Components';
     include('headers.php');
     ?>
+    <meta name="title" content="OldChicken - Homepage">
+    <meta name="description"
+          content="Welcome to OldChicken! Shopping with OldChicken gives you access to great deals on a wide range of computer parts and PC components.">
+    <meta name="keywords"
+          content="old chicken,e-commerce,computer,graphics card,gpu,pc,desktop,gaming,computer parts,components">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <?php
