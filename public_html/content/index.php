@@ -130,7 +130,7 @@ $conn->close();
                                         <img class="sub_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
                                     </button>
                                     <input type="text" id="<?php echo $id; ?>-amt" class="form-control amt" value="0"
-                                           min="0" max="100" aria-label="quantity"/>
+                                           aria-label="quantity"/>
                                     <button type="button"
                                             class="btn btn-secondary d-flex align-items-center increase-amt"
                                             data-field="<?php echo $id; ?>">

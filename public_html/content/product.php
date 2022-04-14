@@ -35,7 +35,7 @@ $conn->close();
     ?>
     <meta name="title" content="<?php echo $name ?>">
     <meta name="description"
-          content="<?php echo $description ?>">
+          content="<?php echo htmlspecialchars($description) ?>">
     <meta name="keywords" content="computer,graphics card,gpu,pc,desktop,gaming,computer part,component">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -96,8 +96,8 @@ $conn->close();
                                             <img class="sub_icon" src="../static/sub_black.svg"
                                                  alt="Decrease Quantity"/>
                                         </button>
-                                        <input type="text" id="item-amt" class="form-control amt" value="0" min="0"
-                                               max="100" aria-label="quantity"/>
+                                        <input type="text" id="item-amt" class="form-control amt" value="0"
+                                               aria-label="quantity"/>
                                         <button type="button" class="btn btn-secondary d-flex align-items-center"
                                                 id="increase-amt">
                                             <img class="add_icon" src="../static/add_black.svg"
