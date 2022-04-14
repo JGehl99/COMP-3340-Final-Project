@@ -31,12 +31,12 @@ $stmt->close();
 
 <body class="page-background" onbeforeunload="updateCart()">
 <?php include('navbar.php'); ?>
-<div class="container d-flex justify-content-center pb-5 min_height">
+<div class="container pt-3 page-background min_height">
     <?php
     // Generating the product cards
     if (count($items) > 0) { ?>
-        <div id="cart" class="row">
-            <div class="col-12 p-2 table-responsive">
+        <div id="cart" class="row d-flex h-100">
+            <div class="col-12 overflow-auto">
                 <table class="table text-color">
                     <thead>
                     <tr>
@@ -73,13 +73,13 @@ $stmt->close();
                                     <img class="delete_icon" src="../static/close_black.svg" alt="Remove Item"/>
                                 </button>
                             </td>
-                            <td class="d-none d-md-block">
+                            <td style="min-width: 200px" class="d-none d-md-block">
                                 <a class="link-color text-decoration-none"
                                    href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>">
                                     <img src="<?php echo $imageURL ?>" alt="<?php echo $name ?>"/>
                                 </a>
                             </td>
-                            <td>
+                            <td style="min-width: 300px">
                                 <a class="link-color text-decoration-none"
                                    href="https://oldchicken.myweb.cs.uwindsor.ca/content/product.php?item-id=<?php echo $productID; ?>"><?php echo $name; ?></a>
                             </td>
@@ -93,7 +93,7 @@ $stmt->close();
                                     </button>
                                     <input type="text" id="<?php echo $productID; ?>-amt" class="form-control amt"
                                            value="<?php echo $quantity; ?>" data-field="<?php echo $productID; ?>"
-                                           min="0" max="100"/>
+                                           min="0" max="100" aria-label="quantity"/>
                                     <button type="button"
                                             class="btn btn-secondary d-flex align-items-center increase-amt"
                                             data-field="<?php echo $productID; ?>">
@@ -102,18 +102,17 @@ $stmt->close();
                                 </div>
                             </td>
                             <td id="<?php echo $productID; ?>-subtotal" class="subtotal"
-                                data-field="<?php echo $price; ?>">
-                                $<?php echo $subtotal; ?></td>
+                                data-field="<?php echo $price; ?>">$<?php echo $subtotal; ?></td>
                         </tr>
                     <?php } ?>
                     </tbody>
                 </table>
             </div>
-            <div class="col-6 p-2">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 p-2">
                 <table class="table text-color">
                     <thead>
                     <tr>
-                        <td>Cart Totals</td>
+                        <th>Cart Totals</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -146,6 +145,8 @@ $stmt->close();
                         <h1>Your shopping cart is empty :(</h1>
                         <h6 class="card-subtitle text-success my-2">
                             Add products to your cart to shop with Old Chicken</h6>
+                        <a class="btn btn-primary text-decoration-none"
+                           href="products.php">View Products</a>
                     </div>
                 </div>
             </div>
@@ -158,6 +159,8 @@ $stmt->close();
                     <h1>Your shopping cart is empty :(</h1>
                     <h6 class="card-subtitle text-success my-2">
                         Add products to your cart to shop with Old Chicken</h6>
+                    <a class="btn btn-primary text-decoration-none"
+                       href="products.php">View Products</a>
                 </div>
             </div>
         </div>

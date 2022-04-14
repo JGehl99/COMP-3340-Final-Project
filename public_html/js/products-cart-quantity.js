@@ -61,10 +61,10 @@ function linkToProduct(e) {
 
     // Starting from the innermost clicked element, check it and each successor element for a data-node-link attribute.
     // If one is found, then do not redirect.
-    // If the parent <a> is found before finding a data-no-link attribute, then redirect
+    // If the parent <div> with data-item-id attribute is found before finding a data-no-link attribute, then redirect
 
     let el = e.target;
-    while (el !== null && el.nodeName.toLowerCase() !== 'a') {
+    while (el !== null && !el.hasAttribute('data-item-id')) {
         if (el.hasAttribute('data-no-link')) {
             return;
         }
@@ -91,7 +91,9 @@ function addToCart(e, button) {
         if (xmlhttp.readyState === 4) {
             const jsonResponse = JSON.parse(xmlhttp.responseText);
             if (xmlhttp.status === 200) {
-                if (jsonResponse['quantity_cap']) {
+                if (!jsonResponse['user']) {
+                    alert('Please log in to add items to cart');
+                } else if (jsonResponse['quantity_cap']) {
                     alert('Quantity cap of 100 reached - set cart capacity to 100');
                 } else {
                     alert('Product added to cart successfully');
@@ -101,9 +103,9 @@ function addToCart(e, button) {
                 console.log('addToCart error: ' + xmlhttp.responseText);
             }
         }
-    }
+    };
 
-    xmlhttp.open("POST", "../services/add_to_cart.php");
+    xmlhttp.open('POST', '../services/add_to_cart.php');
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
     xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
 }

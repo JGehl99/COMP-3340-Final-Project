@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <?php
     $title = 'Login';
     include('headers.php');
     ?>
+    <meta name="title" content="Login">
+    <meta name="description"
+          content="Log in to your OldChicken account to start shopping for computer components with OldChicken!">
+    <meta name="keywords"
+          content="old chicken,e-commerce,account,login,log in,user,graphics card,gpu,computer parts,components">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <?php

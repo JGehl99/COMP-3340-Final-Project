@@ -6,6 +6,13 @@
     $title = 'Shipping and Returns';
     include('headers.php');
     ?>
+    <meta name="title" content="Shipping and Returns">
+    <meta name="description"
+          content="It is doubtful you will ever need to return any OldChicken products, however, here is our shipping details and return policy in case any customers are curious.">
+    <meta name="keywords" content="old chicken,e-commerce,computer,return,shipping,delivery,policy">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <body class="page-background">
@@ -47,12 +54,15 @@
                     <h5 class="card-title">Return Policy</h5>
                     <h6 class="card-subtitle text-success my-2">
                         Thank you for shopping with Old Chicken! Where mediocrity is our guarantee ;)<br><br>
-                        We offer a full money-back guarantee for all purchases made on our website as long as your reasoning
+                        We offer a full money-back guarantee for all purchases made on our website as long as your
+                        reasoning
                         isn't entirely stupid.<br><br>
-                        If you are not satisfied with the product that you have purchased from us, that will fall under the
+                        If you are not satisfied with the product that you have purchased from us, that will fall under
+                        the
                         category of stupid reasons
                         since all of our products are of top-notch quality.<br><br>
-                        Customers are granted a period of 14 days for which they will eligible to request a refund for any
+                        Customers are granted a period of 14 days for which they will eligible to request a refund for
+                        any
                         of their orders
                         but it will probably be denied anyways so why even bother?<br><br><br>
                         Feel free to <a href="contact_us.php">contact us</a> if you have any further questions.</h6>

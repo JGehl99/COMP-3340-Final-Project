@@ -6,7 +6,14 @@
     $title = 'Dataset - Global Average Temperatures';
     include('headers.php');
     ?>
-
+    <meta name="title" content="Climate Action">
+    <meta name="description"
+          content="Here at OldChicken we are taking the proper steps to ensure our operation doesn't contribute to the growing climate problem.">
+    <meta name="keywords"
+          content="old chicken,e-commerce,climate change,global temperatures,environmental,action,eco-friendly">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <body class="page-background">
@@ -36,8 +43,10 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-11 col-lg-10 col-xl-8 col-xxl-8 mt-5">
             <div class="card h-100 p-3 background text-color rounded-5 shadow">
-                <h4>The Global Average Temperature has risen greatly over the last 140 years. Here at OldChicken we are taking the proper steps to
-                    ensure our operation doesn't contribute to the growing climate problem. Below are some steps you can take to limit your carbon footprint.
+                <h4>The Global Average Temperature has risen greatly over the last 140 years. Here at OldChicken we are
+                    taking the proper steps to
+                    ensure our operation doesn't contribute to the growing climate problem. Below are some steps you can
+                    take to limit your carbon footprint.
                 </h4>
                 <table class="table text-color">
                     <thead>
@@ -49,21 +58,29 @@
                     <tbody>
                     <tr>
                         <td>Don't buy from us</td>
-                        <td>Buying from us costs electricity; here are some better options. Plant some trees, walk to work, build a Nuclear-fusion reactor. </td>
+                        <td>Buying from us costs electricity; here are some better options. Plant some trees, walk to
+                            work, build a Nuclear-fusion reactor.
+                        </td>
                     </tr>
                     <tr>
                         <td>Recycle your computer</td>
-                        <td>Your computer is made up of rare metals, materials, and lots of plastic. Do us all a favour and recycle it so it's materials can be reused.</td>
+                        <td>Your computer is made up of rare metals, materials, and lots of plastic. Do us all a favour
+                            and recycle it so it's materials can be reused.
+                        </td>
                     </tr>
                     <tr>
                         <td>Stop paying your power bill</td>
-                        <td>Unless you live in Ontario, chances are your power is generated mostly by coal so either move or live like a caveman. ¯\_(ツ)_/¯ </td>
+                        <td>Unless you live in Ontario, chances are your power is generated mostly by coal so either
+                            move or live like a caveman. ¯\_(ツ)_/¯
+                        </td>
                     </tr>
 
                     <tr>
-                        <td>Incite an insurrection </td>
-                        <td>Our governments aren't doing anything to combat climate change, march your way down to your nations capital and take over
-                            (It won't end badly). </td>
+                        <td>Incite an insurrection</td>
+                        <td>Our governments aren't doing anything to combat climate change, march your way down to your
+                            nations capital and take over
+                            (It won't end badly).
+                        </td>
                     </tr>
                     </tbody>
                 </table>

@@ -6,6 +6,13 @@
     $title = 'FAQ';
     include('headers.php');
     ?>
+    <meta name="title" content="FAQ">
+    <meta name="description"
+          content="Here are some OldChicken frequently asked questions. Here you can find info on shipping, returns, customer support, product pricing, and more!">
+    <meta name="keywords" content="old chicken,e-commerce,faq,questions,info">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <body class="page-background">

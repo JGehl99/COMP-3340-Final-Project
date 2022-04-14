@@ -6,6 +6,14 @@
     $title = 'Sign Up';
     include('headers.php');
     ?>
+    <meta name="title" content="Sign Up">
+    <meta name="description"
+          content="Create an OldChicken account to unlock low prices on a wide range of computer parts and PC components including graphics cards, CPUs, and much more">
+    <meta name="keywords"
+          content="old chicken,e-commerce,account,sign up,user,graphics card,gpu,computer parts,components">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <?php

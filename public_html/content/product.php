@@ -1,15 +1,8 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <?php
-    $title = 'Product';
-    include('headers.php');
-    ?>
-</head>
-
-
 <?php
+include_once("../static/config.php");
 // create connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
 
@@ -30,7 +23,24 @@ $stmt->execute();
 $result = $stmt->get_result()->fetch_all();
 $stmt->close();
 $conn->close();
+
+// Retrieve attributes from $result[0]
+[$id, $name, $description, $imageURL, $price, $rating, $numRatings] = $result[0];
 ?>
+
+<head>
+    <?php
+    $title = $name;
+    include('headers.php');
+    ?>
+    <meta name="title" content="<?php echo $name ?>">
+    <meta name="description"
+          content="<?php echo $description ?>">
+    <meta name="keywords" content="computer,graphics card,gpu,pc,desktop,gaming,computer part,component">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+</head>
 
 <body class="page-background">
 <?php include('navbar.php'); ?>
@@ -38,9 +48,6 @@ $conn->close();
     <?php
     // Generating the product card
     if (count($result) === 1) {
-        // Retrieve attributes from $result[0]
-        [$id, $name, $description, $imageURL, $price, $rating, $numRatings] = $result[0];
-
         // Get an array of description items
         $description_items = explode(",", $description);
         // $row["description"] ends in a comma, so remove the last empty element from the array
@@ -90,7 +97,7 @@ $conn->close();
                                                  alt="Decrease Quantity"/>
                                         </button>
                                         <input type="text" id="item-amt" class="form-control amt" value="0" min="0"
-                                               max="100"/>
+                                               max="100" aria-label="quantity"/>
                                         <button type="button" class="btn btn-secondary d-flex align-items-center"
                                                 id="increase-amt">
                                             <img class="add_icon" src="../static/add_black.svg"

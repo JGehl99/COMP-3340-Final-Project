@@ -6,6 +6,14 @@
     $title = 'Products';
     include('headers.php');
     ?>
+    <meta name="title" content="Products">
+    <meta name="description"
+          content="OldChicken offers low prices on many computer parts and PC components ranging from graphics cards, CPUs, and much more">
+    <meta name="keywords"
+          content="old chicken,e-commerce,computer,graphics card,gpu,pc,desktop,gaming,computer parts,components">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
 </head>
 
 <?php
@@ -20,7 +28,7 @@ if ($conn->connect_error) {
 
 $sql = "SELECT id, name, description, imageURL, price, rating, numRatings FROM PRODUCT";
 
-if ($_GET['search']) $sql .= " WHERE name LIKE '%" . $_GET['search'] . "%'";
+if ($_GET['search']) $sql .= " WHERE name LIKE '%" . strip_tags($_GET['search']) . "%'";
 
 $products = $conn->query($sql)->fetch_all();
 $conn->close();
@@ -45,9 +53,9 @@ $conn->close();
 
             // Create the card for the item ?>
             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 pt-5">
-                <a href="#"
-                   class="card h-100 hover_expand cursor_pointer text-decoration-none background text-color product-link shadow"
-                   data-item-id="<?php echo $id; ?>">
+                <div
+                        class="card h-100 hover_expand cursor_pointer text-decoration-none background text-color product-link shadow"
+                        data-item-id="<?php echo $id; ?>">
                     <img class="card-img-top p-4" src="<?php echo $imageURL; ?>" alt="<?php echo $name; ?>"/>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $name; ?></h5>
@@ -88,7 +96,7 @@ $conn->close();
                                     <img class="sub_icon" src="../static/sub_black.svg" alt="Decrease Quantity"/>
                                 </button>
                                 <input type="text" id="<?php echo $id; ?>-amt" class="form-control amt" value="0"
-                                       min="0" max="100"/>
+                                       min="0" max="100" aria-label="quantity"/>
                                 <button type="button" class="btn btn-secondary d-flex align-items-center increase-amt"
                                         data-field="<?php echo $id; ?>">
                                     <img class="add_icon" src="../static/add_black.svg" alt="Increase Quantity"/>
@@ -101,7 +109,7 @@ $conn->close();
                             </button>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         <?php }
         } ?>
