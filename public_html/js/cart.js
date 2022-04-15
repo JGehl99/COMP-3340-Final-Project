@@ -28,6 +28,7 @@ function updateCart() {
 
 function deleteCartItem(id) {
     if (!confirm('Are you sure you want to remove this item from your cart?')) return;
+    updateTotals(id, 0);
     const rowEl = document.getElementById(id + '-row');
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = () => {
