@@ -5,6 +5,10 @@
     <?php
     $title = 'Shopping Cart';
     include('headers.php');
+
+    if (!isLoggedIn()) {
+        header("Location: /content/index.php");
+    }
     ?>
 </head>
 
