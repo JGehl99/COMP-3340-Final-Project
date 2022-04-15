@@ -51,8 +51,8 @@ amtInput.onblur = validateAmt;
 
 function addToCart(e, button) {
     let id = button.getAttribute('data-field');
-    const amt = document.getElementById('item-amt').value;
-    if (amt < 1) return;
+    const amtEl = document.getElementById('item-amt');
+    if (amtEl.value < 1) return;
     const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onload = () => {
@@ -75,7 +75,8 @@ function addToCart(e, button) {
 
     xmlhttp.open("POST", "../services/add_to_cart.php");
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+    xmlhttp.send(JSON.stringify({pk: id, quantity: amtEl.value}));
+    amtEl.value = 0;
 }
 
 const cartButton = document.getElementById('add-to-cart');

@@ -83,8 +83,8 @@ for (let productLink of productLinks) {
 
 function addToCart(e, button) {
     let id = button.getAttribute('data-field');
-    const amt = document.getElementById(id + '-amt').value;
-    if (amt < 1) return;
+    const amtEl = document.getElementById(id + '-amt');
+    if (amtEl.value < 1) return;
     const xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onload = () => {
@@ -107,7 +107,8 @@ function addToCart(e, button) {
 
     xmlhttp.open('POST', '../services/add_to_cart.php');
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    xmlhttp.send(JSON.stringify({pk: id, quantity: amt}));
+    xmlhttp.send(JSON.stringify({pk: id, quantity: amtEl.value}));
+    amtEl.value = 0;
 }
 
 const cartButtons = document.querySelectorAll('.add-to-cart');
